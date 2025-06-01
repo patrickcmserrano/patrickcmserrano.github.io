@@ -1,6 +1,6 @@
 # LinkFlow
 
-Um aplicativo elegante e responsivo para compartilhar todos os seus links importantes em um só lugar, com design mobile-first e suporte a múltiplos idiomas.
+Um aplicativo elegante e responsivo para compartilhar todos os seus links importantes em um só lugar, com design mobile-first, suporte a múltiplos idiomas e player de música integrado.
 
 ## Visão Geral
 
@@ -14,6 +14,32 @@ O LinkFlow é uma plataforma de compartilhamento de links que permite organizar 
 - **Internacionalização**: Suporte a múltiplos idiomas (português, inglês e espanhol)
 - **Compartilhamento Direto**: Links que abrem em novas abas para facilitar o acesso
 - **Acessibilidade**: Implementação de práticas de acessibilidade para todos os usuários
+- **🎵 Player de Música**: Player fixo integrado com playlist do YouTube Music
+
+## 🎵 Player de Música
+
+O LinkFlow inclui um player de música elegante e minimalista que permite aos usuários ouvir música enquanto navegam pelo site.
+
+### Características do Player:
+- **YouTube Embed API oficial**: Utiliza a API oficial do YouTube respeitando direitos autorais
+- **Player fixo no topo**: Interface não-intrusiva fixada no topo da tela
+- **Controles interativos**: Play/Pause, Next/Previous, Close
+- **Visualizador musical animado**: Barras animadas que respondem ao status de reprodução
+- **Status em tempo real**: Exibe se está tocando, pausado ou carregando
+- **Design responsivo**: Adaptado para desktop e mobile
+- **Suporte ao modo escuro**: Integrado com o sistema de temas
+- **Multilíngue**: Todas as strings traduzidas para pt/en/es
+
+### Uso do Player:
+1. Clique no botão "Playlist Musical" no cabeçalho
+2. O player aparecerá fixo no topo da tela
+3. Use os controles para navegar pela playlist
+4. Clique no X para fechar o player
+
+### Playlist Configurada:
+- ID da Playlist: `PL71Q6dgIfRPE1ouM6x8mwsmMX4siQhfrf`
+- Fonte: YouTube Music
+- Todos os direitos autorais pertencem aos respectivos proprietários
 
 ## Estrutura do Projeto
 

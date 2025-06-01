@@ -25,6 +25,6 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.json", "src/types/**/*.d.ts"],
   "exclude": ["node_modules/svelte-icons/gi"]
 }

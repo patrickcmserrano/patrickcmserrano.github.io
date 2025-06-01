@@ -7,5 +7,19 @@ export default {
   "features.typescript": "Construído com TypeScript",
   "features.testing": "Carregamento otimizado",
   "features.i18n": "Suporte a múltiplos idiomas",
-  "footer.copyright": "© 2025 LinkFlow por Patrick CM Serrano. Todos os direitos reservados."
+  "footer.copyright": "© 2025 LinkFlow por Patrick CM Serrano. Todos os direitos reservados.",
+  "music.playlist": "Playlist Musical",
+  "music.open": "Abrir Player de Música",
+  "music.close": "Fechar Player",
+  "music.minimize": "Minimizar",
+  "music.maximize": "Expandir",
+  "music.playing": "Tocando",
+  "music.paused": "Pausado",
+  "music.loading": "Carregando",
+  "music.play": "Reproduzir",
+  "music.pause": "Pausar",
+  "music.next": "Próxima",
+  "music.previous": "Anterior",
+  "music.clickToExpand": "Clique para expandir",
+  "music.disclaimer": "Conteúdo fornecido pelo YouTube. Todos os direitos autorais pertencem aos respectivos proprietários."
 };

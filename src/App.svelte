@@ -2,15 +2,12 @@
   import './styles/global.css';
   import ThemeToggle from './components/ThemeToggle.svelte';
   import LanguageSelector from './components/LanguageSelector.svelte';
+  import MusicPlayer from './components/MusicPlayer.svelte';
   import Section from './components/Section.svelte';
-  import { _ } from './lib/i18n';
+  import { _ } from './lib/simple-i18n';
   import { onMount } from 'svelte';
   import Icon from './lib/Icon.svelte';
   import { FaLink } from 'svelte-icons/fa';
-
-  // Inicializa o suporte a idiomas
-  import { i18n } from './lib/i18n';
-  i18n.initialize();
 
   // Carrega os dados do arquivo links.json
   import * as linksDataModule from './data/links.json';
@@ -22,7 +19,7 @@
   let sections = linksData.sections;
   
   // Função para ajustar caminhos de imagens com o caminho base
-  const getImagePath = (path) => {
+  const getImagePath = (path: string): string => {
     // Remover a barra inicial se existir
     const cleanPath = path.startsWith('/') ? path.substring(1) : path;
     // Usar uma string vazia como fallback se BASE_URL não estiver definido
@@ -54,7 +51,7 @@
     currentLayout = windowWidth >= 1024 ? ('grid' as const) : ('list' as const);
     
     // Adiciona um event listener para redimensionamento com debounce
-    let resizeTimer;
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -74,11 +71,16 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <main class="min-h-screen mx-auto px-4 py-6 space-y-6 app-container">
-  <div class="flex justify-between items-center mb-8">
-    <div class="language-selector">
+  <div class="header-controls">
+    <div class="left-controls">
       <LanguageSelector />
     </div>
-    <div class="theme-toggle">
+    <div class="center-controls">
+      <MusicPlayer 
+        playlistId="PL71Q6dgIfRPE1ouM6x8mwsmMX4siQhfrf"
+      />
+    </div>
+    <div class="right-controls">
       <ThemeToggle />
     </div>
   </div>
@@ -185,6 +187,46 @@
     .sections-container {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.75rem;
+    }
+  }
+  
+  /* Estilos para o cabeçalho com controles */
+  .header-controls {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 0;
+  }
+  
+  .left-controls {
+    justify-self: start;
+  }
+  
+  .center-controls {
+    justify-self: center;
+  }
+  
+  .right-controls {
+    justify-self: end;
+  }
+  
+  @media (max-width: 640px) {
+    .header-controls {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      text-align: center;
+    }
+    
+    .left-controls,
+    .center-controls,
+    .right-controls {
+      justify-self: center;
+    }
+    
+    .header-controls {
+      margin-bottom: 1.5rem;
     }
   }
   

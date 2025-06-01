@@ -1,27 +1,22 @@
 <script lang="ts">
-  import { locale } from '../lib/i18n';
+  import { currentLanguage, setLanguage } from '../lib/simple-i18n';
   
-  function setLanguage(lang: string) {
-    locale.set(lang);
-    // Saves the preference in localStorage
-    localStorage.setItem('preferredLanguage', lang);
+  function handleLanguageChange(lang: 'pt' | 'en' | 'es') {
+    setLanguage(lang);
   }
 
   // Gets the current language
-  let currentLocale: string = 'en'; // Initially defined as string
+  let currentLocale: string = 'pt';
   
-  locale.subscribe(value => {
-    // Ensures that value is always string
-    if (value) {
-      currentLocale = value;
-    }
+  currentLanguage.subscribe(value => {
+    currentLocale = value;
   });
 </script>
 
 <div class="language-selector" role="group" aria-label="Seletor de idioma">
   <button 
     class={currentLocale === 'en' ? 'active' : ''} 
-    on:click={() => setLanguage('en')}
+    on:click={() => handleLanguageChange('en')}
     aria-label="English"
     aria-pressed={currentLocale === 'en'}
     type="button"
@@ -30,7 +25,7 @@
   </button>
   <button 
     class={currentLocale === 'pt' ? 'active' : ''} 
-    on:click={() => setLanguage('pt')}
+    on:click={() => handleLanguageChange('pt')}
     aria-label="Português"
     aria-pressed={currentLocale === 'pt'}
     type="button"
@@ -39,7 +34,7 @@
   </button>
   <button 
     class={currentLocale === 'es' ? 'active' : ''} 
-    on:click={() => setLanguage('es')}
+    on:click={() => handleLanguageChange('es')}
     aria-label="Español"
     aria-pressed={currentLocale === 'es'}
     type="button"
