@@ -25,7 +25,18 @@ const translations = {
     "music.next": "Próxima",
     "music.previous": "Anterior",
     "music.clickToExpand": "Clique para expandir",
-    "music.disclaimer": "Conteúdo fornecido pelo YouTube. Todos os direitos autorais pertencem aos respectivos proprietários."
+    "music.disclaimer": "Conteúdo fornecido pelo YouTube. Todos os direitos autorais pertencem aos respectivos proprietários.",
+    "conference.welcome": "Bem-vindos ao BlockchainRio!",
+    "conference.greeting": "Olá! Eu sou Patrick CM Serrano",
+    "conference.role": "Engenheiro de Software",
+    "conference.description": "Sou especialista em criar aplicações web escaláveis, arquiteturas de software modernas e soluções tecnológicas inovadoras. Vamos nos conectar!",
+    "conference.portfolio": "Portfólio",
+    "conference.linkedin": "LinkedIn",
+    "conference.scanQR": "Escanear Código QR",
+    "conference.visitPortfolio": "Visite meu portfólio",
+    "conference.connectLinkedIn": "Conecte no LinkedIn",
+    "conference.languages": "Esta página está disponível em vários idiomas:",
+    "conference.contactMe": "Sinta-se à vontade para entrar em contato e vamos conversar sobre tecnologia, desenvolvimento de software e inovação!"
   },
   en: {
     "app.title": "Patrick CM Serrano",
@@ -50,7 +61,18 @@ const translations = {
     "music.next": "Next",
     "music.previous": "Previous",
     "music.clickToExpand": "Click to expand",
-    "music.disclaimer": "Content provided by YouTube. All copyrights belong to their respective owners."
+    "music.disclaimer": "Content provided by YouTube. All copyrights belong to their respective owners.",
+    "conference.welcome": "Welcome to BlockchainRio!",
+    "conference.greeting": "Hi! I'm Patrick CM Serrano",
+    "conference.role": "Software Engineer",
+    "conference.description": "I specialize in building scalable web applications, modern software architectures, and innovative technology solutions. Let's connect!",
+    "conference.portfolio": "Portfolio",
+    "conference.linkedin": "LinkedIn",
+    "conference.scanQR": "Scan QR Code",
+    "conference.visitPortfolio": "Visit my portfolio",
+    "conference.connectLinkedIn": "Connect on LinkedIn",
+    "conference.languages": "This page is available in multiple languages:",
+    "conference.contactMe": "Feel free to reach out and let's discuss technology, software development, and innovation!"
   },
   es: {
     "app.title": "Patrick CM Serrano",
@@ -75,7 +97,18 @@ const translations = {
     "music.next": "Siguiente",
     "music.previous": "Anterior",
     "music.clickToExpand": "Haz clic para expandir",
-    "music.disclaimer": "Contenido proporcionado por YouTube. Todos los derechos de autor pertenecen a sus respectivos propietarios."
+    "music.disclaimer": "Contenido proporcionado por YouTube. Todos los derechos de autor pertenecen a sus respectivos propietarios.",
+    "conference.welcome": "¡Bienvenidos a BlockchainRio!",
+    "conference.greeting": "¡Hola! Soy Patrick CM Serrano",
+    "conference.role": "Ingeniero de Software",
+    "conference.description": "Me especializo en crear aplicaciones web escalables, arquitecturas de software modernas y soluciones tecnológicas innovadoras. ¡Conectemos!",
+    "conference.portfolio": "Portafolio",
+    "conference.linkedin": "LinkedIn",
+    "conference.scanQR": "Escanear Código QR",
+    "conference.visitPortfolio": "Visita mi portafolio",
+    "conference.connectLinkedIn": "Conecta en LinkedIn",
+    "conference.languages": "Esta página está disponible en varios idiomas:",
+    "conference.contactMe": "¡No dudes en contactarme y hablemos sobre tecnología, desarrollo de software e innovación!"
   }
 };
 
@@ -85,7 +118,7 @@ export const currentLanguage = writable<'pt' | 'en' | 'es'>('en');
 // Store derivado para traduções reativas
 export const _ = derived(currentLanguage, ($lang) => {
   return (key: string) => {
-    return translations[$lang]?.[key as keyof typeof translations.pt] || key;
+    return translations[$lang]?.[key as keyof typeof translations[typeof $lang]] || key;
   };
 });
 
@@ -95,7 +128,7 @@ export function t(key: string): string {
   const unsubscribe = currentLanguage.subscribe(value => lang = value);
   unsubscribe();
   
-  return translations[lang]?.[key as keyof typeof translations.pt] || key;
+  return translations[lang]?.[key as keyof typeof translations[typeof lang]] || key;
 }
 
 // Função para trocar idioma

@@ -34,6 +34,13 @@
         { "title": "YouTube Pat Rocks", "url": "https://www.youtube.com/@pat_rocks", "icon": "youtube-icon" },
         { "title": "YouTube CodeCraft", "url": "https://www.youtube.com/@codecraft_ofc", "icon": "youtube-icon" }
       ]
+    },
+    {
+      "name": "Conferência",
+      "color": "#6366f1",
+      "links": [
+        { "title": "BlockchainRio 2025", "url": "./conference.html", "icon": "portfolio-icon", "description": "Página especial da conferência com QR codes" }
+      ]
     }
   ]
 }
