@@ -14,7 +14,8 @@
         { "title": "MoneyFlow", "url": "https://patrickcmserrano.github.io/MoneyFlow", "icon": "moneyflow-icon", "description": "Explore o significado do dinheiro" },
         { "title": "LinkFlowLotus", "url": "https://patrickcmserrano.github.io/LinkFlowLotus", "icon": "linkflow-icon", "description": "Links importantes da comunidade lotus" },
         { "title": "BitcoinTracker", "url": "https://patrickcmserrano.github.io/BitcoinTracker", "icon": "bitcoin-icon", "description": "Rastreador de preço, volume e amplitude do bitcoin em tempo real" },
-        { "title": "GearGarage", "url": "https://patrickcmserrano.github.io/GearGarage/", "icon": "gear-icon", "description": "Visualizador 3D ThreeJS" }
+        { "title": "GearGarage", "url": "https://patrickcmserrano.github.io/GearGarage/", "icon": "gear-icon", "description": "Visualizador 3D ThreeJS" },
+        { "title": "AnilistExplorer", "url": "https://patrickcmserrano.github.io/AnilistExplorer/", "icon": "anilist-icon", "description": "Explorador de anime e manga do AniList" }
       ]
     },
     {
@@ -39,7 +40,7 @@
       "name": "Conferência",
       "color": "#6366f1",
       "links": [
-        { "title": "BlockchainRio 2025", "url": "./conference.html", "icon": "portfolio-icon", "description": "Página especial da conferência com QR codes" }
+        { "title": "BlockchainRio 2025", "url": "https://patrickcmserrano.github.io/conference.html", "icon": "portfolio-icon", "description": "Página especial da conferência com QR codes" }
       ]
     }
   ]

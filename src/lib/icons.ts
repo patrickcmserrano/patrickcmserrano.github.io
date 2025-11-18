@@ -12,6 +12,7 @@ import FaHome from 'svelte-icons/fa/FaHome.svelte';
 import FaLeaf from 'svelte-icons/fa/FaLeaf.svelte'; // Usaremos como lotus
 import FaChartBar from 'svelte-icons/fa/FaChartBar.svelte';
 import FaDatabase from 'svelte-icons/fa/FaDatabase.svelte';
+import FaSearch from 'svelte-icons/fa/FaSearch.svelte';
 
 // Mapeamento dos ícones - adicione novos ícones aqui
 const iconMap: Record<string, any> = {
@@ -26,7 +27,8 @@ const iconMap: Record<string, any> = {
   'home-icon': FaHome,
   'lotus-icon': FaLeaf,
   'financial-post': FaChartBar,
-  'data-structure-post': FaDatabase
+  'data-structure-post': FaDatabase,
+  'anilist-icon': FaSearch
 };
 
 /**
