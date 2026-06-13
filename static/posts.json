@@ -45,33 +45,6 @@
     ]
   },
   {
-    "id": "2026-06-03-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 28/05 a 03/06/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `dealer`, `nexus-quantitative.github.io`, `resume`. Registro de 35 commits.",
-    "date": "2026-06-03",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "dealer",
-      "nexus-quantitative.github.io",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-05-27-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 21/05 a 27/05/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `dealer`. Registro de 52 commits.",
-    "date": "2026-05-27",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "dealer"
-    ]
-  },
-  {
     "id": "2026-05-20-dev-diary",
     "title": "Relatório de Produção Semanal — Geral (Período: 14/05 a 20/05/2026)",
     "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `bb`, `dealer`, `pinheirinho`, `resume`. Registro de 131 commits.",
@@ -85,46 +58,6 @@
       "dealer",
       "pinheirinho",
       "resume"
-    ]
-  },
-  {
-    "id": "2026-05-13-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 07/05 a 13/05/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `dealer`, `resume`. Registro de 9 commits.",
-    "date": "2026-05-13",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "dealer",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-05-06-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 30/04 a 06/05/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `dealer`. Registro de 13 commits.",
-    "date": "2026-05-06",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "dealer"
-    ]
-  },
-  {
-    "id": "2026-04-29-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 23/04 a 29/04/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `dealer`. Registro de 147 commits.",
-    "date": "2026-04-29",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "dealer"
     ]
   },
   {
@@ -145,50 +78,6 @@
     ]
   },
   {
-    "id": "2026-04-15-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 09/04 a 15/04/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `anilist-explorer`, `ark-streams`, `blackhole`, `nexus-quantitative.github.io`, `pinheirinho`, `zenoh`. Registro de 38 commits.",
-    "date": "2026-04-15",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "anilist-explorer",
-      "ark-streams",
-      "blackhole",
-      "nexus-quantitative.github.io",
-      "pinheirinho",
-      "zenoh"
-    ]
-  },
-  {
-    "id": "2026-04-08-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 02/04 a 08/04/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `pinheirinho`. Registro de 23 commits.",
-    "date": "2026-04-08",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "pinheirinho"
-    ]
-  },
-  {
-    "id": "2026-04-01-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 26/03 a 01/04/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `pinheirinho`, `reconciler`. Registro de 39 commits.",
-    "date": "2026-04-01",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "pinheirinho",
-      "reconciler"
-    ]
-  },
-  {
     "id": "2026-03-25-dev-diary",
     "title": "Relatório de Produção Semanal — Geral (Período: 19/03 a 25/03/2026)",
     "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `reconciler`. Registro de 17 commits.",
@@ -199,47 +88,6 @@
       "Git Log",
       "ark-streams",
       "reconciler"
-    ]
-  },
-  {
-    "id": "2026-03-18-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 12/03 a 18/03/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `resume`. Registro de 9 commits.",
-    "date": "2026-03-18",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-03-11-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 05/03 a 11/03/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `issue-harvester`, `opensource`. Registro de 8 commits.",
-    "date": "2026-03-11",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "issue-harvester",
-      "opensource"
-    ]
-  },
-  {
-    "id": "2026-03-04-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 26/02 a 04/03/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `patrickcmserrano.github.io`, `pinheirinho`. Registro de 15 commits.",
-    "date": "2026-03-04",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "patrickcmserrano.github.io",
-      "pinheirinho"
     ]
   },
   {
@@ -254,19 +102,6 @@
       "ark-streams",
       "patrickcmserrano.github.io",
       "pinheirinho"
-    ]
-  },
-  {
-    "id": "2026-02-18-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 12/02 a 18/02/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `freshcode`. Registro de 5 commits.",
-    "date": "2026-02-18",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Git Log",
-      "ark-streams",
-      "freshcode"
     ]
   },
   {
@@ -285,17 +120,6 @@
     ]
   },
   {
-    "id": "2026-02-04-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 29/01 a 04/02/2026)",
-    "excerpt": "Semana focada no planejamento estratégico de arquitetura, análises de mercado quantitativo e modelagem conceitual de sistemas.",
-    "date": "2026-02-04",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Planejamento"
-    ]
-  },
-  {
     "id": "2026-01-28-dev-diary",
     "title": "Relatório de Produção Semanal — Geral (Período: 22/01 a 28/01/2026)",
     "excerpt": "Consolidado de entregas da semana nos projetos `blackhole`. Registro de 16 commits.",
@@ -305,28 +129,6 @@
       "Relatório Semanal",
       "Git Log",
       "blackhole"
-    ]
-  },
-  {
-    "id": "2026-01-21-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 15/01 a 21/01/2026)",
-    "excerpt": "Semana focada no planejamento estratégico de arquitetura, análises de mercado quantitativo e modelagem conceitual de sistemas.",
-    "date": "2026-01-21",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Planejamento"
-    ]
-  },
-  {
-    "id": "2026-01-14-dev-diary",
-    "title": "Relatório de Produção Semanal — Geral (Período: 08/01 a 14/01/2026)",
-    "excerpt": "Semana focada no planejamento estratégico de arquitetura, análises de mercado quantitativo e modelagem conceitual de sistemas.",
-    "date": "2026-01-14",
-    "readTime": "5 min",
-    "tags": [
-      "Relatório Semanal",
-      "Planejamento"
     ]
   },
   {

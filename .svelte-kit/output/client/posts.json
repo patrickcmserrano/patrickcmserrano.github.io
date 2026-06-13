@@ -45,40 +45,13 @@
     ]
   },
   {
-    "id": "2026-06-03-dev-diary",
-    "title": "Diário de Dev #22 — Foco em dealer, nexus-quantitative.github.io e mais 1 projeto",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `dealer`, `nexus-quantitative.github.io`, `resume`. Inclui o registro completo de commits do período.",
-    "date": "2026-06-03",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "dealer",
-      "nexus-quantitative.github.io",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-05-27-dev-diary",
-    "title": "Diário de Dev #21 — Foco em ark-streams, dealer",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `dealer`. Inclui o registro completo de commits do período.",
-    "date": "2026-05-27",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "dealer"
-    ]
-  },
-  {
     "id": "2026-05-20-dev-diary",
-    "title": "Diário de Dev #20 — Foco em ark-streams, bb e mais 3 projetos",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `bb`, `dealer`, `pinheirinho`, `resume`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 14/05 a 20/05/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `bb`, `dealer`, `pinheirinho`, `resume`. Registro de 131 commits.",
     "date": "2026-05-20",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "ark-streams",
       "bb",
@@ -88,55 +61,16 @@
     ]
   },
   {
-    "id": "2026-05-13-dev-diary",
-    "title": "Diário de Dev #19 — Foco em ark-streams, dealer e mais 1 projeto",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `dealer`, `resume`. Inclui o registro completo de commits do período.",
-    "date": "2026-05-13",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "dealer",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-05-06-dev-diary",
-    "title": "Diário de Dev #18 — Foco em ark-streams, dealer",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `dealer`. Inclui o registro completo de commits do período.",
-    "date": "2026-05-06",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "dealer"
-    ]
-  },
-  {
-    "id": "2026-04-29-dev-diary",
-    "title": "Diário de Dev #17 — Foco em ark-streams, dealer",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `dealer`. Inclui o registro completo de commits do período.",
-    "date": "2026-04-29",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "dealer"
-    ]
-  },
-  {
     "id": "2026-04-22-dev-diary",
-    "title": "Diário de Dev #16 — Foco em GearGarage, ark-streams e mais 3 projetos",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `GearGarage`, `ark-streams`, `bdlassetto.github.io`, `dealer`, `pke`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 16/04 a 22/04/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `GearGarage`, `YogaControl`, `ark-streams`, `bdlassetto.github.io`, `dealer`, `pke`. Registro de 46 commits.",
     "date": "2026-04-22",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "GearGarage",
+      "YogaControl",
       "ark-streams",
       "bdlassetto.github.io",
       "dealer",
@@ -144,108 +78,26 @@
     ]
   },
   {
-    "id": "2026-04-15-dev-diary",
-    "title": "Diário de Dev #15 — Foco em anilist-explorer, ark-streams e mais 4 projetos",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `anilist-explorer`, `ark-streams`, `blackhole`, `nexus-quantitative.github.io`, `pinheirinho`, `zenoh`. Inclui o registro completo de commits do período.",
-    "date": "2026-04-15",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "anilist-explorer",
-      "ark-streams",
-      "blackhole",
-      "nexus-quantitative.github.io",
-      "pinheirinho",
-      "zenoh"
-    ]
-  },
-  {
-    "id": "2026-04-08-dev-diary",
-    "title": "Diário de Dev #14 — Foco em ark-streams, pinheirinho",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `pinheirinho`. Inclui o registro completo de commits do período.",
-    "date": "2026-04-08",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "pinheirinho"
-    ]
-  },
-  {
-    "id": "2026-04-01-dev-diary",
-    "title": "Diário de Dev #13 — Foco em ark-streams, pinheirinho",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `pinheirinho`. Inclui o registro completo de commits do período.",
-    "date": "2026-04-01",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "pinheirinho"
-    ]
-  },
-  {
     "id": "2026-03-25-dev-diary",
-    "title": "Diário de Dev #12 — Foco em ark-streams, reconciler",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `reconciler`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 19/03 a 25/03/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `reconciler`. Registro de 17 commits.",
     "date": "2026-03-25",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "ark-streams",
       "reconciler"
     ]
   },
   {
-    "id": "2026-03-18-dev-diary",
-    "title": "Diário de Dev #11 — Foco em ark-streams, resume",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `resume`. Inclui o registro completo de commits do período.",
-    "date": "2026-03-18",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "resume"
-    ]
-  },
-  {
-    "id": "2026-03-11-dev-diary",
-    "title": "Diário de Dev #10 — Foco em ark-streams, opensource",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `opensource`. Inclui o registro completo de commits do período.",
-    "date": "2026-03-11",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "opensource"
-    ]
-  },
-  {
-    "id": "2026-03-04-dev-diary",
-    "title": "Diário de Dev #9 — Foco em ark-streams, pinheirinho",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `pinheirinho`. Inclui o registro completo de commits do período.",
-    "date": "2026-03-04",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "pinheirinho"
-    ]
-  },
-  {
     "id": "2026-02-25-dev-diary",
-    "title": "Diário de Dev #8 — Foco em ark-streams, patrickcmserrano.github.io e mais 1 projeto",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `patrickcmserrano.github.io`, `pinheirinho`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 19/02 a 25/02/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `patrickcmserrano.github.io`, `pinheirinho`. Registro de 19 commits.",
     "date": "2026-02-25",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "ark-streams",
       "patrickcmserrano.github.io",
@@ -253,85 +105,40 @@
     ]
   },
   {
-    "id": "2026-02-18-dev-diary",
-    "title": "Diário de Dev #7 — Foco em ark-streams, freshcode",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `ark-streams`, `freshcode`. Inclui o registro completo de commits do período.",
-    "date": "2026-02-18",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Git Log",
-      "ark-streams",
-      "freshcode"
-    ]
-  },
-  {
     "id": "2026-02-11-dev-diary",
-    "title": "Diário de Dev #6 — Foco em GearGarage, bdlassetto.github.io e mais 1 projeto",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `GearGarage`, `bdlassetto.github.io`, `pinheirinho`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 05/02 a 11/02/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `GearGarage`, `bdlassetto.github.io`, `blackhole`, `pinheirinho`. Registro de 23 commits.",
     "date": "2026-02-11",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "GearGarage",
       "bdlassetto.github.io",
+      "blackhole",
       "pinheirinho"
     ]
   },
   {
-    "id": "2026-02-04-dev-diary",
-    "title": "Diário de Dev #5 — Semanas de Planejamento e Arquitetura",
-    "excerpt": "Relatório semanal focando no planejamento de arquitetura, análises de mercado quantitativo e estudos teóricos.",
-    "date": "2026-02-04",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Planejamento"
-    ]
-  },
-  {
     "id": "2026-01-28-dev-diary",
-    "title": "Diário de Dev #4 — Foco em blackhole",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `blackhole`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 22/01 a 28/01/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `blackhole`. Registro de 16 commits.",
     "date": "2026-01-28",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "blackhole"
     ]
   },
   {
-    "id": "2026-01-21-dev-diary",
-    "title": "Diário de Dev #3 — Semanas de Planejamento e Arquitetura",
-    "excerpt": "Relatório semanal focando no planejamento de arquitetura, análises de mercado quantitativo e estudos teóricos.",
-    "date": "2026-01-21",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Planejamento"
-    ]
-  },
-  {
-    "id": "2026-01-14-dev-diary",
-    "title": "Diário de Dev #2 — Semanas de Planejamento e Arquitetura",
-    "excerpt": "Relatório semanal focando no planejamento de arquitetura, análises de mercado quantitativo e estudos teóricos.",
-    "date": "2026-01-14",
-    "readTime": "5 min",
-    "tags": [
-      "Dev Diary",
-      "Planejamento"
-    ]
-  },
-  {
     "id": "2026-01-07-dev-diary",
-    "title": "Diário de Dev #1 — Foco em nexus-quantitative.github.io",
-    "excerpt": "Relatório semanal de progresso focando nas entregas de `nexus-quantitative.github.io`. Inclui o registro completo de commits do período.",
+    "title": "Relatório de Produção Semanal — Geral (Período: 01/01 a 07/01/2026)",
+    "excerpt": "Consolidado de entregas da semana nos projetos `nexus-quantitative.github.io`. Registro de 26 commits.",
     "date": "2026-01-07",
     "readTime": "5 min",
     "tags": [
-      "Dev Diary",
+      "Relatório Semanal",
       "Git Log",
       "nexus-quantitative.github.io"
     ]
