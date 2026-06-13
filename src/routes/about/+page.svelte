@@ -45,7 +45,7 @@
     <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="text-sm text-slate-500 dark:text-slate-400 text-center md:text-left">
         <p>&copy; {new Date().getFullYear()} Patrick Campelo Serrano. {$_('footer.copyright')}</p>
-        <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Desenvolvido com SvelteKit SSG & Tailwind CSS.</p>
+        <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Desenvolvido com SvelteKit SSG & Tailwind CSS (copilotado pelo Gemini 3.5 Flash AGY).</p>
       </div>
       <div class="flex items-center gap-6">
         <a href="https://github.com/patrickcmserrano" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
