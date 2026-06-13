@@ -1,6 +1,6 @@
 # Relatório Retroativo Semanal (Período: 01/06 a 07/06/2026)
 
-Este relatório compõe a retrospectiva das atividades de engenharia e entregas de **Patrick Serrano** na semana anterior (01 de Junho a 07 de Junho de 2026). O período foi marcado por avanços massivos no repositório **`dealer`** (criação de pipelines e monitors de nicho no Clojure) e consolidação da infraestrutura e suporte mobile no **`ark-streams`** (Go).
+Este relatório compõe a retrospectiva das atividades de engenharia e entregas de **Patrick Serrano** na semana anterior (01 de Junho a 07 de Junho de 2026). O período foi marcado por avanços massivos no repositório **`techsentry`** (criação de pipelines e monitors de nicho no Clojure) e consolidação da infraestrutura e suporte mobile no **`ark-streams`** (Go).
 
 ---
 
@@ -9,9 +9,9 @@ Este relatório compõe a retrospectiva das atividades de engenharia e entregas 
 | Repositório | Atividade Principal | Escopo Técnico |
 | :--- | :--- | :--- |
 | **`ark-streams`** | Hardening de VPS e Suporte Mobile | Docker multi-stage, healthchecks, JetStream permanent archiving e Capacitor API Bridge. |
-| **`dealer`** | Pipeline de Análise AliExpress | Modelagem de SKUs, Malli validation, Pathom parsing e documentação de novos nichos. |
-| **`dealer`** | Chevrolet Vectra RJ Monitor | Scrapers OLX isolados, controle de cookies persistentes (bypass Cloudflare) e UI ClojureScript. |
-| **`dealer`** | Orquestração & Scheduling | Unificação do scheduler de tarefas e dashboard de monitoramento de execução. |
+| **`techsentry`** | Pipeline de Análise AliExpress | Modelagem de SKUs, Malli validation, Pathom parsing e documentação de novos nichos. |
+| **`techsentry`** | Chevrolet Vectra RJ Monitor | Scrapers OLX isolados, controle de cookies persistentes (bypass Cloudflare) e UI ClojureScript. |
+| **`techsentry`** | Orquestração & Scheduling | Unificação do scheduler de tarefas e dashboard de monitoramento de execução. |
 
 ---
 
@@ -30,13 +30,13 @@ O trabalho concentrou-se em preparar o sistema de trading para deploy real em se
 
 ---
 
-### 2. Projeto: `dealer` (TechSentry — Clojure Scrapers & Monitors)
+### 2. Projeto: `techsentry` (TechSentry — Clojure Scrapers & Monitors)
 Semana de altíssima produtividade com a criação de novos fluxos de monitoramento, pipelines de dados estruturados e bypasses avançados de scraping.
 
 #### A. Pipeline de Nichos do AliExpress (Mouses e Teclados)
 - **Modelagem de Dados:** Criação de pipeline estruturado usando schemas **Malli** para validação e parsers **Pathom** para enriquecimento de dados de busca.
 - **Normalização de SKUs:** Implementação de inferência de SKU canônico para analisar concorrência e variações de preços de forma uniforme.
-- **Nicho de Teclados Mecânicos:** Implementação completa da coleta de teclados baseando-se nas regras de negócio escritas no [aliexpress-niche-runbook.md](file:///home/patricks/dev/dealer/docs/aliexpress-niche-runbook.md).
+- **Nicho de Teclados Mecânicos:** Implementação completa da coleta de teclados baseando-se nas regras de negócio escritas no [aliexpress-niche-runbook.md](file:///home/patricks/dev/techsentry/docs/aliexpress-niche-runbook.md).
 - **Métricas Avançadas:** Captura de volumes reais de transações (`real_trade_count`), flag de produtos com frete Choice (`isChoice`), data de listagem e badges de top sellers.
 
 #### B. Monitor Especializado Chevrolet Vectra RJ
@@ -60,7 +60,7 @@ Semana de altíssima produtividade com a criação de novos fluxos de monitorame
 * `4230f49` - **feat(archive+mobile):** permanent liquidation/aggression archive and Capacitor mobile support.
 * `9cdd961` - **feat(ops):** harden for production VPS deployment on Oracle Cloud ARM.
 
-### Repositório: `dealer`
+### Repositório: `techsentry`
 * `3bb0624d` - **feat:** unified scheduler, health dashboard, and vectra fix.
 * `73ae740f` - **fix:** usar perfil lite (Cookies + Local State) em vez do perfil real completo.
 * `0fb9c868` - **fix:** usar perfil real do Chrome para bypass Cloudflare OLX.

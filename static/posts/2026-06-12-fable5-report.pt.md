@@ -1,6 +1,6 @@
 # Relatório de Produção — Patrick Serrano com Claude Fable 5
 
-Este relatório apresenta o consolidado do que Patrick Serrano produziu e otimizou sob a assistência do modelo **Claude Fable 5** (disponibilizado de forma experimental pela Anthropic antes de sua indisponibilidade temporária). O trabalho concentrou-se principalmente em dois repositórios: **`ark-streams`** (infraestrutura Go de dados quantitativos e trading) e **`dealer`** (crawlers e scrapers baseados em Clojure).
+Este relatório apresenta o consolidado do que Patrick Serrano produziu e otimizou sob a assistência do modelo **Claude Fable 5** (disponibilizado de forma experimental pela Anthropic antes de sua indisponibilidade temporária). O trabalho concentrou-se principalmente em dois repositórios: **`ark-streams`** (infraestrutura Go de dados quantitativos e trading) e **`techsentry`** (crawlers e scrapers baseados em Clojure).
 
 ---
 
@@ -11,7 +11,7 @@ Durante o período de acesso ao Fable 5, as principais conquistas focaram em **e
 | Projeto | Escopo | Principais Entregas |
 | :--- | :--- | :--- |
 | **`ark-streams`** | Backend Go, NATS JetStream & Wails | Migração para OKX, Hardening de WebSockets, Automação do Deploy em VPS, e Plano de Go-Live Automatizado |
-| **`dealer`** (TechSentry) | Scrapers Clojure | Setup e validação de scraping na VPS (IP Datacenter), Bypass do Cloudflare com Xvfb e Automação de Backups |
+| **`techsentry`** (TechSentry) | Scrapers Clojure | Setup e validação de scraping na VPS (IP Datacenter), Bypass do Cloudflare com Xvfb e Automação de Backups |
 
 ---
 
@@ -48,22 +48,22 @@ Fable 5 desenhou o roadmap de engenharia de ponta a ponta detalhado no documento
 
 ---
 
-### 2. Projeto: `dealer` (TechSentry)
-O `dealer` contém os scrapers em Clojure de Patrick para monitorar promoções e preços (OLX, AliExpress, Telegram, Level Micro). O Fable 5 ajudou a portar toda a infra de scrapers locais para rodar de forma confiável na VPS.
+### 2. Projeto: `techsentry` (TechSentry)
+O `techsentry` contém os scrapers em Clojure de Patrick para monitorar promoções e preços (OLX, AliExpress, Telegram, Level Micro). O Fable 5 ajudou a portar toda a infra de scrapers locais para rodar de forma confiável na VPS.
 
 #### A. Bypass de Cloudflare na VPS via Xvfb
 > [!TIP]
 > A VPS (Oracle ARM) sofria com bloqueios HTTP e curl (retornando status 403) devido a restrições rígidas do Cloudflare para IPs de datacenters.
 
 - Fable 5 arquitetou e validou a execução do Chromium ("headed") dentro da VPS simulando uma interface de vídeo virtual com Xvfb (`xvfb-run -a`). Isso permitiu rodar os scrapers simulando navegação nativa e contornando o desafio do Cloudflare sem a necessidade de chaves KWallet manuais locais.
-- Criada a sonda de verificação [probe-olx-vps.clj](file:///home/patricks/dev/dealer/scripts/probe-olx-vps.clj) para testar de forma não invasiva o acesso anti-ban ao OLX antes de disparar varreduras completas.
+- Criada a sonda de verificação [probe-olx-vps.clj](file:///home/patricks/dev/techsentry/scripts/probe-olx-vps.clj) para testar de forma não invasiva o acesso anti-ban ao OLX antes de disparar varreduras completas.
 
 #### B. Correção de Chaves Git & Sincronização
 - Fable 5 solucionou a impossibilidade de fazer pull na VPS. O repositório estava travado em uma versão antiga porque a chave SSH anterior gerava conflito com outras chaves GitHub globais. 
 - Foi configurada uma nova chave dedicada `github_techsentry` cadastrada como **Deploy Key Read-Only** no repositório GitHub, e o git foi avançado com segurança (`git pull --ff-only` de `fe7879fa` para `3bb0624d`).
 
 #### C. Relatório de Infraestrutura de Scrapers
-Todo o diagnóstico, as tabelas de compatibilidade por site e os passos operacionais foram estruturados por Fable 5 no documento [vps-nexus-scraping.md](file:///home/patricks/dev/dealer/docs/vps-nexus-scraping.md).
+Todo o diagnóstico, as tabelas de compatibilidade por site e os passos operacionais foram estruturados por Fable 5 no documento [vps-nexus-scraping.md](file:///home/patricks/dev/techsentry/docs/vps-nexus-scraping.md).
 
 ---
 
@@ -80,5 +80,5 @@ A tabela abaixo resume os artefatos de código criados e modificados pelo modelo
 | **`ark-streams`** | [okx_liquidation.go](file:///home/patricks/dev/ark-streams/internal/collector/okx_liquidation.go) | Criado 🆕 | Coletor nativo de liquidações da OKX (substituindo Binance) |
 | **`ark-streams`** | [app.go](file:///home/patricks/dev/ark-streams/nexus-desktop/app.go) | Modificado 🛠️ | Suporte a backfill REST em `GetLiquidationHistory` e melhorias na UI do Desktop |
 | **`ark-streams`** | [.dockerignore](file:///home/patricks/dev/ark-streams/.dockerignore) | Modificado 🛠️ | Exclusão de dependências locais do desktop no contexto de compilação da imagem Docker |
-| **`dealer`** | [vps-nexus-scraping.md](file:///home/patricks/dev/dealer/docs/vps-nexus-scraping.md) | Criado 🆕 | Manual e guia operacional de infraestrutura anti-ban dos crawlers na VPS |
-| **`dealer`** | [probe-olx-vps.clj](file:///home/patricks/dev/dealer/scripts/probe-olx-vps.clj) | Criado 🆕 | Script de validação isolado para teste de bypass do Cloudflare no OLX |
+| **`techsentry`** | [vps-nexus-scraping.md](file:///home/patricks/dev/techsentry/docs/vps-nexus-scraping.md) | Criado 🆕 | Manual e guia operacional de infraestrutura anti-ban dos crawlers na VPS |
+| **`techsentry`** | [probe-olx-vps.clj](file:///home/patricks/dev/techsentry/scripts/probe-olx-vps.clj) | Criado 🆕 | Script de validação isolado para teste de bypass do Cloudflare no OLX |

@@ -2,13 +2,13 @@
   {
     "id": "2026-06-13-dev-diary",
     "title": "Diário de Dev #12 — Hardening de WebSockets, Bypass de Cloudflare na VPS e Visualização 3D com ClojureScript",
-    "excerpt": "Relatório semanal de progresso cobrindo a visualização 3D Clojure Dialects Globe, o hardening de WebSockets no ark-streams (Go), o deploy CI/CD via Docker e o bypass de Cloudflare no dealer.",
+    "excerpt": "Relatório semanal de progresso cobrindo a visualização 3D Clojure Dialects Globe, o hardening de WebSockets no ark-streams (Go), o deploy CI/CD via Docker e o bypass de Cloudflare no TechSentry.",
     "date": "2026-06-13",
     "readTime": "8 min",
     "tags": [
       "Dev Diary",
       "Ark Streams",
-      "Dealer",
+      "TechSentry",
       "Go",
       "Clojure",
       "ClojureScript",
@@ -18,13 +18,13 @@
   {
     "id": "2026-06-12-fable5-report",
     "title": "Relatório de Produção — Patrick Serrano com Claude Fable 5",
-    "excerpt": "Consolidado de entregas com Claude Fable 5: hardening de WebSockets e migração de Binance para OKX no ark-streams, e bypass de Cloudflare via Xvfb no dealer.",
+    "excerpt": "Consolidado de entregas com Claude Fable 5: hardening de WebSockets e migração de Binance para OKX no ark-streams, e bypass de Cloudflare via Xvfb no TechSentry.",
     "date": "2026-06-12",
     "readTime": "6 min",
     "tags": [
       "Claude Fable 5",
       "Ark Streams",
-      "Dealer",
+      "TechSentry",
       "Go",
       "Clojure",
       "DevOps"
@@ -33,13 +33,13 @@
   {
     "id": "2026-06-06-retrospective",
     "title": "Relatório Retroativo Semanal (01/06 a 07/06/2026)",
-    "excerpt": "Retrospectiva de atividades focando em hardening e suporte mobile no ark-streams (Go) e monitors/scrapers AliExpress e Chevrolet Vectra no dealer (Clojure).",
+    "excerpt": "Retrospectiva de atividades focando em hardening e suporte mobile no ark-streams (Go) e monitors/scrapers AliExpress e Chevrolet Vectra no TechSentry (Clojure).",
     "date": "2026-06-06",
     "readTime": "5 min",
     "tags": [
       "Retrospectiva",
       "Ark Streams",
-      "Dealer",
+      "TechSentry",
       "Go",
       "Clojure"
     ]
@@ -47,7 +47,7 @@
   {
     "id": "2026-05-20-dev-diary",
     "title": "Relatório de Produção Semanal — Geral (Período: 14/05 a 20/05/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `bb`, `dealer`, `pinheirinho`, `resume`. Registro de 131 commits.",
+    "excerpt": "Consolidado de entregas da semana nos projetos `ark-streams`, `bb`, `TechSentry`, `pinheirinho`, `resume`. Registro de 131 commits.",
     "date": "2026-05-20",
     "readTime": "5 min",
     "tags": [
@@ -55,7 +55,7 @@
       "Git Log",
       "ark-streams",
       "bb",
-      "dealer",
+      "techsentry",
       "pinheirinho",
       "resume"
     ]
@@ -63,7 +63,7 @@
   {
     "id": "2026-04-22-dev-diary",
     "title": "Relatório de Produção Semanal — Geral (Período: 16/04 a 22/04/2026)",
-    "excerpt": "Consolidado de entregas da semana nos projetos `GearGarage`, `YogaControl`, `ark-streams`, `bdlassetto.github.io`, `dealer`, `pke`. Registro de 46 commits.",
+    "excerpt": "Consolidado de entregas da semana nos projetos `GearGarage`, `YogaControl`, `ark-streams`, `bdlassetto.github.io`, `TechSentry`, `pke`. Registro de 46 commits.",
     "date": "2026-04-22",
     "readTime": "5 min",
     "tags": [
@@ -73,7 +73,7 @@
       "YogaControl",
       "ark-streams",
       "bdlassetto.github.io",
-      "dealer",
+      "techsentry",
       "pke"
     ]
   },
