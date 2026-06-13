@@ -1,18 +1,5 @@
 [
   {
-    "id": "clj-dialects",
-    "title": "Clojure Dialects",
-    "subtitle": "Tese Multi-Plataforma & Explorador Interativo",
-    "excerpt": "Um estudo comparativo interativo e aprofundado entre os principais dialetos do ecossistema Clojure: Clojure (JVM), Babashka, ClojureScript e ClojureDart.",
-    "role": "Criador & Mantenedor",
-    "status": "No ar",
-    "stack": ["Clojure", "ClojureScript", "Babashka", "ClojureDart", "Flutter", "GitHub Actions"],
-    "github": "https://github.com/patrickcmserrano/clj-dialects",
-    "url": "https://patrickcmserrano.github.io/clj-dialects/",
-    "details": "Demonstração prática da tese de portabilidade do Clojure, unificando lógica de negócios idêntica em plataformas distintas: desde scripts de infraestrutura ultra-rápidos com Babashka, front-end SPA reativo, até aplicativos mobile nativos compilados via ClojureDart/Flutter. O projeto serve de portfólio interativo para testar capacidades em múltiplos dialetos.",
-    "architecture": "Código compartilhado (.cljc) portado nativamente para JVM, JS, Babashka Interpreter e Dart/Flutter Engine, mantendo 95% do core comum e adaptando apenas a camada de interop do host (Java, DOM, Flutter)."
-  },
-  {
     "id": "techsentry",
     "title": "TechSentry",
     "subtitle": "Price Watcher Distribuído & Resiliente",
@@ -49,17 +36,5 @@
     "url": "https://nexus-quantitative.github.io/",
     "details": "Uma plataforma de streaming de dados que consome feeds de alta frequência de múltiplas exchanges (Order Book L2/L3 e liquidações de Bitget e Binance) e dados macro do Yahoo Finance. Executa cálculos analíticos contínuos em tempo real e emite sinais operacionais de entrada/saída. Alimenta o Nexus Terminal via WebSocket.",
     "architecture": "Ingestão paralela assíncrona escrita em Go. Os dados brutos alimentam filas persistentes no NATS JetStream. O FractalEngine consome essas filas e calcula os indicadores de Bill Williams (Alligator, AO, AC, MFI e fractais). A estratégia AlligatorTrend analisa o fluxo de 5 minutos gerando sinais operacionais."
-  },
-  {
-    "id": "notify-system",
-    "title": "Notify System",
-    "subtitle": "Microserviço de Notificações Multi-Canal",
-    "excerpt": "Serviço centralizado de mensageria assíncrona capaz de despachar alertas via Email, SMS e Push em alta escala com failover dinâmico.",
-    "role": "Engenheiro Sênior",
-    "status": "No ar",
-    "stack": ["Clojure", "RabbitMQ", "PostgreSQL", "Redis", "NATS JetStream"],
-    "github": "https://github.com/patrickcmserrano/notify-system",
-    "details": "Desenvolvido para unificar a comunicação transacional. Garante a entrega de notificações críticas através de múltiplos gateways integrados. Possui lógica de repetição inteligente, controle de concorrência global por usuário/canal via Redis, e mecanismos automatizados de failover quando um provedor externo falha.",
-    "architecture": "workers assíncronos em Clojure que consomem tópicos de mensagens em fila no RabbitMQ/NATS. Controle de concorrência e rate-limiting global feito em Redis. Banco de dados PostgreSQL armazena o histórico e logs de entrega de mensagens."
   }
 ]
