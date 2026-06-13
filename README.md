@@ -1,194 +1,105 @@
-# LinkFlow
+# Patrick Campelo Serrano — Engenharia de Software
 
-Um aplicativo elegante e responsivo para compartilhar todos os seus links importantes em um só lugar, com design mobile-first, suporte a múltiplos idiomas e player de música integrado.
+Website oficial de portfólio pessoal, blog de engenharia de software e agregador de links, construído com arquitetura moderna de geração de site estático (SSG).
 
-## Visão Geral
+## 🚀 Stack Tecnológica
 
-O LinkFlow é uma plataforma de compartilhamento de links que permite organizar e compartilhar seus links importantes de forma categorizada e visual, similar ao LinkTree e outras ferramentas de bio link.
+O website foi totalmente re-arquitetado para utilizar o estado da arte do ecossistema front-end:
 
-### Recursos Principais
+*   **Core:** [SvelteKit 2](https://kit.svelte.dev/) & [Svelte 5](https://svelte.dev/) (usando a nova sintaxe de Runes)
+*   **Estilização:** [Tailwind CSS v4](https://tailwindcss.com/) (compilação nativa ultra-rápida via CSS-first config)
+*   **Design System:** [Skeleton Labs UI v3](https://skeleton.dev/) (Preset de tema Mona adaptado)
+*   **Internacionalização:** Sistema customizado reativo e leve em [simple-i18n.ts](src/lib/simple-i18n.ts) com suporte a Português (`pt`), Inglês (`en`) e Espanhol (`es`).
+*   **Deployment:** Hospedado no GitHub Pages com deploy automático (CI/CD) via GitHub Actions.
 
-- **Design Mobile-First**: Interface otimizada para dispositivos móveis com experiência de toque aprimorada
-- **Categorização de Links**: Links organizados em seções colapsáveis
-- **Tema Claro/Escuro**: Suporte a alternância de tema para melhor experiência visual
-- **Internacionalização**: Suporte a múltiplos idiomas (português, inglês e espanhol)
-- **Compartilhamento Direto**: Links que abrem em novas abas para facilitar o acesso
-- **Acessibilidade**: Implementação de práticas de acessibilidade para todos os usuários
-- **🎵 Player de Música**: Player fixo integrado com playlist do YouTube Music
+---
 
-## 🎵 Player de Música
+## 🗺️ Estrutura de Rotas e Páginas
 
-O LinkFlow inclui um player de música elegante e minimalista que permite aos usuários ouvir música enquanto navegam pelo site.
+O site está estruturado nas seguintes rotas:
 
-### Características do Player:
-- **YouTube Embed API oficial**: Utiliza a API oficial do YouTube respeitando direitos autorais
-- **Player fixo no topo**: Interface não-intrusiva fixada no topo da tela
-- **Controles interativos**: Play/Pause, Next/Previous, Close
-- **Visualizador musical animado**: Barras animadas que respondem ao status de reprodução
-- **Status em tempo real**: Exibe se está tocando, pausado ou carregando
-- **Design responsivo**: Adaptado para desktop e mobile
-- **Suporte ao modo escuro**: Integrado com o sistema de temas
-- **Multilíngue**: Todas as strings traduzidas para pt/en/es
+1.  **`/` (Home):** Landing page principal contendo a bio curta, chamada para ação (CTAs), seção de Projetos em Destaque e Artigos Recentes do Blog.
+2.  **`/about` (Sobre Mim):** Página biográfica detalhada contendo:
+    *   **Biografia:** Trajetória pessoal e decisões de design.
+    *   **Habilidades Técnicas:** Linguagens, Frameworks e Infraestrutura.
+    *   **Experiência Profissional:** Linha do tempo interativa detalhando as realizações em engenharia.
+    *   **Formação Acadêmica:** Formação formal e projetos acadêmicos.
+    *   **Contato:** Links diretos para GitHub, LinkedIn e E-mail.
+3.  **`/trabalho` (Projetos & Cases):** Portfólio de engenharia focado nos projetos principais:
+    *   **TechSentry:** Price watcher distribuído resiliente (Clojure, Datahike, NATS JetStream, Event Sourcing).
+    *   **Ark Engine:** Infraestrutura bitemporal de trading algorítmico (Clojure, XTDB, Redis Streams, Polylith).
+    *   **Ark Streams:** Pipeline de alto desempenho para ingestão de ticks de mercado (Go, NATS JetStream, InfluxDB).
+4.  **`/blog` (Blog Técnico):** Artigos profundos sobre programação funcional, sistemas distribuídos e diários de desenvolvimento semanais. Os posts são escritos em Markdown e compilados dinamicamente no build.
+5.  **`/links` (LinkFlow):** Agregador de links mobile-first (estilo Linktree) integrado com um player de música atmosférico do YouTube.
 
-### Uso do Player:
-1. Clique no botão "Playlist Musical" no cabeçalho
-2. O player aparecerá fixo no topo da tela
-3. Use os controles para navegar pela playlist
-4. Clique no X para fechar o player
+---
 
-### Playlist Configurada:
-- ID da Playlist: `PL71Q6dgIfRPE1ouM6x8mwsmMX4siQhfrf`
-- Fonte: YouTube Music
-- Todos os direitos autorais pertencem aos respectivos proprietários
-
-## Estrutura do Projeto
+## 📂 Organização do Repositório
 
 ```
-📦 LinkFlow
-├── 📂 public/
-│   └── 📂 images/
-│       ├── avatar.svg                # Imagem de perfil do usuário
-│       ├── portfolio-icon.svg        # Ícone para links do portfólio
-│       ├── weboasis-icon.svg         # Ícone para WebOasis
-│       ├── linkedin-icon.svg         # Ícone para LinkedIn
-│       ├── github-icon.svg           # Ícone para GitHub
-│       └── twitter-icon.svg          # Ícone para Twitter
+📦 patrickcmserrano.github.io
+├── 📂 .github/workflows/      # Pipelines de CI/CD (Deploy de App e Testes)
+├── 📂 static/
+│   ├── 📂 images/             # Imagens de perfil, ícones e assets estáticos
+│   ├── 📂 posts/              # Arquivos Markdown (.md) dos artigos do blog
+│   ├── posts.json             # Banco de dados indexado dos posts do blog
+│   └── links.json             # Configurações do agregador LinkFlow
 ├── 📂 src/
-│   ├── 📂 components/
-│   │   ├── LanguageSelector.svelte   # Seletor de idioma
-│   │   ├── LinkCard.svelte           # Componente de card para links
-│   │   ├── Section.svelte            # Componente de seção colapsável
-│   │   └── ThemeToggle.svelte        # Alternador de tema claro/escuro
+│   ├── 📂 components/         # Componentes compartilhados (Tema, Idioma, Player)
 │   ├── 📂 data/
-│   │   └── links.json                # Dados dos links para exibição
+│   │   └── projects.json      # Dados dos projetos exibidos no portfólio
 │   ├── 📂 lib/
-│   │   ├── i18n.ts                   # Sistema de internacionalização
-│   │   └── 📂 locales/               # Arquivos de tradução
-│   │       ├── en.ts                 # Traduções em inglês
-│   │       ├── es.ts                 # Traduções em espanhol
-│   │       └── pt.ts                 # Traduções em português
-│   ├── App.svelte                    # Componente principal da aplicação
-│   └── main.ts                       # Ponto de entrada da aplicação
+│   │   └── simple-i18n.ts     # Engine de tradução reativa (Svelte Store)
+│   └── 📂 routes/             # Páginas e roteamento do SvelteKit
+│       ├── +page.svelte       # Home principal
+│       ├── 📂 about/          # Página Sobre Mim
+│       ├── 📂 blog/           # Listagem e páginas dinâmicas do Blog
+│       ├── 📂 links/          # LinkFlow (Bio links)
+│       └── 📂 trabalho/       # Listagem e estudos de caso dos Projetos
+├── svelte.config.js           # Configuração do SvelteKit (Static Adapter)
+├── tailwind.config.js         # Configuração legível do Tailwind
+└── vite.config.ts             # Configuração do Vite e compilador Tailwind v4
 ```
 
-## Componentes Principais
+---
 
-### LinkCard
+## 🛠️ Comandos de Desenvolvimento
 
-O componente `LinkCard` exibe um link individual com:
-- Ícone à esquerda
-- Título centralizado
-- Efeito de escala ao passar o mouse/tocar
-- Abertura em nova aba
-- Tamanho adequado para telas de toque (seguindo diretrizes de acessibilidade)
+Certifique-se de ter o [Node.js](https://nodejs.org/) instalado. O gerenciador de pacotes utilizado é o `npm`.
 
-### Section
-
-O componente `Section` agrupa links relacionados em categorias:
-- Cabeçalho com título e indicador de colapso
-- Cor de fundo personalizável por seção
-- Animação de expansão/colapso
-- Estado persistente durante a sessão do usuário
-
-## Configuração de Links
-
-Os links são configurados através do arquivo JSON em `src/data/links.json` que segue a estrutura:
-
-```json
-{
-  "profile": {
-    "name": "Seu Nome",
-    "avatar": "/images/avatar.svg"
-  },
-  "sections": [
-    {
-      "name": "Projetos",
-      "color": "#E0F7FA",
-      "links": [
-        { "title": "Portfólio", "url": "https://seu-portfolio.com", "icon": "/images/portfolio-icon.svg" },
-        // ... mais links
-      ]
-    },
-    // ... mais seções
-  ]
-}
-```
-
-## Testes
-
-O LinkFlow inclui testes unitários e end-to-end (E2E) completos para garantir a qualidade do código.
-
-### Testes Unitários
-
-Utilizamos o [Vitest](https://vitest.dev/) para testes unitários com cobertura para:
-- Componente `LinkCard`: renderização correta e comportamento visual
-- Componente `Section`: expansão/colapso e renderização de links
-- Sistema de internacionalização: mudança de idiomas e traduções
-- Alternância de temas: funcionamento correto do tema claro/escuro
-
-### Testes End-to-End (E2E)
-
-Utilizamos o [Playwright](https://playwright.dev/) para testes E2E que verificam:
-- Funcionalidade de expansão e colapso das seções de links
-- Abertura de links em novas abas
-- Acessibilidade de todos os elementos interativos
-- Comportamento responsivo em diferentes tamanhos de tela
-- Compatibilidade com diferentes navegadores
-
-### Testes de Acessibilidade
-
-Testes específicos para garantir a acessibilidade do aplicativo, verificando:
-- Contraste adequado nos elementos visuais
-- Navegação por teclado em todos os componentes
-- Atributos ARIA apropriados nos elementos interativos
-- Tamanho de toque adequado para dispositivos móveis
-
-## Instruções de Uso
-
-### Instalação e Execução
-
-1. Clone o repositório
-   ```bash
-   git clone [URL-DO-REPOSITÓRIO] LinkFlow
-   cd LinkFlow
-   ```
-
-2. Instale as dependências
-   ```bash
-   yarn install
-   ```
-
-3. Inicie o servidor de desenvolvimento
-   ```bash
-   yarn dev
-   ```
-
-4. Acesse o aplicativo em `http://localhost:5173/LinkFlow/`
-
-### Personalização
-
-Para personalizar seus links:
-
-1. Edite o arquivo `src/data/links.json` com suas informações
-2. Adicione seus ícones personalizados na pasta `public/images/`
-3. Ajuste as cores das seções conforme sua preferência no arquivo JSON
-
-## Construção e Implantação
-
-Para gerar uma versão de produção:
+### Instalar dependências:
 ```bash
-yarn build
+npm install
 ```
 
-O resultado será gerado na pasta `dist/` e pode ser hospedado em qualquer servidor web estático.
+### Iniciar servidor de desenvolvimento local:
+```bash
+npm run dev
+```
+O servidor estará disponível por padrão em [http://localhost:5173/](http://localhost:5173/).
 
-## Próximos Passos
+### Validar tipagens e Svelte check:
+```bash
+npm run check
+```
 
-- **Animações Aprimoradas**: Implementar transições mais suaves entre os estados
-- **Temas Personalizados**: Permitir a definição de temas personalizados além do claro/escuro
-- **Análise de Cliques**: Adicionar rastreamento de cliques para análise de engajamento
-- **Editor Visual**: Interface para edição dos links sem necessidade de editar o JSON
+### Executar testes unitários:
+```bash
+npm run test
+```
 
-## Licença
+### Compilar e prerenderizar para produção (SSG):
+```bash
+npm run build
+```
+O resultado final pronto para hospedagem estática será gerado na pasta `build/`.
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
+---
+
+## 🚀 Integração Contínua & Deploy (CD)
+
+Sempre que alterações são integradas ou enviadas (push) para a branch `main`:
+1. O workflow `.github/workflows/deploy.yml` é executado no GitHub Actions.
+2. Ele instala as dependências, executa a verificação e compila o site usando `npm run build`.
+3. Os arquivos estáticos gerados em `build/` são enviados automaticamente para a branch `gh-pages`.
+4. O GitHub Pages serve a branch `gh-pages` publicamente no domínio [https://patrickcmserrano.github.io/](https://patrickcmserrano.github.io/).
