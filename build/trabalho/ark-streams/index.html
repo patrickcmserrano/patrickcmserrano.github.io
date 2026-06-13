@@ -13,24 +13,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E" />
-    <link href="../../_app/immutable/entry/start.DqpC2dtl.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/B1pg-sMM.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CaxSk3-1.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/Bz7mjz8e.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.BoI8Wi5t.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CpGxSSwm.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/7CCYFUuh.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CTs4dAIr.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/0.idjB-CRz.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CELXRBCH.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/7.5Q9zZJxO.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/Bhyub8j3.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.Bc1u1aGI.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BL3evZ6o.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/8NYM_yIc.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/x3pvDTcy.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.D4E9tExy.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DovrcI9r.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B3y-Ydai.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BNHmZo67.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.D3IDy6Px.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BGqDDMW_.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/8.kMQxfJR9.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DZLzMABz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Ce0M5d37.js" rel="modulepreload">
 		<!--[--><meta name="description" content="Um pipeline de alta performance escrito em Go para ingestão e processamento de dados de mercado em tempo real, interligado por NATS JetStream."><!--]--><!--[--><script>
     // Aplicar tema salvo no carregamento da página
     const mode = localStorage.getItem('mode') || 'light';
     document.documentElement.setAttribute('data-mode', mode);
   </script><!----><!--]--><title>Ark Streams — Patrick Campelo Serrano</title>
-		<link href="../../_app/immutable/assets/0.nWUkLyAc.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/0.beUO2c_C.css" rel="stylesheet">
 		<link href="../../_app/immutable/assets/LanguageSelector.BUSG7h5-.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -39,18 +40,18 @@
 			<script>
 				{
 					
-					__sveltekit_15u21of = {
+					__sveltekit_1pvqo2j = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.DqpC2dtl.js"),
-						import("../../_app/immutable/entry/app.BoI8Wi5t.js")
+						import("../../_app/immutable/entry/start.Bc1u1aGI.js"),
+						import("../../_app/immutable/entry/app.D4E9tExy.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 7],
+							node_ids: [0, 8],
 							data: [null,{type:"data",data:{project:{id:"ark-streams",title:"Ark Streams",subtitle:"Plataforma de Inteligência de Mercado e Processamento de Dados",excerpt:"Um pipeline de alta performance escrito em Go para ingestão e processamento de dados de mercado em tempo real, interligado por NATS JetStream.",role:"Quant Developer & Fundador",status:"Em Produção (Privado)",stack:["Go","NATS JetStream","InfluxDB","Yahoo Finance API","WebSocket","Docker"],github:"https://github.com/patrickcmserrano/ark-streams",url:"https://nexus-quantitative.github.io/",details:"Uma plataforma de streaming de dados que consome feeds de alta frequência de múltiplas exchanges (Order Book L2/L3 e liquidações de Bitget e Binance) e dados macro do Yahoo Finance. Executa cálculos analíticos contínuos em tempo real e emite sinais operacionais de entrada/saída. Alimenta o Nexus Terminal via WebSocket.",architecture:"Ingestão paralela assíncrona escrita em Go. Os dados brutos alimentam filas persistentes no NATS JetStream. O FractalEngine consome essas filas e calcula os indicadores de Bill Williams (Alligator, AO, AC, MFI e fractais). A estratégia AlligatorTrend analisa o fluxo de 5 minutos gerando sinais operacionais."}},uses:{params:["slug"]}}],
 							form: null,
 							error: null

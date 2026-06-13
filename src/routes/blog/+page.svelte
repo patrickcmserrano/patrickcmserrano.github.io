@@ -39,12 +39,20 @@
   <!-- Header -->
   <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+      <a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
         Patrick Campelo Serrano
       </a>
-      <div class="flex items-center gap-4">
-        <LanguageSelector />
-        <ThemeToggle />
+      <div class="flex items-center gap-6">
+        <nav class="hidden sm:flex items-center gap-4 md:gap-6 text-sm font-semibold">
+          <a href="/about/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.about')}</a>
+          <a href="/trabalho/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.projects')}</a>
+          <a href="/blog/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.blog')}</a>
+          <a href="/links/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.links')}</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <LanguageSelector />
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   </header>

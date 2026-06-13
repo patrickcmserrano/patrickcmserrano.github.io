@@ -1,10 +1,6 @@
 import { G as ensure_array_like, I as head, e as escape_html, p as pop, a as push, K as attr } from "../../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
-function html(value) {
-  var html2 = String(value ?? "");
-  var open = "<!---->";
-  return open + html2 + "<!---->";
-}
+import { h as html } from "../../../../chunks/html.js";
 function _page($$payload, $$props) {
   push();
   let { data } = $$props;

@@ -13,24 +13,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E" />
-    <link href="../../_app/immutable/entry/start.DqpC2dtl.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/B1pg-sMM.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CaxSk3-1.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/Bz7mjz8e.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.BoI8Wi5t.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CpGxSSwm.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/7CCYFUuh.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CTs4dAIr.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/0.idjB-CRz.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CELXRBCH.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/7.5Q9zZJxO.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/Bhyub8j3.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.Bc1u1aGI.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BL3evZ6o.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/8NYM_yIc.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/x3pvDTcy.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.D4E9tExy.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DovrcI9r.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B3y-Ydai.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BNHmZo67.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.D3IDy6Px.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BGqDDMW_.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/8.kMQxfJR9.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DZLzMABz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Ce0M5d37.js" rel="modulepreload">
 		<!--[--><meta name="description" content="Um sistema completo de monitoramento e análise de preços em tempo real para eletrônicos e produtos de tecnologia recondicionados, focado em alta resiliência e rate-limiting ético."><!--]--><!--[--><script>
     // Aplicar tema salvo no carregamento da página
     const mode = localStorage.getItem('mode') || 'light';
     document.documentElement.setAttribute('data-mode', mode);
   </script><!----><!--]--><title>TechSentry — Patrick Campelo Serrano</title>
-		<link href="../../_app/immutable/assets/0.nWUkLyAc.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/0.beUO2c_C.css" rel="stylesheet">
 		<link href="../../_app/immutable/assets/LanguageSelector.BUSG7h5-.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -39,18 +40,18 @@
 			<script>
 				{
 					
-					__sveltekit_15u21of = {
+					__sveltekit_1pvqo2j = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.DqpC2dtl.js"),
-						import("../../_app/immutable/entry/app.BoI8Wi5t.js")
+						import("../../_app/immutable/entry/start.Bc1u1aGI.js"),
+						import("../../_app/immutable/entry/app.D4E9tExy.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 7],
+							node_ids: [0, 8],
 							data: [null,{type:"data",data:{project:{id:"techsentry",title:"TechSentry",subtitle:"Price Watcher Distribuído & Resiliente",excerpt:"Um sistema completo de monitoramento e análise de preços em tempo real para eletrônicos e produtos de tecnologia recondicionados, focado em alta resiliência e rate-limiting ético.",role:"Arquiteto de Software & Builder",status:"Em Produção (Interno)",stack:["Clojure","Datahike","NATS JetStream","Pathom 3","Docker","Event Sourcing"],github:"https://github.com/patrickcmserrano/techsentry",url:"https://patrickcmserrano.github.io/techsentry/",details:"Sistema projetado para monitorar flutuações de preços em múltiplas plataformas parceiras. A arquitetura adota o modelo Pure Core / Impure Shell, isolando a lógica de negócio complexa de rate-limiting e scrapers dinâmicos de efeitos colaterais. O banco de dados orientado a grafos Datahike é usado para manter relações complexas de produtos.",architecture:"Event Sourcing distribuído construído sobre NATS JetStream para enfileiramento resiliente. Nós coletores consomem filas de scraping respeitando políticas rígidas de backoff exponencial e rate-limiting por host. Os dados brutos passam por normalização usando Pathom 3 e persistem no Datahike."}},uses:{params:["slug"]}}],
 							form: null,
 							error: null
