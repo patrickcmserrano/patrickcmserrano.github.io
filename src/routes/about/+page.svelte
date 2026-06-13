@@ -48,6 +48,9 @@
         <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Desenvolvido com SvelteKit SSG & Tailwind CSS (copilotado pelo Gemini 3.5 Flash AGY).</p>
       </div>
       <div class="flex items-center gap-6">
+        <a href="https://nexus-quantitative.github.io/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+          Nexus Quant
+        </a>
         <a href="https://github.com/patrickcmserrano" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
           GitHub
         </a>
