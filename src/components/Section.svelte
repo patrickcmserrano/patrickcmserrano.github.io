@@ -16,6 +16,9 @@
 
   // Função para ajustar a cor com base no modo do tema
   function getThemeAwareColor() {
+    if (typeof document === 'undefined') {
+      return color;
+    }
     // Verifica se estamos no modo escuro
     const isDarkMode = document.documentElement.getAttribute('data-mode') === 'dark';
     if (isDarkMode) {
@@ -62,6 +65,9 @@
 
   // Cor de fundo para o content, com transparência
   function getContentBackgroundColor() {
+    if (typeof document === 'undefined') {
+      return `${color}33`;
+    }
     const isDarkMode = document.documentElement.getAttribute('data-mode') === 'dark';
     if (isDarkMode) {
       return "rgba(15, 23, 42, 0.8)"; // Cor escura baseada no var(--app-background) com transparência

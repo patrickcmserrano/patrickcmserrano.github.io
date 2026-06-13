@@ -32,12 +32,12 @@ jobs:
           npm run build
       
       - name: Create .nojekyll
-        run: touch dist/.nojekyll
+        run: touch build/.nojekyll
       
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
+          folder: build
           branch: gh-pages
           clean-exclude: coverage/**
           commit-message: "Deploy application [skip ci]"

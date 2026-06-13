@@ -1,0 +1,2 @@
+{:paths ["."]
+ :tasks {diary {:task (load-file "dev_diary.clj")}}}

@@ -1,0 +1,26 @@
+{
+	"/": [
+		"src/routes/+page.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/blog": [
+		"src/routes/blog/+page.server.ts",
+		"src/routes/+layout.ts"
+	],
+	"/blog/[slug]": [
+		"src/routes/blog/[slug]/+page.server.ts",
+		"src/routes/+layout.ts"
+	],
+	"/links": [
+		"src/routes/+layout.ts"
+	],
+	"/trabalho": [
+		"src/routes/trabalho/+page.server.ts",
+		"src/routes/+layout.ts"
+	],
+	"/trabalho/[slug]": [
+		"src/routes/trabalho/[slug]/+page.server.ts",
+		"src/routes/+layout.ts"
+	]
+}
