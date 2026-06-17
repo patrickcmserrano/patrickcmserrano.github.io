@@ -85,6 +85,25 @@
         </p>
       </section>
 
+      <!-- Diagrams -->
+      {#if project.diagrams && project.diagrams.length > 0}
+        <section>
+          <h2 class="text-2xl font-bold mb-6 tracking-tight border-l-4 border-indigo-500 pl-4">
+            Diagramas
+          </h2>
+          <div class="space-y-6">
+            {#each project.diagrams as diagram}
+              <div>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">{diagram.title}</p>
+                <div class="overflow-x-auto rounded-xl">
+                  {@html diagram.svg}
+                </div>
+              </div>
+            {/each}
+          </div>
+        </section>
+      {/if}
+
       <!-- Website Link -->
       {#if project.url}
         <section class="pt-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800">

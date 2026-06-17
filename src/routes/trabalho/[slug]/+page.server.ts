@@ -9,9 +9,11 @@ interface ProjectData {
   role: string;
   status: string;
   stack: string[];
-  github: string;
+  github?: string;
+  url?: string;
   details: string;
   architecture: string;
+  diagrams?: { title: string; svg: string }[];
 }
 
 // Gera as rotas estáticas na compilação (SSG)
