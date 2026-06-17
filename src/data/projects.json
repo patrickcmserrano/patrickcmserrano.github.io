@@ -1,5 +1,16 @@
 [
   {
+    "id": "khala",
+    "title": "Khala",
+    "subtitle": "Plataforma de Agentes Verticais Multi-Tenant",
+    "excerpt": "Plataforma SaaS em Clojure para implantação de agentes de IA conversacionais em pequenos negócios de Niterói. Cada tenant é um arquivo EDN — zero código para adicionar um cliente novo. O primeiro agente, Sofia, atende pacientes da Clínica Saúde Oral via WhatsApp com RAG, grounding discipline e guardrails de horário por timezone.",
+    "role": "Arquiteto & Builder",
+    "status": "MVP em Produção",
+    "stack": ["Clojure", "Pathom 3", "NATS JetStream", "Qdrant", "Ollama", "NVIDIA NIM", "Mistral Medium 3.5", "Datahike", "OSM", "Telegram Bot", "WhatsApp API"],
+    "details": "Khala é uma plataforma de agentes verticais: assistentes de IA especializados por domínio, cada um com voz, guardrails e base de conhecimento próprios. O produto é composto por três camadas. O Probe é um scraper de leads baseado em OpenStreetMap que identifica negócios com presença digital em Niterói — sem custo de API, com auto-seleção de leads qualificados. A camada de agente é o núcleo: um pipeline de processamento de mensagens em Clojure com Pathom 3 que conecta webhook → NATS → grafo de resolvers → resposta. O primeiro agente implantado é a Sofia, assistente virtual odontológica da Clínica Saúde Oral, capaz de responder perguntas sobre convênios, preços, equipe e horários a partir de documentos indexados. A plataforma foi projetada com LGPD em mente desde o início: audit trail em dois tiers (operacional sem PII e de interação com pseudonimização SHA-256), dado sensível de saúde com retenção de 90 dias no JetStream.",
+    "architecture": "Cada mensagem entra por POST /webhook/:canal/:tenant e é publicada como JSON no NATS JetStream (messages.incoming.<tenant>). O subscriber consome e executa p.eql/process sobre o grafo Pathom 3, que resolve a cadeia: tenant-config → intent-classification → guardrail-check (timezone-aware via :tenant/timezone do EDN) → rag-context (query expansion pt-BR + Ollama nomic-embed-text + Qdrant) → functions → llm-response (Mistral Medium 3.5 via NVIDIA NIM) → response/final. O isolamento multi-tenant é físico: cada tenant tem sua própria collection no Qdrant (tenant_<id>), derivada por um único chokepoint, com tenant_id stampado no payload como defense-in-depth. Adicionar um cliente novo é criar um arquivo EDN — zero código."
+  },
+  {
     "id": "techsentry",
     "title": "TechSentry",
     "subtitle": "Price Watcher Imutável & Grafos",
