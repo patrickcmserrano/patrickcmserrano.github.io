@@ -1,6 +1,7 @@
 import { G as ensure_array_like, I as head, e as escape_html, J as store_get, K as attr, N as unsubscribe_stores, p as pop, a as push } from "../../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
 import { _ } from "../../../../chunks/simple-i18n.js";
+import { h as html } from "../../../../chunks/html.js";
 function _page($$payload, $$props) {
   push();
   var $$store_subs;
@@ -21,6 +22,19 @@ function _page($$payload, $$props) {
     $$payload.out += `<span class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${escape_html(tech)}</span>`;
   }
   $$payload.out += `<!--]--></div></header> <div class="space-y-12"><section><h2 class="text-2xl font-bold mb-4 tracking-tight border-l-4 border-indigo-500 pl-4">${escape_html(store_get($$store_subs ??= {}, "$_", _)("project.overview"))}</h2> <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300">${escape_html(project.details)}</p></section> <section class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm"><h2 class="text-2xl font-bold mb-4 tracking-tight text-indigo-600 dark:text-indigo-400">${escape_html(store_get($$store_subs ??= {}, "$_", _)("project.architecture"))}</h2> <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400">${escape_html(project.architecture)}</p></section> `;
+  if (project.diagrams && project.diagrams.length > 0) {
+    $$payload.out += "<!--[-->";
+    const each_array_1 = ensure_array_like(project.diagrams);
+    $$payload.out += `<section><h2 class="text-2xl font-bold mb-6 tracking-tight border-l-4 border-indigo-500 pl-4">Diagramas</h2> <div class="space-y-6"><!--[-->`;
+    for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+      let diagram = each_array_1[$$index_1];
+      $$payload.out += `<div><p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">${escape_html(diagram.title)}</p> <div class="overflow-x-auto rounded-xl">${html(diagram.svg)}</div></div>`;
+    }
+    $$payload.out += `<!--]--></div></section>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]--> `;
   if (project.url) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<section class="pt-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800"><div><h3 class="font-bold text-slate-900 dark:text-white">${escape_html(store_get($$store_subs ??= {}, "$_", _)("project.demo"))}</h3> <p class="text-sm text-slate-500">${escape_html(store_get($$store_subs ??= {}, "$_", _)("project.demoDesc"))}</p></div> <a${attr("href", project.url)} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition text-sm">${escape_html(store_get($$store_subs ??= {}, "$_", _)("project.demoBtn"))}</a></section>`;
