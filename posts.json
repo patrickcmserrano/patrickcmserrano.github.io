@@ -1,5 +1,20 @@
 [
   {
+    "id": "2026-06-13-arquitetura-e-metodologia",
+    "title": "Metodologia de Design e Tecnologias de Sobrevivência para Produtos de Software Resilientes",
+    "excerpt": "Uma análise profunda sobre como aplicar Polylith, Event Sourcing, Bitemporalidade (XTDB) e testes gerativos para resolver problemas reais de negócio e garantir estabilidade em produção.",
+    "date": "2026-06-13",
+    "readTime": "10 min",
+    "tags": [
+      "Arquitetura",
+      "Metodologia",
+      "Clojure",
+      "XTDB",
+      "Polylith",
+      "Survival Architecture"
+    ]
+  },
+  {
     "id": "2026-06-13-dev-diary",
     "title": "Diário de Dev #12 — Hardening de WebSockets, Bypass de Cloudflare na VPS e Visualização 3D com ClojureScript",
     "excerpt": "Relatório semanal de progresso cobrindo a visualização 3D Clojure Dialects Globe, o hardening de WebSockets no ark-streams (Go), o deploy CI/CD via Docker e o bypass de Cloudflare no TechSentry.",
