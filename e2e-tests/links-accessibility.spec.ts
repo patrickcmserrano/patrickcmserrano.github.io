@@ -3,7 +3,7 @@ import { checkA11y, injectAxe } from './helpers/accessibility';
 
 test.describe('LinkFlow - Acessibilidade', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/links');
     await injectAxe(page);
   });
 

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('LinkFlow - Funcionalidade de Links', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/links');
   });
 
   test('deve exibir todas as seções de links', async ({ page }) => {

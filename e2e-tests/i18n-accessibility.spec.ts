@@ -6,7 +6,7 @@ test.describe('Language Selector Accessibility Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     // Navigate to the home page before each test
-    await page.goto('/');
+    await page.goto('/links');
     a11y = new AccessibilityHelper(page);
   });
 

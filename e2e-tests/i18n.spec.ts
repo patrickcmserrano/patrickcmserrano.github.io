@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Internationalization (i18n) Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the home page before each test
-    await page.goto('/');
+    await page.goto('/links');
   });
 
   test('should display the language selector', async ({ page }) => {
