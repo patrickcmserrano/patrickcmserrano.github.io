@@ -1,11 +1,18 @@
 <script lang="ts">
   import ThemeToggle from '../../components/ThemeToggle.svelte';
   import LanguageSelector from '../../components/LanguageSelector.svelte';
-  import { _ } from '../../lib/simple-i18n';
+  import { _, currentLanguage } from '../../lib/simple-i18n';
   
   // Props no Svelte 5 para data injetada do load
   let { data } = $props();
   let projects = $derived(data.projects || []);
+
+  const getLoc = (field: any, lang: string) => {
+    if (field && typeof field === 'object') {
+      return field[lang] || field['pt'] || '';
+    }
+    return field || '';
+  };
 </script>
 
 <svelte:head>
@@ -54,22 +61,22 @@
             <div>
               <div class="flex items-center justify-between mb-4">
                 <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">
-                  {project.role}
+                  {getLoc(project.role, $currentLanguage)}
                 </span>
                 <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
-                  {project.status}
+                  {getLoc(project.status, $currentLanguage)}
                 </span>
               </div>
               <h2 class="text-2xl font-bold mb-2">
                 <a href="/trabalho/{project.id}/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                  {project.title}
+                  {getLoc(project.title, $currentLanguage)}
                 </a>
               </h2>
               <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">
-                {project.subtitle}
+                {getLoc(project.subtitle, $currentLanguage)}
               </p>
               <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                {project.excerpt}
+                {getLoc(project.excerpt, $currentLanguage)}
               </p>
             </div>
 

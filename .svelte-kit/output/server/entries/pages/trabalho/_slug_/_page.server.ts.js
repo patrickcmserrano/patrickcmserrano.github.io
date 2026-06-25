@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { marked } from "marked";
 async function entries() {
   try {
     const projectsJsonPath = path.resolve("src/data/projects.json");
@@ -20,8 +21,25 @@ async function load({ params }) {
       const projectsData = JSON.parse(fs.readFileSync(projectsJsonPath, "utf-8"));
       const project = projectsData.find((p) => p.id === slug);
       if (project) {
+        const parseMarkdown = async (field) => {
+          if (field && typeof field === "object") {
+            const parsed = {};
+            for (const lang of Object.keys(field)) {
+              parsed[lang] = await marked(field[lang]);
+            }
+            return parsed;
+          } else if (typeof field === "string") {
+            return await marked(field);
+          }
+          return field;
+        };
+        const processedProject = {
+          ...project,
+          details: await parseMarkdown(project.details),
+          architecture: await parseMarkdown(project.architecture)
+        };
         return {
-          project
+          project: processedProject
         };
       }
     }

@@ -89,7 +89,8 @@
       <div class="profile-container bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div class="avatar-section">
           <div class="avatar-container rounded-full overflow-hidden border-2 border-indigo-500 shadow-md">
-            <img src={getImagePath(profile.avatar)} alt={profile.name} class="w-full h-full object-cover" />
+            <img src={getImagePath(profile.avatar)} alt={profile.name} class="hidden dark:block w-full h-full object-cover" />
+            <img src={getImagePath('/images/profile_light.jpg')} alt={profile.name} class="block dark:hidden w-full h-full object-cover" />
           </div>
         </div>
         <div class="info-section text-center md:text-left mt-4 md:mt-0">

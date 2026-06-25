@@ -1,16 +1,23 @@
 <script lang="ts">
   import ThemeToggle from '../../../components/ThemeToggle.svelte';
   import LanguageSelector from '../../../components/LanguageSelector.svelte';
-  import { _ } from '../../../lib/simple-i18n';
+  import { _, currentLanguage } from '../../../lib/simple-i18n';
   
   // Props no Svelte 5 para data injetada do load
   let { data } = $props();
   let project = $derived(data.project);
+
+  const getLoc = (field: any, lang: string) => {
+    if (field && typeof field === 'object') {
+      return field[lang] || field['pt'] || '';
+    }
+    return field || '';
+  };
 </script>
 
 <svelte:head>
-  <title>{project.title} — Patrick Campelo Serrano</title>
-  <meta name="description" content={project.excerpt} />
+  <title>{getLoc(project.title, $currentLanguage)} — Patrick Campelo Serrano</title>
+  <meta name="description" content={getLoc(project.excerpt, $currentLanguage)} />
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -40,18 +47,18 @@
     <header class="mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
       <div class="flex items-center justify-between mb-4">
         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">
-          {project.role}
+          {getLoc(project.role, $currentLanguage)}
         </span>
         <span class="text-sm font-mono text-slate-500 dark:text-slate-400">
-          {project.status}
+          {getLoc(project.status, $currentLanguage)}
         </span>
       </div>
 
       <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-        {project.title}
+        {getLoc(project.title, $currentLanguage)}
       </h1>
       <p class="text-xl text-slate-600 dark:text-slate-400 font-semibold mb-6">
-        {project.subtitle}
+        {getLoc(project.subtitle, $currentLanguage)}
       </p>
 
       <div class="flex flex-wrap gap-2">
@@ -70,9 +77,9 @@
         <h2 class="text-2xl font-bold mb-4 tracking-tight border-l-4 border-indigo-500 pl-4">
           {$_('project.overview')}
         </h2>
-        <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-          {project.details}
-        </p>
+        <div class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 space-y-4">
+          {@html getLoc(project.details, $currentLanguage)}
+        </div>
       </section>
 
       <!-- Architecture -->
@@ -80,9 +87,9 @@
         <h2 class="text-2xl font-bold mb-4 tracking-tight text-indigo-600 dark:text-indigo-400">
           {$_('project.architecture')}
         </h2>
-        <p class="text-base leading-relaxed text-slate-600 dark:text-slate-400">
-          {project.architecture}
-        </p>
+        <div class="text-base leading-relaxed text-slate-600 dark:text-slate-400 space-y-4">
+          {@html getLoc(project.architecture, $currentLanguage)}
+        </div>
       </section>
 
       <!-- Diagrams -->

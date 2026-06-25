@@ -1,12 +1,19 @@
 <script lang="ts">
   import ThemeToggle from '../components/ThemeToggle.svelte';
   import LanguageSelector from '../components/LanguageSelector.svelte';
-  import { _ } from '../lib/simple-i18n';
+  import { _, currentLanguage } from '../lib/simple-i18n';
   
   // Props no Svelte 5 para receber dados do servidor
   let { data } = $props();
   let featuredProjects = $derived(data.featuredProjects || []);
   let recentPosts = $derived(data.recentPosts || []);
+
+  const getLoc = (field: any, lang: string) => {
+    if (field && typeof field === 'object') {
+      return field[lang] || field['pt'] || '';
+    }
+    return field || '';
+  };
 </script>
 
 <svelte:head>
@@ -73,7 +80,8 @@
     <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
       <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-2xl opacity-20 dark:opacity-30"></div>
       <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-900 shadow-2xl">
-        <img src="/images/profile.jpg" alt="Patrick Campelo Serrano" class="w-full h-full object-cover" />
+        <img src="/images/profile.jpg" alt="Patrick Campelo Serrano" class="hidden dark:block w-full h-full object-cover" />
+        <img src="/images/profile_light.jpg" alt="Patrick Campelo Serrano" class="block dark:hidden w-full h-full object-cover" />
       </div>
     </div>
   </section>
@@ -92,15 +100,15 @@
         </a>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-3">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {#each featuredProjects as project}
           <div class="flex flex-col bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 hover:shadow-lg transition duration-300">
             <h3 class="text-xl font-bold mb-1 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-              <a href="/trabalho/{project.id}/">{project.title}</a>
+              <a href="/trabalho/{project.id}/">{getLoc(project.title, $currentLanguage)}</a>
             </h3>
-            <p class="text-xs font-semibold text-slate-500 mb-3">{project.subtitle}</p>
+            <p class="text-xs font-semibold text-slate-500 mb-3">{getLoc(project.subtitle, $currentLanguage)}</p>
             <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6 flex-1">
-              {project.excerpt}
+              {getLoc(project.excerpt, $currentLanguage)}
             </p>
             <div class="flex flex-wrap gap-1 mb-4">
               {#each project.stack.slice(0, 3) as tech}

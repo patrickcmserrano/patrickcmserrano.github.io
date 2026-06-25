@@ -89,7 +89,8 @@
     <div class="profile-container">
       <div class="avatar-section">
         <div class="avatar-container rounded-full overflow-hidden">
-          <img src={getImagePath(profile.avatar)} alt={profile.name} class="w-full h-full object-cover" />
+          <img src={getImagePath(profile.avatar)} alt={profile.name} class="hidden dark:block w-full h-full object-cover" />
+          <img src={getImagePath('/images/profile_light.jpg')} alt={profile.name} class="block dark:hidden w-full h-full object-cover" />
         </div>
       </div>
       <div class="info-section">

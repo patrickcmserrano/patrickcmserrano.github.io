@@ -6,7 +6,7 @@ async function load() {
   try {
     const projectsJsonPath = path.resolve("src/data/projects.json");
     if (fs.existsSync(projectsJsonPath)) {
-      featuredProjects = JSON.parse(fs.readFileSync(projectsJsonPath, "utf-8")).slice(0, 3);
+      featuredProjects = JSON.parse(fs.readFileSync(projectsJsonPath, "utf-8")).slice(0, 4);
     }
     const postsJsonPath = path.resolve("static/posts.json");
     if (fs.existsSync(postsJsonPath)) {

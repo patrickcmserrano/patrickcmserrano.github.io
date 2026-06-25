@@ -7,6 +7,7 @@
 
 /* Tema WebOasis para o LinkFlow */
 :root {
+  color-scheme: light;
   --color-primary-300: #818cf8;
   --color-primary-500: #6366f1;
   --color-primary-700: #4338ca;
@@ -21,6 +22,7 @@
 }
 
 [data-mode="dark"] {
+  color-scheme: dark;
   --color-primary-300: #d8b4fe;
   --color-primary-500: #a855f7;
   --color-primary-700: #7e22ce;
