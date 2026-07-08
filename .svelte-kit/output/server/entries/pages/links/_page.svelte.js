@@ -1,7 +1,6 @@
-import { P as current_component, Q as sanitize_props, R as spread_props, S as fallback, K as attr, e as escape_html, T as bind_props, p as pop, a as push, U as attr_style, O as attr_class, M as stringify, J as store_get, G as ensure_array_like, N as unsubscribe_stores, I as head } from "../../../chunks/index.js";
+import { P as current_component, Q as sanitize_props, R as spread_props, S as fallback, K as attr, e as escape_html, T as bind_props, p as pop, a as push, U as attr_style, O as attr_class, M as stringify, G as ensure_array_like, I as head, J as store_get, N as unsubscribe_stores } from "../../../chunks/index.js";
 import { I as IconBase, a as Icon, L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { t, _ } from "../../../chunks/simple-i18n.js";
-import { w as writable } from "../../../chunks/index2.js";
 function onDestroy(fn) {
   var context = (
     /** @type {Component} */
@@ -222,12 +221,8 @@ function LinkCard($$payload, $$props) {
 }
 function Section($$payload, $$props) {
   push();
-  var $$store_subs;
-  let name = $$props["name"];
-  let color = $$props["color"];
-  let links2 = $$props["links"];
-  let layout = fallback($$props["layout"], "list");
-  const isExpanded = writable(true);
+  let { name, color, links: links2, layout = "list" } = $$props;
+  let isExpanded = true;
   function getThemeAwareColor() {
     if (typeof document === "undefined") {
       return color;
@@ -273,8 +268,8 @@ function Section($$payload, $$props) {
     }
     return `${color}33`;
   }
-  $$payload.out += `<div class="section mb-6 rounded-lg overflow-hidden svelte-5jx35z"><div class="section-header p-4 cursor-pointer flex justify-between items-center svelte-5jx35z"${attr_style(`background-color: ${stringify(getThemeAwareColor())}`)} tabindex="0" role="button"${attr("aria-expanded", store_get($$store_subs ??= {}, "$isExpanded", isExpanded))}><h2 class="text-lg font-bold">${escape_html(name)}</h2> <span${attr_class(`transform transition-transform ${stringify(store_get($$store_subs ??= {}, "$isExpanded", isExpanded) ? "rotate-180" : "")}`)}>▼</span></div> `;
-  if (store_get($$store_subs ??= {}, "$isExpanded", isExpanded)) {
+  $$payload.out += `<div class="section mb-6 rounded-lg overflow-hidden svelte-5jx35z"><div class="section-header p-4 cursor-pointer flex justify-between items-center svelte-5jx35z"${attr_style(`background-color: ${stringify(getThemeAwareColor())}`)} tabindex="0" role="button"${attr("aria-expanded", isExpanded)}><h2 class="text-lg font-bold">${escape_html(name)}</h2> <span${attr_class(`transform transition-transform ${stringify("rotate-180")}`)}>▼</span></div> `;
+  {
     $$payload.out += "<!--[-->";
     const each_array = ensure_array_like(links2);
     $$payload.out += `<div${attr_class("section-content p-4 svelte-5jx35z", void 0, {
@@ -290,12 +285,8 @@ function Section($$payload, $$props) {
       });
     }
     $$payload.out += `<!--]--></div>`;
-  } else {
-    $$payload.out += "<!--[!-->";
   }
   $$payload.out += `<!--]--></div>`;
-  if ($$store_subs) unsubscribe_stores($$store_subs);
-  bind_props($$props, { name, color, links: links2, layout });
   pop();
 }
 const profile = { "name": "Patrick CM Serrano", "title": "Engenharia de Software", "avatar": "/images/profile.jpg" };

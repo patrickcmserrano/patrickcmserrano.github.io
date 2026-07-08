@@ -4,6 +4,9 @@ import { checkA11y, injectAxe } from './helpers/accessibility';
 test.describe('LinkFlow - Acessibilidade', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/links');
+    // Wait for hydration to complete
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
     await injectAxe(page);
   });
 

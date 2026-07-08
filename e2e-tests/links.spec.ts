@@ -3,6 +3,9 @@ import { test, expect } from '@playwright/test';
 test.describe('LinkFlow - Funcionalidade de Links', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/links');
+    // Wait for hydration to complete
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
   });
 
   test('deve exibir todas as seções de links', async ({ page }) => {

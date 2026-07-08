@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import LinkCard from './LinkCard.svelte';
   
-  export let name: string;
-  export let color: string;
-  export let links: Array<{ title: string; url: string; icon: string; }>;
-  export let layout: 'grid' | 'list' = 'list';
+  let { name, color, links, layout = 'list' } = $props<{
+    name: string;
+    color: string;
+    links: Array<{ title: string; url: string; icon: string; }>;
+    layout?: 'grid' | 'list';
+  }>();
   
-  // Store para controlar o estado de expansão/colapso
-  const isExpanded = writable(true);
+  // State for collapse/expand
+  let isExpanded = $state(true);
   
   function toggleExpand() {
-    isExpanded.update(value => !value);
+    isExpanded = !isExpanded;
   }
 
   // Função para ajustar a cor com base no modo do tema
@@ -84,13 +85,13 @@
     on:keydown={(e) => e.key === 'Enter' && toggleExpand()}
     tabindex="0"
     role="button"
-    aria-expanded={$isExpanded}
+    aria-expanded={isExpanded}
   >
     <h2 class="text-lg font-bold">{name}</h2>
-    <span class="transform transition-transform {$isExpanded ? 'rotate-180' : ''}">▼</span>
+    <span class="transform transition-transform {isExpanded ? 'rotate-180' : ''}">▼</span>
   </div>
   
-  {#if $isExpanded}
+  {#if isExpanded}
     <div class="section-content p-4" 
          class:grid-layout={layout === 'grid'} 
          class:list-layout={layout === 'list'} 
