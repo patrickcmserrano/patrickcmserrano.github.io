@@ -36,7 +36,7 @@ Semana de altíssima produtividade com a criação de novos fluxos de monitorame
 #### A. Pipeline de Nichos do AliExpress (Mouses e Teclados)
 - **Modelagem de Dados:** Criação de pipeline estruturado usando schemas **Malli** para validação e parsers **Pathom** para enriquecimento de dados de busca.
 - **Normalização de SKUs:** Implementação de inferência de SKU canônico para analisar concorrência e variações de preços de forma uniforme.
-- **Nicho de Teclados Mecânicos:** Implementação completa da coleta de teclados baseando-se nas regras de negócio escritas no [aliexpress-niche-runbook.md](file:///home/patricks/dev/techsentry/docs/aliexpress-niche-runbook.md).
+- **Nicho de Teclados Mecânicos:** Implementação completa da coleta de teclados baseando-se nas regras de negócio escritas no [aliexpress-niche-runbook.md](https://github.com/patrickcmserrano/techsentry/blob/master/docs/aliexpress-niche-runbook.md).
 - **Métricas Avançadas:** Captura de volumes reais de transações (`real_trade_count`), flag de produtos com frete Choice (`isChoice`), data de listagem e badges de top sellers.
 
 #### B. Monitor Especializado Chevrolet Vectra RJ

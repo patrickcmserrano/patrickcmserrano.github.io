@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html data-theme="mona" lang="pt-br">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4WYV0KE6N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-K4WYV0KE6N');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="../../_app/immutable/entry/start.DTKZoUp2.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D8oEaMAE.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/8NYM_yIc.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/x3pvDTcy.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.DLNaVeMS.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DovrcI9r.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B3y-Ydai.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BNHmZo67.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.DrkdquoD.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BGqDDMW_.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.CsRGR6Hv.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DZLzMABz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Bp0tb_7k.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Ce0M5d37.js" rel="modulepreload">
+		<!--[--><meta name="description" content="Um diário de desenvolvimento cobrindo o período de transição de 13 a 30 de junho de 2026: o rebranding completo dos projetos em SvelteKit, a criação do pipeline de aluguel de imóveis no TechSentry (Clojure), a integração de telemetria nativa no ark-streams (Go), o bot VIP do Telegram e KDE splash screens."><!--]--><!--[--><script>
+    // Aplicar tema salvo no carregamento da página
+    const mode = localStorage.getItem('mode') || 'light';
+    document.documentElement.setAttribute('data-mode', mode);
+  </script><!----><!--]--><title>Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime — Patrick Campelo Serrano</title>
+		<link href="../../_app/immutable/assets/0.CAor5_jJ.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/LanguageSelector.BUSG7h5-.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.h9nu_hqt.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><!----><div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">Patrick Campelo Serrano</a> <div class="flex items-center gap-4"><div class="language-selector svelte-1sh92id" role="group" aria-label="Seletor de idioma"><button class="active svelte-1sh92id" aria-label="English" aria-pressed="true" type="button">EN</button> <button class="svelte-1sh92id" aria-label="Português" aria-pressed="false" type="button">PT</button> <button class="svelte-1sh92id" aria-label="Español" aria-pressed="false" type="button">ES</button></div><!----> <div class="theme-toggle-container svelte-me9lad"><button type="button" class="theme-toggle svelte-me9lad" id="theme-toggle" aria-pressed="false" aria-label="Alternar tema claro/escuro"><span class="icon svelte-me9lad"><!--[!--><div class="icon-wrapper svelte-1k44wz0" style="width: 20px; height: 20px;" aria-label="Tema escuro" role="img"><!----><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svelte-c8tyih"><!--[!--><!--]--><!----><path d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"></path><!----></svg><!----></div><!--]--></span></button></div><!----></div></div></header> <main class="max-w-4xl mx-auto px-4 py-12"><div class="mb-8"><a href="/blog/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Voltar para todos os artigos</a></div> <header class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800"><div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono"><span>29 de junho de 2026</span> <span>•</span> <span>10 min</span></div> <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime</h1> <div class="flex flex-wrap gap-2"><!--[--><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">Dev Diary</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">Ark Streams</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">TechSentry</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">Go</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">Clojure</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">DevOps</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">SvelteKit</span><!--]--></div></header> <article class="prose prose-slate dark:prose-invert max-w-none md:prose-lg prose-pre:bg-slate-900 dark:prose-pre:bg-slate-900/60 prose-pre:border prose-pre:border-slate-800 prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-img:rounded-2xl"><!----><h1>Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime</h1>
+<p><em>Período: 13 de Junho a 30 de Junho de 2026</em></p>
+<p>Este diário de desenvolvimento cobre um período de transição intenso e extremamente produtivo. Entre o meio e o fim de junho, dividi meus esforços entre quatro grandes pilares: o rebranding estrutural do meu site pessoal (migrado para SvelteKit), a criação do pipeline de aluguel de imóveis no <a href="https://github.com/patrickcmserrano/techsentry">techsentry</a> (Clojure), a integração de telemetria nativa com NATS JetStream no <a href="file:/blob/master///home/patricks/dev/ark-streams">ark-streams</a> (Go) e o design de splash screens tridimensionais em WebGL para desktops Linux.</p>
+<p>Aqui está a retrospectiva técnica de como reestruturei meus projetos durante estas semanas.</p>
+<hr>
+<h2>🌎 Re-arquitetando o Portfólio (patrickcmserrano.github.io)</h2>
+<p>Iniciei o ciclo re-arquitetando completamente meu site pessoal <a href="https://github.com/patrickcmserrano/patrickcmserrano.github.io">patrickcmserrano.github.io</a> de uma SPA simples para <strong>SvelteKit SSG</strong> (Static Site Generation), rodando build de pré-renderização otimizado para deploy imediato no GitHub Pages.</p>
+<p>Aproveitei esta migração para consolidar a curadoria dos meus projetos e fazer um rebranding necessário:</p>
+<ul>
+<li><strong>Rebranding Técnico:</strong> O projeto anteriormente conhecido como &quot;Khala&quot; foi oficialmente renomeado para <strong>Daelaam</strong> (marca de trading quantitativo) e <strong>Rohana</strong> (a engine analítica subjacente desenvolvida em Clojure). Removi referências a repositórios obsoletos e inseri o <strong>Nexus Terminal</strong> como produto standalone.</li>
+<li><strong>Sincronização de Currículo:</strong> Atualizei as versões em português e inglês do meu CV em LaTeX (<a href="https:/blob/master//github.com/patrickcmserrano/resume/blob/master/_base/Patrick_Serrano_CV_2026.tex">Patrick_Serrano_CV_2026.tex</a>) para espelhar rigorosamente as datas e conquistas do Git no ecossistema Nexus Quant.</li>
+</ul>
+<hr>
+<h2>🛜 Telemetria Realtime, Agressão e o VIP Telegram Bot (ark-streams)</h2>
+<p>No <a href="https://github.com/patrickcmserrano/ark-streams">ark-streams</a>, o robô de processamento de fluxo em Go, avançamos significativamente nas frentes de controle de dados e interfaces externas:</p>
+<h3>1. Telemetria e NATS WebSocket Proxy</h3>
+<ul>
+<li>Integramos o <code>nats-exporter</code> e o Grafana Alloy para capturar métricas do JetStream, eliminando a dependência do Grafana Cloud ao criar um dashboard interno e enxuto de telemetria no frontend.</li>
+<li>Implementamos suporte a compressão S2 no NATS JetStream para otimizar a largura de banda e armazenamento em disco.</li>
+<li>Para resolver a limitação de clientes Windows que rodam a interface desktop localmente e não conseguem se conectar diretamente ao NATS local da VPS, criamos um WebSocket proxy de NATS operando via Named Tunnels seguros (systemd).</li>
+</ul>
+<h3>2. Histórico de Agressão</h3>
+<ul>
+<li>Desenvolvemos a ferramenta CLI <a href="https:/blob/master//github.com/Nexus-Quantitative/ark-streams/blob/master/scripts/aggression_history.py">aggression_history.py</a> para extrair dados históricos com amostragem customizada por timeframe.</li>
+<li>Integramos essa lógica ao backend Go em <a href="https://github.com/Nexus-Quantitative/ark-streams/blob/master/internal/api/server.go">server.go</a> e criamos o modal <code>AggressionHistoryModal.svelte</code> no app desktop para exibir a velocidade de agressão histórica Snap-to-Price.</li>
+</ul>
+<h3>3. VIP Telegram Bot (<code>vip_bot.py</code>)</h3>
+<p>Implementamos de ponta a ponta o script do <a href="https://github.com/Nexus-Quantitative/ark-streams/blob/master/scripts/vip_bot.py">vip_bot.py</a> para distribuir alertas em tempo real a canais VIP:</p>
+<ul>
+<li>Monitoramento de regime de mercado multi-timeframe (alinhamento Bullish/Bearish).</li>
+<li>Disparo automático de níveis de suporte e resistência rompidos.</li>
+<li>Alertas de anomalias de fluxo e picos de liquidações cruzadas de contratos futuros de criptoativos.</li>
+</ul>
+<hr>
+<h2>🏡 Ingestor de Imóveis e Agendamento por Defasagem (TechSentry)</h2>
+<p>No <a href="https://github.com/patrickcmserrano/techsentry">techsentry</a>, o assistente analítico Clojure, desenvolvemos a vertical de inteligência de mercado imobiliário:</p>
+<ul>
+<li><strong>Pipeline de Aluguel (OLX):</strong> Escrevemos regras de normalização de dados em Clojure para raspar listings de apartamentos e casas da OLX. Os dados são processados por geolocalização (<code>regioes.edn</code>) e ranqueados por um score de atratividade que gera resumos formatados por IA (<code>imoveis.md</code>).</li>
+<li><strong>Scheduler por Defasagem:</strong> Em vez de usarmos timers cíclicos rígidos que geram gargalos de rede, refatoramos o <a href="https:/blob/master//github.com/patrickcmserrano/techsentry/blob/master/src/tech_sentry/scheduler.clj">scheduler.clj</a> para consultar o banco de dados e rodar primeiro a vertical OLX que se encontra com o timestamp mais atrasado (seleção por defasagem).</li>
+<li><strong>Ingestão Upwork:</strong> Iniciamos o scaffold do scanner de vagas no Upwork via leitura assíncrona IMAP de alertas de email (<code>upwork.clj</code>).</li>
+</ul>
+<hr>
+<h2>🌌 Shaders e KDE Splashes (blackhole)</h2>
+<p>Por fim, no repositório <a href="file:///home/patricks/dev/blackhole">blackhole</a>, trabalhei em integração gráfica para desktops Linux:</p>
+<ul>
+<li>Criamos splash screens dinâmicas para KDE (&quot;Blackhole&quot;, &quot;Saturn&quot;, &quot;Nebula&quot;).</li>
+<li>Integramos animações interativas em WebGL (injetadas via arquivo único HTML embutido) rodando de forma fluida dentro das janelas QML usando a view <code>WebEngineView</code> do Qt.</li>
+<li>Ajustamos animações de câmera glissando de forma reativa aos estágios de inicialização do sistema operacional.</li>
+</ul>
+<hr>
+<h2>🤝 O Papel do Claude Opus 4.8 e Sonnet 4.6</h2>
+<p>Este ciclo de desenvolvimento dependeu bastante dos modelos da Anthropic para a transição arquitetural e DevOps:</p>
+<ul>
+<li>O <strong>Claude Opus 4.8</strong> atuou principalmente em Clojure e na integração do frontend Svelte do portfólio. Ele ajudou a depurar as regras de defasagem do scheduler no TechSentry e resolveu problemas de renderização nos gráficos de agressão no Wails.</li>
+<li>O <strong>Claude Sonnet 4.6</strong> auxiliou na documentação de túneis de conectividade e na configuração rápida de workflows no GitHub Actions (como o isolamento de testes de Playwright em Node 24).</li>
+</ul>
+<hr>
+<p><em>Esta transição assentou a fundação sólida de segurança e testes que abriu caminho para a fase subsequente de pesquisa quantitativa rigorosa na plataforma. Acompanhe os próximos posts para ver os vereditos estratégicos!</em></p>
+<!----></article></main></div><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					
+					__sveltekit_j2v66u = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.DTKZoUp2.js"),
+						import("../../_app/immutable/entry/app.DLNaVeMS.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,{type:"data",data:{slug:"2026-06-30-dev-diary-transition",metadata:{id:"2026-06-30-dev-diary-transition",title:"Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime",excerpt:"Um diário de desenvolvimento cobrindo o período de transição de 13 a 30 de junho de 2026: o rebranding completo dos projetos em SvelteKit, a criação do pipeline de aluguel de imóveis no TechSentry (Clojure), a integração de telemetria nativa no ark-streams (Go), o bot VIP do Telegram e KDE splash screens.",date:"2026-06-30",readTime:"10 min",tags:["Dev Diary","Ark Streams","TechSentry","Go","Clojure","DevOps","SvelteKit"]},html:"\u003Ch1>Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime\u003C/h1>\n\u003Cp>\u003Cem>Período: 13 de Junho a 30 de Junho de 2026\u003C/em>\u003C/p>\n\u003Cp>Este diário de desenvolvimento cobre um período de transição intenso e extremamente produtivo. Entre o meio e o fim de junho, dividi meus esforços entre quatro grandes pilares: o rebranding estrutural do meu site pessoal (migrado para SvelteKit), a criação do pipeline de aluguel de imóveis no \u003Ca href=\"https://github.com/patrickcmserrano/techsentry\">techsentry\u003C/a> (Clojure), a integração de telemetria nativa com NATS JetStream no \u003Ca href=\"file:/blob/master///home/patricks/dev/ark-streams\">ark-streams\u003C/a> (Go) e o design de splash screens tridimensionais em WebGL para desktops Linux.\u003C/p>\n\u003Cp>Aqui está a retrospectiva técnica de como reestruturei meus projetos durante estas semanas.\u003C/p>\n\u003Chr>\n\u003Ch2>🌎 Re-arquitetando o Portfólio (patrickcmserrano.github.io)\u003C/h2>\n\u003Cp>Iniciei o ciclo re-arquitetando completamente meu site pessoal \u003Ca href=\"https://github.com/patrickcmserrano/patrickcmserrano.github.io\">patrickcmserrano.github.io\u003C/a> de uma SPA simples para \u003Cstrong>SvelteKit SSG\u003C/strong> (Static Site Generation), rodando build de pré-renderização otimizado para deploy imediato no GitHub Pages.\u003C/p>\n\u003Cp>Aproveitei esta migração para consolidar a curadoria dos meus projetos e fazer um rebranding necessário:\u003C/p>\n\u003Cul>\n\u003Cli>\u003Cstrong>Rebranding Técnico:\u003C/strong> O projeto anteriormente conhecido como &quot;Khala&quot; foi oficialmente renomeado para \u003Cstrong>Daelaam\u003C/strong> (marca de trading quantitativo) e \u003Cstrong>Rohana\u003C/strong> (a engine analítica subjacente desenvolvida em Clojure). Removi referências a repositórios obsoletos e inseri o \u003Cstrong>Nexus Terminal\u003C/strong> como produto standalone.\u003C/li>\n\u003Cli>\u003Cstrong>Sincronização de Currículo:\u003C/strong> Atualizei as versões em português e inglês do meu CV em LaTeX (\u003Ca href=\"https:/blob/master//github.com/patrickcmserrano/resume/blob/master/_base/Patrick_Serrano_CV_2026.tex\">Patrick_Serrano_CV_2026.tex\u003C/a>) para espelhar rigorosamente as datas e conquistas do Git no ecossistema Nexus Quant.\u003C/li>\n\u003C/ul>\n\u003Chr>\n\u003Ch2>🛜 Telemetria Realtime, Agressão e o VIP Telegram Bot (ark-streams)\u003C/h2>\n\u003Cp>No \u003Ca href=\"https://github.com/patrickcmserrano/ark-streams\">ark-streams\u003C/a>, o robô de processamento de fluxo em Go, avançamos significativamente nas frentes de controle de dados e interfaces externas:\u003C/p>\n\u003Ch3>1. Telemetria e NATS WebSocket Proxy\u003C/h3>\n\u003Cul>\n\u003Cli>Integramos o \u003Ccode>nats-exporter\u003C/code> e o Grafana Alloy para capturar métricas do JetStream, eliminando a dependência do Grafana Cloud ao criar um dashboard interno e enxuto de telemetria no frontend.\u003C/li>\n\u003Cli>Implementamos suporte a compressão S2 no NATS JetStream para otimizar a largura de banda e armazenamento em disco.\u003C/li>\n\u003Cli>Para resolver a limitação de clientes Windows que rodam a interface desktop localmente e não conseguem se conectar diretamente ao NATS local da VPS, criamos um WebSocket proxy de NATS operando via Named Tunnels seguros (systemd).\u003C/li>\n\u003C/ul>\n\u003Ch3>2. Histórico de Agressão\u003C/h3>\n\u003Cul>\n\u003Cli>Desenvolvemos a ferramenta CLI \u003Ca href=\"https:/blob/master//github.com/Nexus-Quantitative/ark-streams/blob/master/scripts/aggression_history.py\">aggression_history.py\u003C/a> para extrair dados históricos com amostragem customizada por timeframe.\u003C/li>\n\u003Cli>Integramos essa lógica ao backend Go em \u003Ca href=\"https://github.com/Nexus-Quantitative/ark-streams/blob/master/internal/api/server.go\">server.go\u003C/a> e criamos o modal \u003Ccode>AggressionHistoryModal.svelte\u003C/code> no app desktop para exibir a velocidade de agressão histórica Snap-to-Price.\u003C/li>\n\u003C/ul>\n\u003Ch3>3. VIP Telegram Bot (\u003Ccode>vip_bot.py\u003C/code>)\u003C/h3>\n\u003Cp>Implementamos de ponta a ponta o script do \u003Ca href=\"https://github.com/Nexus-Quantitative/ark-streams/blob/master/scripts/vip_bot.py\">vip_bot.py\u003C/a> para distribuir alertas em tempo real a canais VIP:\u003C/p>\n\u003Cul>\n\u003Cli>Monitoramento de regime de mercado multi-timeframe (alinhamento Bullish/Bearish).\u003C/li>\n\u003Cli>Disparo automático de níveis de suporte e resistência rompidos.\u003C/li>\n\u003Cli>Alertas de anomalias de fluxo e picos de liquidações cruzadas de contratos futuros de criptoativos.\u003C/li>\n\u003C/ul>\n\u003Chr>\n\u003Ch2>🏡 Ingestor de Imóveis e Agendamento por Defasagem (TechSentry)\u003C/h2>\n\u003Cp>No \u003Ca href=\"https://github.com/patrickcmserrano/techsentry\">techsentry\u003C/a>, o assistente analítico Clojure, desenvolvemos a vertical de inteligência de mercado imobiliário:\u003C/p>\n\u003Cul>\n\u003Cli>\u003Cstrong>Pipeline de Aluguel (OLX):\u003C/strong> Escrevemos regras de normalização de dados em Clojure para raspar listings de apartamentos e casas da OLX. Os dados são processados por geolocalização (\u003Ccode>regioes.edn\u003C/code>) e ranqueados por um score de atratividade que gera resumos formatados por IA (\u003Ccode>imoveis.md\u003C/code>).\u003C/li>\n\u003Cli>\u003Cstrong>Scheduler por Defasagem:\u003C/strong> Em vez de usarmos timers cíclicos rígidos que geram gargalos de rede, refatoramos o \u003Ca href=\"https:/blob/master//github.com/patrickcmserrano/techsentry/blob/master/src/tech_sentry/scheduler.clj\">scheduler.clj\u003C/a> para consultar o banco de dados e rodar primeiro a vertical OLX que se encontra com o timestamp mais atrasado (seleção por defasagem).\u003C/li>\n\u003Cli>\u003Cstrong>Ingestão Upwork:\u003C/strong> Iniciamos o scaffold do scanner de vagas no Upwork via leitura assíncrona IMAP de alertas de email (\u003Ccode>upwork.clj\u003C/code>).\u003C/li>\n\u003C/ul>\n\u003Chr>\n\u003Ch2>🌌 Shaders e KDE Splashes (blackhole)\u003C/h2>\n\u003Cp>Por fim, no repositório \u003Ca href=\"file:///home/patricks/dev/blackhole\">blackhole\u003C/a>, trabalhei em integração gráfica para desktops Linux:\u003C/p>\n\u003Cul>\n\u003Cli>Criamos splash screens dinâmicas para KDE (&quot;Blackhole&quot;, &quot;Saturn&quot;, &quot;Nebula&quot;).\u003C/li>\n\u003Cli>Integramos animações interativas em WebGL (injetadas via arquivo único HTML embutido) rodando de forma fluida dentro das janelas QML usando a view \u003Ccode>WebEngineView\u003C/code> do Qt.\u003C/li>\n\u003Cli>Ajustamos animações de câmera glissando de forma reativa aos estágios de inicialização do sistema operacional.\u003C/li>\n\u003C/ul>\n\u003Chr>\n\u003Ch2>🤝 O Papel do Claude Opus 4.8 e Sonnet 4.6\u003C/h2>\n\u003Cp>Este ciclo de desenvolvimento dependeu bastante dos modelos da Anthropic para a transição arquitetural e DevOps:\u003C/p>\n\u003Cul>\n\u003Cli>O \u003Cstrong>Claude Opus 4.8\u003C/strong> atuou principalmente em Clojure e na integração do frontend Svelte do portfólio. Ele ajudou a depurar as regras de defasagem do scheduler no TechSentry e resolveu problemas de renderização nos gráficos de agressão no Wails.\u003C/li>\n\u003Cli>O \u003Cstrong>Claude Sonnet 4.6\u003C/strong> auxiliou na documentação de túneis de conectividade e na configuração rápida de workflows no GitHub Actions (como o isolamento de testes de Playwright em Node 24).\u003C/li>\n\u003C/ul>\n\u003Chr>\n\u003Cp>\u003Cem>Esta transição assentou a fundação sólida de segurança e testes que abriu caminho para a fase subsequente de pesquisa quantitativa rigorosa na plataforma. Acompanhe os próximos posts para ver os vereditos estratégicos!\u003C/em>\u003C/p>\n",lang:"pt"},uses:{params:["slug"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
