@@ -4,39 +4,32 @@
   function handleLanguageChange(lang: 'pt' | 'en' | 'es') {
     setLanguage(lang);
   }
-
-  // Gets the current language
-  let currentLocale: string = 'pt';
-  
-  currentLanguage.subscribe(value => {
-    currentLocale = value;
-  });
 </script>
 
 <div class="language-selector" role="group" aria-label="Seletor de idioma">
   <button 
-    class={currentLocale === 'en' ? 'active' : ''} 
+    class:active={$currentLanguage === 'en'} 
     on:click={() => handleLanguageChange('en')}
     aria-label="English"
-    aria-pressed={currentLocale === 'en'}
+    aria-pressed={$currentLanguage === 'en'}
     type="button"
   >
     EN
   </button>
   <button 
-    class={currentLocale === 'pt' ? 'active' : ''} 
+    class:active={$currentLanguage === 'pt'} 
     on:click={() => handleLanguageChange('pt')}
     aria-label="Português"
-    aria-pressed={currentLocale === 'pt'}
+    aria-pressed={$currentLanguage === 'pt'}
     type="button"
   >
     PT
   </button>
   <button 
-    class={currentLocale === 'es' ? 'active' : ''} 
+    class:active={$currentLanguage === 'es'} 
     on:click={() => handleLanguageChange('es')}
     aria-label="Español"
-    aria-pressed={currentLocale === 'es'}
+    aria-pressed={$currentLanguage === 'es'}
     type="button"
   >
     ES

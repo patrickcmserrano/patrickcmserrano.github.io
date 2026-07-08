@@ -5,6 +5,10 @@ test.describe('Language Selector Accessibility Tests', () => {
   let a11y: AccessibilityHelper;
 
   test.beforeEach(async ({ page }) => {
+    // Listen to browser console and page errors
+    page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
+    page.on('pageerror', err => console.log('BROWSER ERROR:', err.message));
+    
     // Navigate to the home page before each test
     await page.goto('/links');
     a11y = new AccessibilityHelper(page);
@@ -82,8 +86,13 @@ test.describe('Language Selector Accessibility Tests', () => {
   });
 
   test('active button should be visually distinct', async ({ page }) => {
+    // Wait for hydration/network idle
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
+
     // Check if the active button has the 'active' class
     const ptButton = page.getByRole('button', { name: 'Português' });
+    
     await ptButton.click();
     
     // Wait for the change

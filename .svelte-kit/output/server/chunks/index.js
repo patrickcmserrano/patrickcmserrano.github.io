@@ -1,4 +1,4 @@
-import { clsx as clsx$1 } from "clsx";
+import "clsx";
 const BROWSER = false;
 var is_array = Array.isArray;
 var index_of = Array.prototype.indexOf;
@@ -1254,19 +1254,9 @@ function attr(name, value, is_boolean = false) {
   const assignment = is_boolean ? "" : `="${escape_html(normalized, true)}"`;
   return ` ${name}${assignment}`;
 }
-function clsx(value) {
-  if (typeof value === "object") {
-    return clsx$1(value);
-  } else {
-    return value ?? "";
-  }
-}
 const whitespace = [..." 	\n\r\f \v\uFEFF"];
 function to_class(value, hash, directives) {
   var classname = value == null ? "" : "" + value;
-  if (hash) {
-    classname = classname ? classname + " " + hash : hash;
-  }
   if (directives) {
     for (var key in directives) {
       if (directives[key]) {
@@ -1599,10 +1589,9 @@ export {
   bind_props as T,
   attr_style as U,
   slot as V,
-  clsx as W,
-  safe_not_equal as X,
-  subscribe_to_store as Y,
-  run_all as Z,
+  safe_not_equal as W,
+  subscribe_to_store as X,
+  run_all as Y,
   push as a,
   get_next_sibling as b,
   set_active_effect as c,

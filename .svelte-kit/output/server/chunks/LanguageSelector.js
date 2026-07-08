@@ -1,4 +1,4 @@
-import { S as fallback, K as attr, e as escape_html, V as slot, T as bind_props, Q as sanitize_props, R as spread_props, U as attr_style, I as head, p as pop, a as push, O as attr_class, W as clsx } from "./index.js";
+import { S as fallback, K as attr, e as escape_html, V as slot, T as bind_props, Q as sanitize_props, R as spread_props, U as attr_style, I as head, p as pop, a as push, O as attr_class, J as store_get, N as unsubscribe_stores } from "./index.js";
 import { c as currentLanguage } from "./simple-i18n.js";
 function IconBase($$payload, $$props) {
   let title = fallback($$props["title"], null);
@@ -68,11 +68,15 @@ function ThemeToggle($$payload, $$props) {
 }
 function LanguageSelector($$payload, $$props) {
   push();
-  let currentLocale = "pt";
-  currentLanguage.subscribe((value) => {
-    currentLocale = value;
-  });
-  $$payload.out += `<div class="language-selector svelte-1sh92id" role="group" aria-label="Seletor de idioma"><button${attr_class(clsx(currentLocale === "en" ? "active" : ""), "svelte-1sh92id")} aria-label="English"${attr("aria-pressed", currentLocale === "en")} type="button">EN</button> <button${attr_class(clsx(currentLocale === "pt" ? "active" : ""), "svelte-1sh92id")} aria-label="Português"${attr("aria-pressed", currentLocale === "pt")} type="button">PT</button> <button${attr_class(clsx(currentLocale === "es" ? "active" : ""), "svelte-1sh92id")} aria-label="Español"${attr("aria-pressed", currentLocale === "es")} type="button">ES</button></div>`;
+  var $$store_subs;
+  $$payload.out += `<div class="language-selector svelte-1sh92id" role="group" aria-label="Seletor de idioma"><button aria-label="English"${attr("aria-pressed", store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "en")} type="button"${attr_class("svelte-1sh92id", void 0, {
+    "active": store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "en"
+  })}>EN</button> <button aria-label="Português"${attr("aria-pressed", store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "pt")} type="button"${attr_class("svelte-1sh92id", void 0, {
+    "active": store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "pt"
+  })}>PT</button> <button aria-label="Español"${attr("aria-pressed", store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "es")} type="button"${attr_class("svelte-1sh92id", void 0, {
+    "active": store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage) === "es"
+  })}>ES</button></div>`;
+  if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
 }
 export {
