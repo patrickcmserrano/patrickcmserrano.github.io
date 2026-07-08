@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-07-08-dev-diary-ark-streams",
+    "title": "Diário de Dev #13 — Segurança, Testes e Vereditos Quant com Claude Fable 5 no ark-streams",
+    "excerpt": "Uma retrospectiva técnica de uma semana dedicada a hardening de API, cobertura massiva de testes, refatoração de workers e o uso inovador do Claude Fable 5 para pesquisa quantitativa e validação robusta de estratégias no ark-streams.",
+    "date": "2026-07-08",
+    "readTime": "12 min",
+    "tags": [
+      "Dev Diary",
+      "Ark Streams",
+      "Claude Fable 5",
+      "Go",
+      "Finanças Quantitativas",
+      "DevOps",
+      "Anthropic"
+    ]
+  },
+  {
+    "id": "2026-06-30-dev-diary-transition",
+    "title": "Diário de Dev #12.5 — Do Rebranding Arquitetural ao Ingestor de Imóveis e Telemetria Realtime",
+    "excerpt": "Um diário de desenvolvimento cobrindo o período de transição de 13 a 30 de junho de 2026: o rebranding completo dos projetos em SvelteKit, a criação do pipeline de aluguel de imóveis no TechSentry (Clojure), a integração de telemetria nativa no ark-streams (Go), o bot VIP do Telegram e KDE splash screens.",
+    "date": "2026-06-30",
+    "readTime": "10 min",
+    "tags": [
+      "Dev Diary",
+      "Ark Streams",
+      "TechSentry",
+      "Go",
+      "Clojure",
+      "DevOps",
+      "SvelteKit"
+    ]
+  },
+  {
     "id": "2026-06-13-arquitetura-e-metodologia",
     "title": "Metodologia de Design e Tecnologias de Sobrevivência para Produtos de Software Resilientes",
     "excerpt": "Uma análise profunda sobre como aplicar Polylith, Event Sourcing, Bitemporalidade (XTDB) e testes gerativos para resolver problemas reais de negócio e garantir estabilidade em produção.",
