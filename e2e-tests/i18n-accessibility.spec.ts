@@ -11,6 +11,10 @@ test.describe('Language Selector Accessibility Tests', () => {
     
     // Navigate to the home page before each test
     await page.goto('/links');
+    // Wait for hydration to complete
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
+    
     a11y = new AccessibilityHelper(page);
   });
 
@@ -86,10 +90,6 @@ test.describe('Language Selector Accessibility Tests', () => {
   });
 
   test('active button should be visually distinct', async ({ page }) => {
-    // Wait for hydration/network idle
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
     // Check if the active button has the 'active' class
     const ptButton = page.getByRole('button', { name: 'Português' });
     

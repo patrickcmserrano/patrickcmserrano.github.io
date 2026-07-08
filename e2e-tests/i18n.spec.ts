@@ -4,6 +4,9 @@ test.describe('Internationalization (i18n) Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the home page before each test
     await page.goto('/links');
+    // Wait for hydration to complete
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500);
   });
 
   test('should display the language selector', async ({ page }) => {
