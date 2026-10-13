@@ -7,7 +7,7 @@
     {$_('skills.title')}
   </h2>
   
-  <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 px-4">
+  <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 px-4">
     <!-- Languages & Core -->
     <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <h3 class="text-xl font-bold mb-6 text-indigo-600 dark:text-indigo-400 border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -95,6 +95,39 @@
         <li class="flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
           Prometheus / Grafana
+        </li>
+      </ul>
+    </div>
+
+    <!-- AI & Agents -->
+    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+      <h3 class="text-xl font-bold mb-6 text-emerald-600 dark:text-emerald-400 border-b border-slate-100 dark:border-slate-800 pb-3">
+        {$_('skills.ai')}
+      </h3>
+      <ul class="space-y-3 text-slate-600 dark:text-slate-400 font-medium">
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          LLM Serving (vLLM / Slurm)
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          OpenAI-compatible Routing
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Agentes em Workspaces Isolados
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Context Envelopes / RAG
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Evals de Agentes
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Modelos Locais (Ollama)
         </li>
       </ul>
     </div>
