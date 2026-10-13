@@ -1,9 +1,9 @@
 [
   {
-    "id": "2026-06-13-fusao-dois-sistemas",
+    "id": "2026-02-18-fusao-dois-sistemas",
     "title": "Dois sistemas, duas linguagens, um contrato",
-    "excerpt": "Como fundi um pipeline de trading sem reescrever nada: por que portar 21 mil linhas de Go para Clojure teria sido um erro, o que significa dividir por plano de dados e plano de controle, e os dois guards de risco que protegem coisas diferentes.",
-    "date": "2026-06-13",
+    "excerpt": "Como nasci um segundo sistema ao validar a tese do primeiro: por que portar 21 mil linhas de Go para Clojure teria sido um erro, onde ficam os planos de dados e de controle, e os dois guards de risco que protegem coisas diferentes.",
+    "date": "2026-02-18",
     "readTime": "12 min",
     "tags": [
       "Arquitetura",

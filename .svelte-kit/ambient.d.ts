@@ -80,7 +80,6 @@ declare module '$env/static/private' {
 	export const INVOCATION_ID: string;
 	export const PAGER: string;
 	export const QWEN_CODE_MESSAGING_SOCKET: string;
-	export const XDG_SEAT_PATH: string;
 	export const SMALL_ROUTER_KEY_WORKSTATION: string;
 	export const PATH: string;
 	export const KDE_SESSION_UID: string;
@@ -99,7 +98,6 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const LC_NAME: string;
 	export const LC_ADDRESS: string;
-	export const VIPSHOME: string;
 	export const LANGUAGE: string;
 	export const MEMORY_PRESSURE_WRITE: string;
 	export const QWEN_CODE_CLI: string;
@@ -164,6 +162,7 @@ declare module '$env/static/private' {
 	export const MEMORY_PRESSURE_WATCH: string;
 	export const npm_config_userconfig: string;
 	export const KONSOLE_DBUS_SESSION: string;
+	export const XDG_SEAT_PATH: string;
 }
 
 /**
@@ -292,7 +291,6 @@ declare module '$env/dynamic/private' {
 		INVOCATION_ID: string;
 		PAGER: string;
 		QWEN_CODE_MESSAGING_SOCKET: string;
-		XDG_SEAT_PATH: string;
 		SMALL_ROUTER_KEY_WORKSTATION: string;
 		PATH: string;
 		KDE_SESSION_UID: string;
@@ -311,7 +309,6 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		LC_NAME: string;
 		LC_ADDRESS: string;
-		VIPSHOME: string;
 		LANGUAGE: string;
 		MEMORY_PRESSURE_WRITE: string;
 		QWEN_CODE_CLI: string;
@@ -376,6 +373,7 @@ declare module '$env/dynamic/private' {
 		MEMORY_PRESSURE_WATCH: string;
 		npm_config_userconfig: string;
 		KONSOLE_DBUS_SESSION: string;
+		XDG_SEAT_PATH: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
