@@ -49,8 +49,8 @@ function ThemeToggle($$payload, $$props) {
   let isDarkMode = false;
   head($$payload, ($$payload2) => {
     $$payload2.out += `<script>
-    // Aplicar tema salvo no carregamento da página
-    const mode = localStorage.getItem('mode') || 'light';
+    // Aplicar tema salvo no carregamento da página (escuro por padrão)
+    const mode = localStorage.getItem('mode') || 'dark';
     document.documentElement.setAttribute('data-mode', mode);
   <\/script><!---->`;
   });
