@@ -7,7 +7,7 @@
 
   onMount(() => {
     // Sincroniza o estado do toggle com o modo atual do tema
-    const storedMode = localStorage.getItem('mode') || 'light';
+    const storedMode = localStorage.getItem('mode') || 'dark';
     isDarkMode = storedMode === 'dark';
     
     // Garante que o tema inicial seja aplicado
@@ -27,8 +27,8 @@
 
 <svelte:head>
   <script>
-    // Aplicar tema salvo no carregamento da página
-    const mode = localStorage.getItem('mode') || 'light';
+    // Aplicar tema salvo no carregamento da página (escuro por padrão)
+    const mode = localStorage.getItem('mode') || 'dark';
     document.documentElement.setAttribute('data-mode', mode);
   </script>
 </svelte:head>

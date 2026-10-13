@@ -36,7 +36,7 @@ function setTheme(mode) {
 }
 function getThemeFromLocalStorage() {
     const savedMode = localStorage.getItem('mode');
-    return savedMode || 'light'; // Default to light if no saved preference
+    return savedMode || 'dark'; // Default to dark if no saved preference
 }
 function initTheme() {
     const savedMode = getThemeFromLocalStorage();
@@ -53,14 +53,14 @@ describe('ThemeToggle functionality', () => {
             documentElement: documentElementMock
         };
     });
-    it('should initialize with light mode by default', () => {
+    it('should initialize with dark mode by default', () => {
         // Mock localStorage.getItem to return null (no saved preference)
         localStorageMock.getItem.mockReturnValue(null);
         // Test the function directly
         initTheme();
-        // Verify the light theme was set
-        expect(localStorageMock.setItem).toHaveBeenCalledWith('mode', 'light');
-        expect(documentElementMock.setAttribute).toHaveBeenCalledWith('data-mode', 'light');
+        // Verify the dark theme was set
+        expect(localStorageMock.setItem).toHaveBeenCalledWith('mode', 'dark');
+        expect(documentElementMock.setAttribute).toHaveBeenCalledWith('data-mode', 'dark');
     });
     it('should load theme from localStorage on init', () => {
         // Mock localStorage to return 'dark'
