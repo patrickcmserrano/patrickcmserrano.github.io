@@ -2,16 +2,22 @@
   import ThemeToggle from '../../components/ThemeToggle.svelte';
   import LanguageSelector from '../../components/LanguageSelector.svelte';
   import { _, currentLanguage } from '../../lib/simple-i18n';
-  
-  // Props no Svelte 5 para data injetada do load
+
   let { data } = $props();
-  let projects = $derived(data.projects || []);
+  let companies = $derived(data.companies || []);
+
+  // Card da empresa aberto no momento (acordeão: um por vez).
+  let expanded = $state<string | null>(null);
 
   const getLoc = (field: any, lang: string) => {
     if (field && typeof field === 'object') {
       return field[lang] || field['pt'] || '';
     }
     return field || '';
+  };
+
+  const toggle = (id: string) => {
+    expanded = expanded === id ? null : id;
   };
 </script>
 
@@ -53,56 +59,108 @@
       </p>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid gap-8 md:grid-cols-2">
-      {#each projects as project}
-        <article class="flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden hover:shadow-xl dark:hover:shadow-slate-950/60 hover:-translate-y-1 transition duration-300">
-          <div class="p-8 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">
-                  {getLoc(project.role, $currentLanguage)}
-                </span>
-                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
-                  {getLoc(project.status, $currentLanguage)}
-                </span>
+    <!-- Company Cards -->
+    <div class="space-y-6">
+      {#each companies as company (company.id)}
+        {@const isOpen = expanded === company.id}
+        {@const projects = company.projects || []}
+        <section class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden transition duration-300 {isOpen ? 'shadow-xl dark:shadow-slate-950/60' : 'hover:shadow-xl dark:hover:shadow-slate-950/60'}">
+          <!-- Company header: clickable -->
+          <button
+            type="button"
+            class="w-full text-left p-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/60"
+            aria-expanded={isOpen}
+            aria-controls="company-panel-{company.id}"
+            onclick={() => toggle(company.id)}
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 flex-wrap mb-4">
+                  <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">
+                    {getLoc(company.role, $currentLanguage)}
+                  </span>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    {getLoc(company.status, $currentLanguage)}
+                  </span>
+                </div>
+                <h2 class="text-2xl font-bold mb-2">
+                  {getLoc(company.name, $currentLanguage)}
+                </h2>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">
+                  {getLoc(company.subtitle, $currentLanguage)}
+                </p>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
+                  {getLoc(company.excerpt, $currentLanguage)}
+                </p>
               </div>
-              <h2 class="text-2xl font-bold mb-2">
-                <a href="/trabalho/{project.id}/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-                  {getLoc(project.title, $currentLanguage)}
-                </a>
-              </h2>
-              <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4">
-                {getLoc(project.subtitle, $currentLanguage)}
-              </p>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                {getLoc(project.excerpt, $currentLanguage)}
-              </p>
+
+              <span
+                class="shrink-0 mt-1 text-slate-400 dark:text-slate-500 transition-transform duration-300 {isOpen ? 'rotate-180' : ''}"
+                aria-hidden="true"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
             </div>
 
-            <div>
-              <!-- Stack Tags -->
-              <div class="flex flex-wrap gap-1.5 mb-6">
-                {#each project.stack as tech}
+            <!-- Stack -->
+            {#if company.stack && company.stack.length}
+              <div class="flex flex-wrap gap-1.5 mt-5">
+                {#each company.stack as tech}
                   <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                     {tech}
                   </span>
                 {/each}
               </div>
-              <div class="flex items-center justify-between">
-                <a href="/trabalho/{project.id}/" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1 group">
-                  {$_('trabalho.readDetailed')} 
-                  <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </a>
-                {#if project.github}
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors font-mono">
-                    GitHub
-                  </a>
-                {/if}
+            {/if}
+
+            <div class="flex items-center gap-2 mt-5 text-sm font-bold text-indigo-600 dark:text-indigo-400">
+              {#if projects.length}
+                <span>
+                  {isOpen ? $_('trabalho.hideProjects') : $_('trabalho.showProjects')}
+                  ({projects.length})
+                </span>
+                <span class="transition-transform duration-300 {isOpen ? 'translate-y-0.5' : '-translate-y-0.5'}">&darr;</span>
+              {:else}
+                <span class="text-slate-400 dark:text-slate-500 font-medium">{$_('trabalho.comingSoon')}</span>
+              {/if}
+            </div>
+          </button>
+
+          <!-- Expanded projects -->
+          {#if isOpen && projects.length}
+            <div
+              id="company-panel-{company.id}"
+              class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/40 p-6 md:p-8"
+            >
+              <div class="grid gap-5 md:grid-cols-2">
+                {#each projects as project (project.id)}
+                  <article class="flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 hover:border-indigo-300 dark:hover:border-indigo-800 hover:shadow-md transition duration-300">
+                    <h3 class="text-lg font-bold mb-1">
+                      <a href="/trabalho/{project.id}/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                        {getLoc(project.title, $currentLanguage)}
+                      </a>
+                    </h3>
+                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3">
+                      {getLoc(project.subtitle, $currentLanguage)}
+                    </p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1">
+                      {getLoc(project.excerptShort || project.excerpt, $currentLanguage)}
+                    </p>
+                    <a
+                      href="/trabalho/{project.id}/"
+                      class="mt-5 text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1 group self-start"
+                    >
+                      {$_('trabalho.readDetailed')}
+                      <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </a>
+                  </article>
+                {/each}
               </div>
             </div>
-          </div>
-        </article>
+          {/if}
+        </section>
       {/each}
     </div>
   </main>

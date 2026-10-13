@@ -34,17 +34,17 @@
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-12">
+  <main class="max-w-6xl mx-auto px-3 sm:px-4 py-10">
     <!-- Back Button -->
     <div class="mb-8">
       <a href="/trabalho/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group">
-        <span class="group-hover:-translate-x-1 transition-transform">&larr;</span> 
+        <span class="group-hover:-translate-x-1 transition-transform">&larr;</span>
         {$_('nav.backToProjects')}
       </a>
     </div>
 
     <!-- Case Header -->
-    <header class="mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
+    <header class="mb-10 pb-6 border-b border-slate-200 dark:border-slate-800">
       <div class="flex items-center justify-between mb-4">
         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/40">
           {getLoc(project.role, $currentLanguage)}
@@ -72,27 +72,7 @@
 
     <!-- Case Body -->
     <div class="space-y-12">
-      <!-- Overview -->
-      <section>
-        <h2 class="text-2xl font-bold mb-4 tracking-tight border-l-4 border-indigo-500 pl-4">
-          {$_('project.overview')}
-        </h2>
-        <div class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 space-y-4">
-          {@html getLoc(project.details, $currentLanguage)}
-        </div>
-      </section>
-
-      <!-- Architecture -->
-      <section class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
-        <h2 class="text-2xl font-bold mb-4 tracking-tight text-indigo-600 dark:text-indigo-400">
-          {$_('project.architecture')}
-        </h2>
-        <div class="text-base leading-relaxed text-slate-600 dark:text-slate-400 space-y-4">
-          {@html getLoc(project.architecture, $currentLanguage)}
-        </div>
-      </section>
-
-      <!-- Diagrams -->
+      <!-- Diagrams (topo: contexto visual antes do texto) -->
       {#if project.diagrams && project.diagrams.length > 0}
         <section>
           <h2 class="text-2xl font-bold mb-6 tracking-tight border-l-4 border-indigo-500 pl-4">
@@ -110,6 +90,26 @@
           </div>
         </section>
       {/if}
+
+      <!-- Overview -->
+      <section>
+        <h2 class="text-2xl font-bold mb-4 tracking-tight border-l-4 border-indigo-500 pl-4">
+          {$_('project.overview')}
+        </h2>
+        <div class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 space-y-4">
+          {@html getLoc(project.details, $currentLanguage)}
+        </div>
+      </section>
+
+      <!-- Architecture -->
+      <section class="bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+        <h2 class="text-2xl font-bold mb-4 tracking-tight text-indigo-600 dark:text-indigo-400">
+          {$_('project.architecture')}
+        </h2>
+        <div class="text-base leading-relaxed text-slate-600 dark:text-slate-400 space-y-4">
+          {@html getLoc(project.architecture, $currentLanguage)}
+        </div>
+      </section>
 
       <!-- Website Link -->
       {#if project.url}

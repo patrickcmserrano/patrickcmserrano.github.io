@@ -1,0 +1,178 @@
+[
+  {
+    "id": "daelaam",
+    "name": "Daelaam",
+    "subtitle": {
+      "pt": "Software house — marca comercial e entidade contratante",
+      "en": "Software house — commercial brand and contracting entity",
+      "es": "Software house — marca comercial y entidad contratante"
+    },
+    "role": {
+      "pt": "Fundador & Arquiteto de Software",
+      "en": "Founder & Software Architect",
+      "es": "Fundador y Arquitecto de Software"
+    },
+    "status": {
+      "pt": "Operação ativa",
+      "en": "Active operation",
+      "es": "Operación activa"
+    },
+    "excerpt": {
+      "pt": "A marca comercial sob a qual eu desenvolvo e vendo software. É o guarda-chuva institucional — contrato, nota fiscal e relacionamento com o cliente — enquanto o produto atende sob nome próprio. Também é o tenant institucional interno usado para demonstração.",
+      "en": "The commercial brand under which I build and sell software. It is the institutional umbrella — contracts, invoicing, and client relationships — while the product is delivered under its own name. It doubles as the internal institutional tenant used for demonstration.",
+      "es": "La marca comercial bajo la cual desarrollo y vendo software. Es el paraguas institucional — contrato, facturación y relación con el cliente — mientras el producto se entrega con nombre propio. También es el tenant institucional interno usado para demostración."
+    },
+    "stack": ["Clojure", "Pathom 3", "Datahike", "Mensageria", "LGPD by design"],
+    "projects": [
+      {
+        "id": "rohana",
+        "title": {
+          "pt": "Rohana",
+          "en": "Rohana",
+          "es": "Rohana"
+        },
+        "subtitle": {
+          "pt": "Engine Multi-Tenant de Agentes de IA Conversacionais para PMEs",
+          "en": "Multi-Tenant Conversational AI Engine for SMEs",
+          "es": "Motor Conversacional IA Multi-Tenant para Pymes"
+        },
+        "excerpt": {
+          "pt": "Engine multi-tenant em Clojure para agentes de IA conversacionais, com RAG, grounding e guardrails por tenant via arquivos EDN. O produto é vendido sob a marca Daelaam; o cliente final conversa com a persona do próprio negócio. Mensagens trafegam por um barramento de eventos local em Aeron IPC.",
+          "en": "A multi-tenant Clojure engine for conversational AI agents with tenant-specific RAG, grounding, and guardrails via EDN files. The product is sold under the Daelaam brand; the end client talks to the business's own persona. Messages flow through a local event bus built on Aeron IPC.",
+          "es": "Motor multi-tenant en Clojure para agentes de IA conversacionales, con RAG, grounding y guardrails por tenant mediante archivos EDN. El producto se vende bajo la marca Daelaam; el cliente final conversa con la persona del propio negocio. Los mensajes viajan por un bus de eventos local en Aeron IPC."
+        },
+        "excerptShort": {
+          "pt": "Engine de agentes de IA conversacionais, multi-tenant, com grounding nos documentos do próprio negócio.",
+          "en": "Multi-tenant conversational AI engine with grounding in the business's own documents.",
+          "es": "Motor de agentes de IA conversacionales, multi-tenant, con grounding en los documentos del propio negocio."
+        },
+        "url": "https://patrickcmserrano.github.io/rohana/"
+      }
+    ]
+  },
+  {
+    "id": "nexus-quant",
+    "name": "Nexus Quant",
+    "subtitle": {
+      "pt": "Pesquisa quantitativa e sistemas de decisão automatizados",
+      "en": "Quantitative research and automated decision systems",
+      "es": "Investigación cuantitativa y sistemas de decisión automatizados"
+    },
+    "role": {
+      "pt": "Fundador & Quant Developer",
+      "en": "Founder & Quant Developer",
+      "es": "Fundador y Desarrollador Quant"
+    },
+    "status": {
+      "pt": "Operação ativa",
+      "en": "Active operation",
+      "es": "Operación activa"
+    },
+    "excerpt": {
+      "pt": "A linha de trading quantitativo: um conjunto de sistemas que ingere mercado em alta frequência, calcula indicadores, aplica risco como regra imutável e executa. É organizada como uma família de componentes sob o prefixo Ark — ingestão, engine de decisão e terminal de operação.",
+      "en": "The quantitative trading line: a set of systems that ingest high-frequency market data, compute indicators, treat risk as an immutable rule, and execute. It is organised as a family of components under the Ark prefix — ingestion, decision engine, and operations terminal.",
+      "es": "La línea de trading cuantitativo: un conjunto de sistemas que ingieren mercado en alta frecuencia, calculan indicadores, aplican riesgo como regla inmutable y ejecutan. Se organiza como una familia de componentes bajo el prefijo Ark — ingestión, motor de decisión y terminal de operación."
+    },
+    "stack": ["Go", "Clojure", "NATS JetStream", "XTDB", "ClojureScript", "Wails"],
+    "projects": [
+      {
+        "id": "ark-streams",
+        "title": {
+          "pt": "Ark Streams",
+          "en": "Ark Streams",
+          "es": "Ark Streams"
+        },
+        "subtitle": {
+          "pt": "Sistema Sensorial & Pipeline de Ingestão Quantitativa",
+          "en": "Sensory System & Quantitative Ingestion Pipeline",
+          "es": "Sistema Sensorial y Canal de Ingestión Cuantitativa"
+        },
+        "excerpt": {
+          "pt": "Um pipeline em Go para ingestão paralela de order books, cálculo de indicadores em tempo real e publicação de sinais via NATS JetStream. Coleta de Bitget, OKX, Bybit (perpétuos, liquidações, funding, open interest) e commodities via Yahoo REST.",
+          "en": "A high-performance Go pipeline for parallel order book ingestion, real-time indicator computation, and signal publication over NATS JetStream. Collects from Bitget, OKX, Bybit (perpetuals, liquidations, funding, open interest) plus commodities via Yahoo REST.",
+          "es": "Canal en Go de alto rendimiento para ingestión paralela de order books, cálculo de indicadores en tiempo real y publicación de señales vía NATS JetStream. Colecta de Bitget, OKX, Bybit (perpetuos, liquidaciones, funding, open interest) más commodities vía Yahoo REST."
+        },
+        "excerptShort": {
+          "pt": "Pipeline em Go de ingestão paralela de mercado e sinais via NATS JetStream.",
+          "en": "Go pipeline for parallel market ingestion and signalling over NATS JetStream.",
+          "es": "Canal en Go de ingestión paralela de mercado y señales vía NATS JetStream."
+        },
+        "url": "https://nexus-quantitative.github.io/"
+      },
+      {
+        "id": "ark-engine",
+        "title": {
+          "pt": "Ark Engine",
+          "en": "Ark Engine",
+          "es": "Ark Engine"
+        },
+        "subtitle": {
+          "pt": "Ledger Bitemporal de Auditoria de Mercado",
+          "en": "Bitemporal Market Audit Ledger",
+          "es": "Ledger Bitemporal de Auditoría de Mercado"
+        },
+        "excerpt": {
+          "pt": "Infraestrutura de dados de mercado em Clojure, com arquitetura Polylith. O núcleo em produção é um ledger bitemporal em XTDB que registra cada evento de mercado com tempo de validade distinto do tempo de transação — a propriedade que permite backtests sem viés de ponto no tempo. A camada de risco (Trading Policy Statement NQ-GOV-001) está implementada e testada, com o caminho de execução ao vivo ainda em construção.",
+          "en": "Market-data infrastructure in Clojure with a Polylith architecture. The production core is a bitemporal ledger in XTDB that records each market event with a valid time distinct from its transaction time — the property that enables point-in-time correct backtesting. The risk layer (Trading Policy Statement NQ-GOV-001) is implemented and tested, with the live execution path still under construction.",
+          "es": "Infraestructura de datos de mercado en Clojure con arquitectura Polylith. El núcleo en producción es un ledger bitemporal en XTDB que registra cada evento de mercado con tiempo de validez distinto del tiempo de transacción — la propiedad que permite backtests sin sesgo de punto en el tiempo. La capa de riesgo (Trading Policy Statement NQ-GOV-001) está implementada y probada, con el camino de ejecución en vivo aún en construcción."
+        },
+        "excerptShort": {
+          "pt": "Ledger bitemporal em XTDB para dados de mercado: correção ponto-no-tempo para backtest.",
+          "en": "XTDB bitemporal ledger for market data: point-in-time correctness for backtesting.",
+          "es": "Ledger bitemporal en XTDB para datos de mercado: corrección punto-en-el-tiempo para backtest."
+        },
+        "url": "https://nexus-quantitative.github.io/"
+      },
+      {
+        "id": "ark-terminal",
+        "title": {
+          "pt": "Ark Terminal",
+          "en": "Ark Terminal",
+          "es": "Ark Terminal"
+        },
+        "subtitle": {
+          "pt": "Console Desktop de Operação e Monitoramento",
+          "en": "Desktop Operations & Monitoring Console",
+          "es": "Consola de Escritorio de Operación y Monitoreo"
+        },
+        "excerpt": {
+          "pt": "O painel visual e de controle da linha Nexus Quant. Aplicativo desktop nativo escrito em Go, Svelte e Wails, conectado ao backend via NATS JetStream para exibir mercado, agressão, liquidações, backtests e sinais de estratégia em tempo real.",
+          "en": "The visual control panel of the Nexus Quant line. A native desktop application written in Go, Svelte, and Wails, connected to the backend over NATS JetStream to display market data, aggression, liquidations, backtests, and strategy signals in real time.",
+          "es": "El panel visual y de control de la línea Nexus Quant. Aplicación de escritorio nativa escrita en Go, Svelte y Wails, conectada al backend vía NATS JetStream para mostrar mercado, agresión, liquidaciones, backtests y señales de estrategia en tiempo real."
+        },
+        "excerptShort": {
+          "pt": "Aplicativo desktop nativo (Go + Svelte + Wails) para operação e monitoramento em tempo real.",
+          "en": "Native desktop application (Go + Svelte + Wails) for real-time operations and monitoring.",
+          "es": "Aplicación de escritorio nativa (Go + Svelte + Wails) para operación y monitoreo en tiempo real."
+        },
+        "url": "https://nexus-quantitative.github.io/"
+      }
+    ]
+  },
+  {
+    "id": "ping-hai",
+    "name": "Ping Hai",
+    "subtitle": {
+      "pt": "Em definição",
+      "en": "To be defined",
+      "es": "Por definir"
+    },
+    "role": {
+      "pt": "Em definição",
+      "en": "To be defined",
+      "es": "Por definir"
+    },
+    "status": {
+      "pt": "Em definição",
+      "en": "To be defined",
+      "es": "Por definir"
+    },
+    "excerpt": {
+      "pt": "Descrição a definir.",
+      "en": "Description to be defined.",
+      "es": "Descripción por definir."
+    },
+    "stack": [],
+    "projects": []
+  }
+]
