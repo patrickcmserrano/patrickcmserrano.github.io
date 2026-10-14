@@ -22,7 +22,13 @@
       "en": "The commercial brand under which I build and sell software. It is the institutional umbrella — contracts, invoicing, and client relationships — while the product is delivered under its own name. It doubles as the internal institutional tenant used for demonstration.",
       "es": "La marca comercial bajo la cual desarrollo y vendo software. Es el paraguas institucional — contrato, facturación y relación con el cliente — mientras el producto se entrega con nombre propio. También es el tenant institucional interno usado para demostración."
     },
-    "stack": ["Clojure", "Pathom 3", "Datahike", "Mensageria", "LGPD by design"],
+    "stack": [
+      "Clojure",
+      "Pathom 3",
+      "Datahike",
+      "Mensageria",
+      "LGPD by design"
+    ],
     "projects": [
       {
         "id": "rohana",
@@ -73,7 +79,14 @@
       "en": "The quantitative trading line: a set of systems that ingest high-frequency market data, compute indicators, treat risk as an immutable rule, and execute. It is organised as a family of components under the Ark prefix — ingestion, decision engine, and operations terminal.",
       "es": "La línea de trading cuantitativo: un conjunto de sistemas que ingieren mercado en alta frecuencia, calculan indicadores, aplican riesgo como regla inmutable y ejecutan. Se organiza como una familia de componentes bajo el prefijo Ark — ingestión, motor de decisión y terminal de operación."
     },
-    "stack": ["Go", "Clojure", "NATS JetStream", "XTDB", "ClojureScript", "Wails"],
+    "stack": [
+      "Go",
+      "Clojure",
+      "NATS JetStream",
+      "XTDB",
+      "ClojureScript",
+      "Wails"
+    ],
     "projects": [
       {
         "id": "ark-streams",
@@ -153,26 +166,58 @@
     "id": "ping-hai",
     "name": "Ping Hai",
     "subtitle": {
-      "pt": "Em definição",
-      "en": "To be defined",
-      "es": "Por definir"
+      "pt": "Plataformas privadas de IA — marca comercial e entidade contratante",
+      "en": "Private AI platforms — commercial brand and contracting entity",
+      "es": "Plataformas privadas de IA — marca comercial y entidad contratante"
     },
     "role": {
-      "pt": "Em definição",
-      "en": "To be defined",
-      "es": "Por definir"
+      "pt": "Fundador & Arquiteto de Software",
+      "en": "Founder & Software Architect",
+      "es": "Fundador y Arquitecto de Software"
     },
     "status": {
-      "pt": "Em definição",
-      "en": "To be defined",
-      "es": "Por definir"
+      "pt": "Operação ativa",
+      "en": "Active operation",
+      "es": "Operación activa"
     },
     "excerpt": {
-      "pt": "Descrição a definir.",
-      "en": "Description to be defined.",
-      "es": "Descripción por definir."
+      "pt": "Ping Hai monta plataformas de IA privadas. O time conversa com os próprios documentos, em português, sob a identidade que já tem — e nada sai para fora: o conteúdo, a identidade e o modelo ficam na infraestrutura da empresa. É também a entidade comercial sob a qual essa linha é contratada e entregue.",
+      "en": "Ping Hai builds private AI platforms. The team talks to its own documents, in Portuguese, under the identity it already has — and nothing leaves the building: the content, the identity, and the model stay in the company's infrastructure. It is also the commercial entity under which this line is contracted and delivered.",
+      "es": "Ping Hai monta plataformas privadas de IA. El equipo conversa con sus propios documentos, en portugués, bajo la identidad que ya tiene — y nada sale afuera: el contenido, la identidad y el modelo quedan en la infraestructura de la empresa. Es también la entidad comercial bajo la cual se contrata y entrega esta línea."
     },
-    "stack": [],
-    "projects": []
+    "stack": [
+      "Open WebUI",
+      "Keycloak / SSO",
+      "OpenLDAP",
+      "vLLM",
+      "Slurm",
+      "pgvector"
+    ],
+    "projects": [
+      {
+        "id": "ai-factory",
+        "title": {
+          "pt": "AI Factory",
+          "en": "AI Factory",
+          "es": "AI Factory"
+        },
+        "subtitle": {
+          "pt": "Plataforma Privada de IA — Chat com os Documentos da Empresa",
+          "en": "Private AI Platform — Chat with the Company's Documents",
+          "es": "Plataforma Privada de IA — Chat con los Documentos de la Empresa"
+        },
+        "excerpt": {
+          "pt": "Os documentos da sua empresa, num chat privado, rodando na infraestrutura dela. O time conversa com os próprios documentos, em português, sob a identidade que já tem — e nada sai para fora. Já entregue e em produção.",
+          "en": "The company's documents, in a private chat, running on its own infrastructure. The team talks to its own documents, in Portuguese, under the identity it already has — and nothing leaves the building. Already delivered and in production.",
+          "es": "Los documentos de su empresa, en un chat privado, corriendo en su propia infraestructura. El equipo conversa con sus propios documentos, en portugués, bajo la identidad que ya tiene — y nada sale afuera. Ya entregado y en producción."
+        },
+        "excerptShort": {
+          "pt": "Plataforma privada de IA: chat com os documentos da empresa, na infraestrutura dela.",
+          "en": "Private AI platform: chat with the company's documents, on its own infrastructure.",
+          "es": "Plataforma privada de IA: chat con los documentos de la empresa, en su propia infraestructura."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/ai-factory/"
+      }
+    ]
   }
 ]
