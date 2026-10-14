@@ -1,35 +1,5 @@
 [
   {
-    "id": "2026-02-18-fusao-dois-sistemas",
-    "title": "Dois sistemas, duas linguagens, um contrato",
-    "excerpt": "Como nasci um segundo sistema ao validar a tese do primeiro: por que portar 21 mil linhas de Go para Clojure teria sido um erro, onde ficam os planos de dados e de controle, e os dois guards de risco que protegem coisas diferentes.",
-    "date": "2026-02-18",
-    "readTime": "12 min",
-    "tags": [
-      "Arquitetura",
-      "Clojure",
-      "Go",
-      "NATS",
-      "Trading",
-      "Bitemporal"
-    ]
-  },
-  {
-    "id": "2026-07-23-nats-para-aeron",
-    "title": "Troquei um broker de mensagens por um barramento embutido",
-    "excerpt": "Por que tirei o NATS JetStream do meu agente e coloquei o Aeron Media Driver rodando dentro do processo: a colisão de porta que mentia em silêncio, o que eu ganhei sem broker externo, e o replay que eu perdi de propósito.",
-    "date": "2026-07-23",
-    "readTime": "7 min",
-    "tags": [
-      "Arquitetura",
-      "Aeron",
-      "NATS",
-      "Clojure",
-      "Mensageria",
-      "Infraestrutura"
-    ]
-  },
-  {
     "id": "2026-07-08-dev-diary-ark-streams",
     "title": "Diário de Dev #13 — Segurança, Testes e Vereditos Quant com Claude Fable 5 no ark-streams",
     "excerpt": "Uma retrospectiva técnica de uma semana dedicada a hardening de API, cobertura massiva de testes, refatoração de workers e o uso inovador do Claude Fable 5 para pesquisa quantitativa e validação robusta de estratégias no ark-streams.",

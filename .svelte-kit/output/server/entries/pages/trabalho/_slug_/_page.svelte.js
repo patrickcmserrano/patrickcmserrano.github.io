@@ -34,7 +34,7 @@ function _page($$payload, $$props) {
     $$payload.out += `<section><h2 class="text-2xl font-bold mb-6 tracking-tight border-l-4 border-indigo-500 pl-4">Diagramas</h2> <div class="space-y-6"><!--[-->`;
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
       let diagram = each_array_1[$$index_1];
-      $$payload.out += `<div><p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">${escape_html(diagram.title)}</p> <div class="overflow-x-auto rounded-xl">${html(diagram.svg)}</div></div>`;
+      $$payload.out += `<div><p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">${escape_html(getLoc(diagram.title, store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage)))}</p> <div class="overflow-x-auto rounded-xl">${html(getLoc(diagram.svg, store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage)))}</div></div>`;
     }
     $$payload.out += `<!--]--></div></section>`;
   } else {
