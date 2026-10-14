@@ -1,4 +1,4 @@
-import { e as escape_html, J as store_get, N as unsubscribe_stores, p as pop, a as push, G as ensure_array_like, I as head } from "../../../chunks/index.js";
+import { e as escape_html, K as store_get, N as unsubscribe_stores, p as pop, b as push, I as ensure_array_like, J as head } from "../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { _ } from "../../../chunks/simple-i18n.js";
 import { h as html } from "../../../chunks/html.js";

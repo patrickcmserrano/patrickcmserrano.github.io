@@ -1,4 +1,4 @@
-import { G as ensure_array_like, I as head, e as escape_html, J as store_get, O as attr_class, K as attr, M as stringify, N as unsubscribe_stores, p as pop, a as push } from "../../../chunks/index.js";
+import { I as ensure_array_like, J as head, e as escape_html, K as store_get, O as attr_class, a as attr, M as stringify, N as unsubscribe_stores, p as pop, b as push } from "../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { _, c as currentLanguage } from "../../../chunks/simple-i18n.js";
 function _page($$payload, $$props) {

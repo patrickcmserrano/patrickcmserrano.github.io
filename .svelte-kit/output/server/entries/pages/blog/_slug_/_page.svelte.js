@@ -1,4 +1,4 @@
-import { G as ensure_array_like, I as head, e as escape_html, p as pop, a as push, K as attr } from "../../../../chunks/index.js";
+import { I as ensure_array_like, J as head, e as escape_html, p as pop, b as push, a as attr } from "../../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
 import { h as html } from "../../../../chunks/html.js";
 function _page($$payload, $$props) {
