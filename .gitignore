@@ -49,3 +49,5 @@ fix-playwright-*.sh
 fix-playwright-*.cjs
 fix-playwright-*.js
 run-*-playwright.sh
+
+.qwen/

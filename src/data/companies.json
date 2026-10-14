@@ -356,19 +356,19 @@
           "es": "Motor de Pagamentos"
         },
         "subtitle": {
-          "pt": "Refatoração Polylith e Processamento Distribuído com Onyx",
-          "en": "Polylith Refactoring and Distributed Processing with Onyx",
-          "es": "Refactorización Polylith y Procesamiento Distribuido con Onyx"
+          "pt": "Modularização, Expurgo do Legado e Processamento Distribuído com Onyx",
+          "en": "Modularisation, Legacy Purge, and Distributed Processing with Onyx",
+          "es": "Modularización, Purga del Legado y Procesamiento Distribuido con Onyx"
         },
         "excerpt": {
-          "pt": "O núcleo de pagamentos da Moleque: liderei sua refatoração para a arquitetura Polylith e implementei Onyx para tarefas assíncronas, como a geração diária de relatórios.",
-          "en": "Moleque's payments core: I led its refactoring to the Polylith architecture and implemented Onyx for asynchronous tasks such as daily report generation.",
-          "es": "El núcleo de pagos de Moleque: lideré su refactorización hacia la arquitectura Polylith e implementé Onyx para tareas asíncronas, como la generación diaria de informes."
+          "pt": "O núcleo de pagamentos da Moleque: conduzi o expurgo do legado e a migração dos namespaces para src/main, projetei uma POC Polylith e desenvolvi a integração Onyx + Datomic para tarefas assíncronas.",
+          "en": "Moleque's payments core: I led the legacy purge and the namespace migration to src/main, designed a Polylith POC, and developed the Onyx + Datomic integration for asynchronous tasks.",
+          "es": "El núcleo de pagos de Moleque: lideré la purga del legado y la migración de namespaces a src/main, proyecté una POC Polylith y desarrollé la integración Onyx + Datomic para tareas asíncronas."
         },
         "excerptShort": {
-          "pt": "O núcleo de pagamentos da Moleque: liderei sua refatoração para a arquitetura Polylith e implementei Onyx para tarefas assíncronas, como a geração diária de relatórios..",
-          "en": "Moleque's payments core: I led its refactoring to the Polylith architecture and implemented Onyx for asynchronous tasks such as daily report generation..",
-          "es": "El núcleo de pagos de Moleque: lideré su refactorización hacia la arquitectura Polylith e implementé Onyx para tareas asíncronas, como la generación diaria de informes.."
+          "pt": "O núcleo de pagamentos da Moleque: expurgo do legado, migração de namespaces, POC Polylith e integração Onyx + Datomic.",
+          "en": "Moleque's payments core: legacy purge, namespace migration, a Polylith POC, and the Onyx + Datomic integration.",
+          "es": "El núcleo de pagos de Moleque: purga del legado, migración de namespaces, POC Polylith e integración Onyx + Datomic."
         },
         "url": "https://patrickcmserrano.github.io/trabalho/moleque-motor-pagamentos/"
       },
