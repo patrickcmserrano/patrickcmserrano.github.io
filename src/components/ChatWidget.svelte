@@ -21,7 +21,7 @@
 
   const defaultGreeting: Message = {
     role: 'bot',
-    text: 'Olá! Sou a **Ara**, secretária executiva e concierge de engenharia do Patrick.\n\nPosso te contar sobre as experiências dele em **Clojure**, sistemas distribuídos de alta frequência (**Ark Streams**, **TechSentry**), plataformas privadas de IA (**AI Factory**) ou ajudar a agendar uma conversa. Como posso te ajudar?',
+    text: 'Olá! Sou a **Rohana**, concierge e cartógrafa de sistemas do Patrick.\n\nPosso te contar sobre as experiências dele em **Clojure**, sistemas distribuídos de alta frequência (**Ark Streams**, **TechSentry**), plataformas privadas de IA (**AI Factory**) ou ajudar a agendar uma conversa. Como posso te orientar hoje?',
     grounded: true
   };
 
@@ -159,14 +159,14 @@
   {#if !isOpen}
     <div class="mb-2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 text-white dark:bg-white/90 dark:text-slate-900 text-xs font-semibold shadow-lg backdrop-blur border border-slate-700/50 dark:border-slate-200/50 animate-bounce">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-      Converse com a Ara (IA)
+      Converse com a Rohana (IA)
     </div>
   {/if}
 
   <button
     type="button"
     class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-indigo-500/30"
-    aria-label={isOpen ? 'Fechar chat' : 'Abrir chat com a assistente do Patrick'}
+    aria-label={isOpen ? 'Fechar chat' : 'Abrir chat com a Rohana'}
     onclick={toggleChat}
   >
     {#if isOpen}
@@ -197,7 +197,7 @@
         </div>
         <div>
           <h3 class="font-bold text-sm leading-tight flex items-center gap-1.5">
-            Ara
+            Rohana
             <span class="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Online</span>
           </h3>
           <p class="text-[11px] text-slate-300">Concierge do Patrick Campelo Serrano</p>
@@ -223,7 +223,7 @@
       {#each messages as msg}
         <div class="flex flex-col {msg.role === 'user' ? 'items-end' : 'items-start'}">
           <span class="text-[10px] text-slate-400 mb-1 px-1 font-medium">
-            {msg.role === 'user' ? 'Você' : 'Ara'}
+            {msg.role === 'user' ? 'Você' : 'Rohana'}
           </span>
           <div
             class="max-w-[85%] rounded-2xl px-4 py-2.5 {msg.role === 'user'
@@ -251,7 +251,7 @@
 
       {#if isLoading}
         <div class="flex flex-col items-start">
-          <span class="text-[10px] text-slate-400 mb-1 px-1 font-medium">Ara</span>
+          <span class="text-[10px] text-slate-400 mb-1 px-1 font-medium">Rohana</span>
           <div class="bg-slate-100 dark:bg-slate-800 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
             <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse [animation-delay:0.2s]"></span>
