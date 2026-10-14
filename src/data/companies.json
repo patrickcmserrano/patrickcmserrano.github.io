@@ -217,6 +217,30 @@
           "es": "Plataforma privada de IA: chat con los documentos de la empresa, en su propia infraestructura."
         },
         "url": "https://patrickcmserrano.github.io/trabalho/ai-factory/"
+      },
+      {
+        "id": "small-router",
+        "title": {
+          "pt": "small-router",
+          "en": "small-router",
+          "es": "small-router"
+        },
+        "subtitle": {
+          "pt": "Camada de Inferência Provider-Agnostic para Agentes de Código",
+          "en": "Provider-Agnostic Inference Layer for Coding Agents",
+          "es": "Capa de Inferencia Provider-Agnostic para Agentes de Código"
+        },
+        "excerpt": {
+          "pt": "Um único endpoint compatível com OpenAI à frente de múltiplos provedores de LLM, com roteamento, fallback, retry e circuit breaking. O roteamento, a resiliência e a fronteira de segurança ficam em um ponto só, em vez de espalhados pelos clientes.",
+          "en": "One OpenAI-compatible endpoint in front of multiple LLM providers, with routing, fallback, retry, and circuit breaking. Routing, resilience, and the security boundary live in a single place instead of scattered across clients.",
+          "es": "Un único endpoint compatible con OpenAI frente a múltiples proveedores de LLM, con enrutamiento, fallback, retry y circuit breaking. El enrutamiento, la resiliencia y la frontera de seguridad viven en un solo lugar en lugar de repartidos entre los clientes."
+        },
+        "excerptShort": {
+          "pt": "Endpoint único à frente de múltiplos provedores, com roteamento, fallback e circuit breaking.",
+          "en": "Single endpoint in front of multiple providers, with routing, fallback, and circuit breaking.",
+          "es": "Endpoint único frente a múltiples proveedores, con enrutamiento, fallback y circuit breaking."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/small-router/"
       }
     ]
   }
