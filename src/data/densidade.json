@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-10-14",
+  "metric": "commits",
+  "author": "Patrick Serrano",
+  "source": "gh api --paginate (github, filtro por e-mail) / git log no clone (neotek)",
+  "authorEmails": [
+    "patrickcmserrano@gmail.com",
+    "patrick@nexusquant.com",
+    "patrick@molequedeideias.net",
+    "30307805+patrickcmserrano@users.noreply.github.com"
+  ],
+  "note": "Commits authored por Patrick Serrano sob qualquer das suas identidades. Exclui bots (ex.: github-actions[bot], 106 commits no AnilistExplorer). Exclui aniimo-crash-fix (de terceiro) e video-filters (sem commits). Os 6 repos da familia Ark (ark-engine, ark-streams, ark-terminal, ark-protocol, ark-indicators, bitget-go) ficam ativos por pertencerem a familia, embora ark-streams/ark-terminal/ark-* tenham ultimo commit em 2026-07.",
+  "repos": [
+    {
+      "name": "dev-machine",
+      "commits": 394,
+      "forge": "neotek",
+      "first": "2026-07-08",
+      "last": "2026-10-13",
+      "status": "active"
+    },
+    {
+      "name": "ark-streams",
+      "commits": 351,
+      "forge": "github",
+      "first": "2026-02-18",
+      "last": "2026-07-26",
+      "status": "active"
+    },
+    {
+      "name": "pinha",
+      "commits": 312,
+      "forge": "neotek",
+      "first": "2026-08-14",
+      "last": "2026-10-13",
+      "status": "active"
+    },
+    {
+      "name": "TechSentry",
+      "commits": 273,
+      "forge": "github",
+      "first": "2026-04-22",
+      "last": "2026-10-14",
+      "status": "active"
+    },
+    {
+      "name": "Rohana",
+      "commits": 103,
+      "forge": "github",
+      "first": "2026-06-16",
+      "last": "2026-10-14",
+      "status": "active"
+    },
+    {
+      "name": "ark-terminal",
+      "commits": 101,
+      "forge": "github",
+      "first": "2026-04-17",
+      "last": "2026-07-11",
+      "status": "active"
+    },
+    {
+      "name": "small-router",
+      "commits": 101,
+      "forge": "neotek",
+      "first": "2026-08-09",
+      "last": "2026-09-22",
+      "status": "recent"
+    },
+    {
+      "name": "BitcoinTracker",
+      "commits": 86,
+      "forge": "github",
+      "first": "2025-05-07",
+      "last": "2025-12-19",
+      "status": "dormant"
+    },
+    {
+      "name": "nexus-quantitative.github.io",
+      "commits": 63,
+      "forge": "github",
+      "first": "2026-01-03",
+      "last": "2026-09-26",
+      "status": "recent"
+    },
+    {
+      "name": "patrickcmserrano.github.io",
+      "commits": 58,
+      "forge": "github",
+      "first": "2025-05-05",
+      "last": "2026-10-14",
+      "status": "active"
+    },
+    {
+      "name": "portfolio-blog",
+      "commits": 44,
+      "forge": "github",
+      "first": "2025-03-08",
+      "last": "2026-06-14",
+      "status": "dormant"
+    },
+    {
+      "name": "weboasis",
+      "commits": 40,
+      "forge": "github",
+      "first": "2025-05-02",
+      "last": "2025-05-03",
+      "status": "dormant"
+    },
+    {
+      "name": "ark-engine",
+      "commits": 32,
+      "forge": "github",
+      "first": "2025-11-22",
+      "last": "2026-10-13",
+      "status": "active"
+    },
+    {
+      "name": "resume",
+      "commits": 32,
+      "forge": "github",
+      "first": "2026-03-14",
+      "last": "2026-10-08",
+      "status": "active"
+    },
+    {
+      "name": "MoneyFlow",
+      "commits": 27,
+      "forge": "github",
+      "first": "2025-05-16",
+      "last": "2025-05-20",
+      "status": "dormant"
+    },
+    {
+      "name": "zenoh",
+      "commits": 26,
+      "forge": "github",
+      "first": "2026-04-09",
+      "last": "2026-04-09",
+      "status": "dormant"
+    },
+    {
+      "name": "context-graph-engine",
+      "commits": 24,
+      "forge": "neotek",
+      "first": "2026-08-12",
+      "last": "2026-09-11",
+      "status": "recent"
+    },
+    {
+      "name": "notify-system",
+      "commits": 23,
+      "forge": "github",
+      "first": "2025-08-01",
+      "last": "2025-08-01",
+      "status": "dormant"
+    },
+    {
+      "name": "AnilistExplorer",
+      "commits": 22,
+      "forge": "github",
+      "first": "2025-11-16",
+      "last": "2025-12-15",
+      "status": "dormant"
+    },
+    {
+      "name": "blackhole",
+      "commits": 22,
+      "forge": "github",
+      "first": "2026-01-25",
+      "last": "2026-08-31",
+      "status": "recent"
+    },
+    {
+      "name": "ark-protocol",
+      "commits": 19,
+      "forge": "github",
+      "first": "2026-02-18",
+      "last": "2026-07-09",
+      "status": "active"
+    },
+    {
+      "name": "svelte-ts-skeleton-starter",
+      "commits": 19,
+      "forge": "github",
+      "first": "2025-05-02",
+      "last": "2025-05-24",
+      "status": "dormant"
+    },
+    {
+      "name": "eda",
+      "commits": 17,
+      "forge": "github",
+      "first": "2025-12-17",
+      "last": "2025-12-18",
+      "status": "dormant"
+    },
+    {
+      "name": "LinkFlowTemplate",
+      "commits": 16,
+      "forge": "github",
+      "first": "2025-05-06",
+      "last": "2025-05-09",
+      "status": "dormant"
+    },
+    {
+      "name": "ai-senpai",
+      "commits": 15,
+      "forge": "github",
+      "first": "2025-02-16",
+      "last": "2025-02-17",
+      "status": "dormant"
+    },
+    {
+      "name": "breathing-app",
+      "commits": 12,
+      "forge": "github",
+      "first": "2025-04-30",
+      "last": "2025-05-01",
+      "status": "dormant"
+    },
+    {
+      "name": "go-gateway",
+      "commits": 12,
+      "forge": "github",
+      "first": "2023-10-17",
+      "last": "2025-02-18",
+      "status": "dormant"
+    },
+    {
+      "name": "qwen-settings",
+      "commits": 8,
+      "forge": "neotek",
+      "first": "2026-09-04",
+      "last": "2026-09-29",
+      "status": "recent"
+    },
+    {
+      "name": "bitget-go",
+      "commits": 7,
+      "forge": "github",
+      "first": "2026-03-20",
+      "last": "2026-07-09",
+      "status": "active"
+    },
+    {
+      "name": "hbo-max-skipper",
+      "commits": 6,
+      "forge": "github",
+      "first": "2026-06-07",
+      "last": "2026-06-07",
+      "status": "dormant"
+    },
+    {
+      "name": "YogaControl",
+      "commits": 5,
+      "forge": "github",
+      "first": "2026-04-16",
+      "last": "2026-04-16",
+      "status": "dormant"
+    },
+    {
+      "name": "ark-indicators",
+      "commits": 5,
+      "forge": "github",
+      "first": "2026-04-17",
+      "last": "2026-07-09",
+      "status": "active"
+    },
+    {
+      "name": "arkite",
+      "commits": 4,
+      "forge": "github",
+      "first": "2025-12-04",
+      "last": "2025-12-15",
+      "status": "dormant"
+    },
+    {
+      "name": "clj-dialects",
+      "commits": 3,
+      "forge": "github",
+      "first": "2026-06-09",
+      "last": "2026-06-09",
+      "status": "dormant"
+    },
+    {
+      "name": "FocusTrack",
+      "commits": 2,
+      "forge": "github",
+      "first": "2025-05-24",
+      "last": "2025-05-24",
+      "status": "dormant"
+    },
+    {
+      "name": "SystemMonitor",
+      "commits": 2,
+      "forge": "github",
+      "first": "2025-05-20",
+      "last": "2025-05-20",
+      "status": "dormant"
+    },
+    {
+      "name": "pinheirinho",
+      "commits": 2,
+      "forge": "github",
+      "first": "2025-12-15",
+      "last": "2026-02-10",
+      "status": "dormant"
+    },
+    {
+      "name": "descomplica",
+      "commits": 1,
+      "forge": "github",
+      "first": "2024-08-18",
+      "last": "2024-08-18",
+      "status": "dormant"
+    },
+    {
+      "name": "issue-harvester",
+      "commits": 1,
+      "forge": "github",
+      "first": "2026-03-11",
+      "last": "2026-03-11",
+      "status": "dormant"
+    },
+    {
+      "name": "n8n",
+      "commits": 1,
+      "forge": "github",
+      "first": "2025-07-01",
+      "last": "2025-07-01",
+      "status": "dormant"
+    },
+    {
+      "name": "political-evidence",
+      "commits": 1,
+      "forge": "neotek",
+      "first": "2026-09-27",
+      "last": "2026-09-27",
+      "status": "recent"
+    },
+    {
+      "name": "reconciler",
+      "commits": 1,
+      "forge": "github",
+      "first": "2026-03-26",
+      "last": "2026-03-26",
+      "status": "dormant"
+    },
+    {
+      "name": "trading-diary",
+      "commits": 1,
+      "forge": "github",
+      "first": "2025-03-29",
+      "last": "2025-03-29",
+      "status": "dormant"
+    }
+  ]
+}

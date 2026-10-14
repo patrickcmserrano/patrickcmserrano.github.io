@@ -1,6 +1,7 @@
 <script lang="ts">
   import ThemeToggle from '../components/ThemeToggle.svelte';
   import LanguageSelector from '../components/LanguageSelector.svelte';
+  import DensidadeRepos from '../components/DensidadeRepos.svelte';
   import { _, currentLanguage } from '../lib/simple-i18n';
   
   // Props no Svelte 5 para receber dados do servidor
@@ -83,6 +84,15 @@
         <img src="/images/profile.jpg" alt="Patrick Campelo Serrano" class="hidden dark:block w-full h-full object-cover" />
         <img src="/images/profile_light.jpg" alt="Patrick Campelo Serrano" class="block dark:hidden w-full h-full object-cover" />
       </div>
+    </div>
+  </section>
+
+  <!-- Densidade por Repositório -->
+  <section class="border-t border-slate-200 dark:border-slate-800 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.density.title')}</h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-10">{$_('home.density.subtitle')}</p>
+      <DensidadeRepos />
     </div>
   </section>
 
