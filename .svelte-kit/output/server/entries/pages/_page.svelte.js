@@ -12,7 +12,7 @@ const densidade = {
 function DensidadeRepos($$payload, $$props) {
   push();
   let { barHeight = 18, showLast = true } = $$props;
-  let showDormant = true;
+  let showDormant = false;
   const gap = 6;
   const padding = { top: 8, right: 12, bottom: 8, left: 8 };
   const max = Math.max(...densidade.repos.map((r) => r.commits));
@@ -24,9 +24,9 @@ function DensidadeRepos($$payload, $$props) {
   const trackX = padding.left + labelWidth;
   const trackWidth = width - trackX - valueWidth - padding.right;
   const sorted = [...densidade.repos].sort((a, b) => Number(a.status === "dormant") - Number(b.status === "dormant") || b.commits - a.commits);
-  const visible = sorted;
+  const visible = sorted.filter((r) => r.status !== "dormant");
   const height = padding.top + visible.length * (barHeight + gap) - gap + padding.bottom;
-  densidade.repos.filter((r) => r.status === "dormant").length;
+  const dormantCount = densidade.repos.filter((r) => r.status === "dormant").length;
   const rows = visible.map((repo, i) => ({
     ...repo,
     y: padding.top + i * (barHeight + gap),
@@ -44,7 +44,7 @@ function DensidadeRepos($$payload, $$props) {
   };
   const formatDate = (iso) => iso.slice(8, 10) + "/" + iso.slice(5, 7) + "/" + iso.slice(0, 4);
   const each_array = ensure_array_like(rows);
-  $$payload.out += `<figure class="densidade svelte-1v4n9e0"><div class="toolbar svelte-1v4n9e0"><button type="button" class="toggle svelte-1v4n9e0"${attr("aria-pressed", showDormant)}>${escape_html("Ocultar inativos")}</button></div> <svg${attr("viewBox", `0 0 ${width} ${height}`)} role="img"${attr("aria-label", `Commits por repositório, de ${max} a 1`)} preserveAspectRatio="xMidYMid meet" class="svelte-1v4n9e0"><!--[-->`;
+  $$payload.out += `<figure class="densidade svelte-1v4n9e0"><div class="toolbar svelte-1v4n9e0"><button type="button" class="toggle svelte-1v4n9e0"${attr("aria-pressed", showDormant)}>${escape_html(`Mostrar inativos (${dormantCount})`)}</button></div> <svg${attr("viewBox", `0 0 ${width} ${height}`)} role="img"${attr("aria-label", `Commits por repositório, de ${max} a 1`)} preserveAspectRatio="xMidYMid meet" class="svelte-1v4n9e0"><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let row = each_array[$$index];
     $$payload.out += `<g><text${attr("x", trackX - 10)}${attr("y", row.y + barHeight / 2)} text-anchor="end" dominant-baseline="central" class="label svelte-1v4n9e0">${escape_html(row.name)}</text><rect${attr("x", trackX)}${attr("y", row.y)}${attr("width", trackWidth)}${attr("height", barHeight)} rx="3" class="track svelte-1v4n9e0"></rect><rect${attr("x", trackX)}${attr("y", row.y)}${attr("width", Math.max(row.ratio * trackWidth, row.commits > 0 ? 2 : 0))}${attr("height", barHeight)} rx="3"${attr("fill", statusColor[row.status])}><title>${escape_html(row.name)}: ${escape_html(row.commits)} commits (${escape_html(statusLabel[row.status])})</title></rect><text${attr("x", width - padding.right)}${attr("y", row.y + barHeight / 2)} text-anchor="end" dominant-baseline="central" class="value svelte-1v4n9e0">${escape_html(row.commits)}</text>`;
