@@ -80,6 +80,7 @@ declare module '$env/static/private' {
 	export const INVOCATION_ID: string;
 	export const PAGER: string;
 	export const QWEN_CODE_MESSAGING_SOCKET: string;
+	export const XDG_SEAT_PATH: string;
 	export const SMALL_ROUTER_KEY_WORKSTATION: string;
 	export const PATH: string;
 	export const KDE_SESSION_UID: string;
@@ -102,6 +103,7 @@ declare module '$env/static/private' {
 	export const MEMORY_PRESSURE_WRITE: string;
 	export const QWEN_CODE_CLI: string;
 	export const VSSCRIPT_PATH: string;
+	export const QWEN_BYPASS_REDACT: string;
 	export const npm_config_node_gyp: string;
 	export const SHELL: string;
 	export const __MISE_DIFF: string;
@@ -113,6 +115,9 @@ declare module '$env/static/private' {
 	export const npm_command: string;
 	export const SESSION_MANAGER: string;
 	export const KGLOBALACCELD_PLATFORM: string;
+	export const SDL_GAMECONTROLLERCONFIG: string;
+	export const npm_execpath: string;
+	export const QWEN_CODE_MANAGED_NPM_ROOT: string;
 	export const XDG_SESSION_PATH: string;
 	export const npm_config_init_module: string;
 	export const QWEN_CODE_SESSION_ID: string;
@@ -125,9 +130,6 @@ declare module '$env/static/private' {
 	export const QT_WAYLAND_RECONNECT: string;
 	export const __MISE_EXE: string;
 	export const PROFILEHOME: string;
-	export const SDL_GAMECONTROLLERCONFIG: string;
-	export const npm_execpath: string;
-	export const QWEN_CODE_MANAGED_NPM_ROOT: string;
 	export const MAIL: string;
 	export const LC_MONETARY: string;
 	export const OLDPWD: string;
@@ -162,7 +164,6 @@ declare module '$env/static/private' {
 	export const MEMORY_PRESSURE_WATCH: string;
 	export const npm_config_userconfig: string;
 	export const KONSOLE_DBUS_SESSION: string;
-	export const XDG_SEAT_PATH: string;
 }
 
 /**
@@ -291,6 +292,7 @@ declare module '$env/dynamic/private' {
 		INVOCATION_ID: string;
 		PAGER: string;
 		QWEN_CODE_MESSAGING_SOCKET: string;
+		XDG_SEAT_PATH: string;
 		SMALL_ROUTER_KEY_WORKSTATION: string;
 		PATH: string;
 		KDE_SESSION_UID: string;
@@ -313,6 +315,7 @@ declare module '$env/dynamic/private' {
 		MEMORY_PRESSURE_WRITE: string;
 		QWEN_CODE_CLI: string;
 		VSSCRIPT_PATH: string;
+		QWEN_BYPASS_REDACT: string;
 		npm_config_node_gyp: string;
 		SHELL: string;
 		__MISE_DIFF: string;
@@ -324,6 +327,9 @@ declare module '$env/dynamic/private' {
 		npm_command: string;
 		SESSION_MANAGER: string;
 		KGLOBALACCELD_PLATFORM: string;
+		SDL_GAMECONTROLLERCONFIG: string;
+		npm_execpath: string;
+		QWEN_CODE_MANAGED_NPM_ROOT: string;
 		XDG_SESSION_PATH: string;
 		npm_config_init_module: string;
 		QWEN_CODE_SESSION_ID: string;
@@ -336,9 +342,6 @@ declare module '$env/dynamic/private' {
 		QT_WAYLAND_RECONNECT: string;
 		__MISE_EXE: string;
 		PROFILEHOME: string;
-		SDL_GAMECONTROLLERCONFIG: string;
-		npm_execpath: string;
-		QWEN_CODE_MANAGED_NPM_ROOT: string;
 		MAIL: string;
 		LC_MONETARY: string;
 		OLDPWD: string;
@@ -373,7 +376,6 @@ declare module '$env/dynamic/private' {
 		MEMORY_PRESSURE_WATCH: string;
 		npm_config_userconfig: string;
 		KONSOLE_DBUS_SESSION: string;
-		XDG_SEAT_PATH: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
