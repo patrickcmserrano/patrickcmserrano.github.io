@@ -33,13 +33,24 @@
       localStorage.setItem('rohana_sid', sessionId);
     }
 
-    // 2. Carrega backend URL se existir
+    // 2. Carrega backend URL se existir (local ou fallback raw do repo)
     try {
+      let resolved = false;
       const res = await fetch('/backend-url.txt', { cache: 'no-store' });
       if (res.ok) {
         const url = (await res.text()).trim();
         if (url.startsWith('http')) {
           backendUrl = url;
+          resolved = true;
+        }
+      }
+      if (!resolved) {
+        const remoteRes = await fetch('https://raw.githubusercontent.com/patrickcmserrano/Rohana/main/docs/backend-url.txt', { cache: 'no-store' });
+        if (remoteRes.ok) {
+          const remoteUrl = (await remoteRes.text()).trim();
+          if (remoteUrl.startsWith('http')) {
+            backendUrl = remoteUrl;
+          }
         }
       }
     } catch {
