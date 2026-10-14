@@ -1,7 +1,7 @@
 <script lang="ts">
   import '../styles/global.css';
   import { initSimpleI18n } from '../lib/simple-i18n';
-  import { onMount } from 'svelte';
+  import ChatWidget from '../components/ChatWidget.svelte';
 
   // Inicializar o i18n simplificado
   initSimpleI18n();
@@ -11,3 +11,4 @@
 </script>
 
 {@render children()}
+<ChatWidget />
