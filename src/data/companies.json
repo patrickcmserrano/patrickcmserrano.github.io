@@ -243,5 +243,183 @@
         "url": "https://patrickcmserrano.github.io/trabalho/small-router/"
       }
     ]
+  },
+  {
+    "id": "moleque",
+    "name": "Moleque de Ideias",
+    "subtitle": {
+      "pt": "Software house — experiência profissional 2018-2025",
+      "en": "Software house — professional experience 2018-2025",
+      "es": "Software house — experiencia profesional 2018-2025"
+    },
+    "role": {
+      "pt": "Desenvolvedor de Software (Fullstack)",
+      "en": "Software Developer (Fullstack)",
+      "es": "Desarrollador de Software (Fullstack)"
+    },
+    "status": {
+      "pt": "2018 - 2025",
+      "en": "2018 - 2025",
+      "es": "2018 - 2025"
+    },
+    "excerpt": {
+      "pt": "Sete anos construindo sistemas de pagamento, e-commerce, imobiliários e de gestão de catálogos — do estágio em frontend à liderança técnica de arquitetura. Atuei como estágio (2018-2019), júnior (2019-2021) e pleno (2021-2025), com foco em refatoração, integração de APIs, arquitetura de software e automatização de processos.",
+      "en": "Seven years building payment, e-commerce, real estate, and catalog-management systems — from a frontend internship to technical leadership in architecture. I worked as an intern (2018-2019), junior (2019-2021), and mid-level (2021-2025), focused on refactoring, API integration, software architecture, and process automation.",
+      "es": "Siete años construyendo sistemas de pago, comercio electrónico, inmobiliarios y de gestión de catálogos — desde la pasantía en frontend hasta el liderazgo técnico de arquitectura. Trabajé como pasante (2018-2019), junior (2019-2021) y semi-senior (2021-2025), con foco en refactorización, integración de APIs, arquitectura de software y automatización de procesos."
+    },
+    "stack": [
+      "Clojure",
+      "ClojureScript",
+      "Fulcro",
+      "Datomic",
+      "Polylith",
+      "React"
+    ],
+    "projects": [
+      {
+        "id": "moleque-gateway-pagamentos",
+        "title": {
+          "pt": "Gateway de Pagamentos",
+          "en": "Gateway de Pagamentos",
+          "es": "Gateway de Pagamentos"
+        },
+        "subtitle": {
+          "pt": "Aplicação Web para Transações Seguras",
+          "en": "Web Application for Secure Transactions",
+          "es": "Aplicación Web para Transacciones Seguras"
+        },
+        "excerpt": {
+          "pt": "Aplicação web para um gateway de pagamentos, construída em ClojureScript e Fulcro. Participei da construção e da integração com as APIs, com foco na comunicação entre frontend e backend para transações seguras.",
+          "en": "A web application for a payment gateway, built in ClojureScript and Fulcro. I took part in building it and integrating its APIs, focused on frontend-backend communication for secure transactions.",
+          "es": "Una aplicación web para una pasarela de pagos, construida en ClojureScript y Fulcro. Participé en su construcción y en la integración con las APIs, con foco en la comunicación frontend-backend para transacciones seguras."
+        },
+        "excerptShort": {
+          "pt": "Aplicação web para um gateway de pagamentos, construída em ClojureScript e Fulcro.",
+          "en": "A web application for a payment gateway, built in ClojureScript and Fulcro.",
+          "es": "Una aplicación web para una pasarela de pagos, construida en ClojureScript y Fulcro."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-gateway-pagamentos/"
+      },
+      {
+        "id": "moleque-fexo",
+        "title": {
+          "pt": "fexô",
+          "en": "fexô",
+          "es": "fexô"
+        },
+        "subtitle": {
+          "pt": "Plataforma Imobiliária Web e Mobile",
+          "en": "Web and Mobile Real Estate Platform",
+          "es": "Plataforma Inmobiliaria Web y Móvil"
+        },
+        "excerpt": {
+          "pt": "Plataforma web e mobile para anúncio, negociação, compra e venda de imóveis, conectando clientes a corretores. Atuei da fase inicial de planejamento até o desenvolvimento da aplicação mobile, em ClojureScript, Fulcro e React Native.",
+          "en": "A web and mobile platform for advertising, negotiating, buying, and selling properties, connecting clients to brokers. I worked from the initial planning phase through to the mobile application, in ClojureScript, Fulcro, and React Native.",
+          "es": "Una plataforma web y móvil para anunciar, negociar, comprar y vender inmuebles, conectando clientes con corredores. Trabajé desde la fase inicial de planificación hasta el desarrollo de la aplicación móvil, en ClojureScript, Fulcro y React Native."
+        },
+        "excerptShort": {
+          "pt": "Plataforma web e mobile para anúncio, negociação, compra e venda de imóveis, conectando clientes a corretores.",
+          "en": "A web and mobile platform for advertising, negotiating, buying, and selling properties, connecting clients to brokers.",
+          "es": "Una plataforma web y móvil para anunciar, negociar, comprar y vender inmuebles, conectando clientes con corredores."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-fexo/"
+      },
+      {
+        "id": "moleque-zougue-mpms",
+        "title": {
+          "pt": "Zougue MPMS",
+          "en": "Zougue MPMS",
+          "es": "Zougue MPMS"
+        },
+        "subtitle": {
+          "pt": "Gestão de Catálogos e Deduplicação de Itens",
+          "en": "Catalog Management and Item Deduplication",
+          "es": "Gestión de Catálogos y Deduplicación de Ítems"
+        },
+        "excerpt": {
+          "pt": "Interfaces para gestão de catálogos e deduplicação de itens, em Clojure e React.",
+          "en": "Interfaces for catalog management and item deduplication, in Clojure and React.",
+          "es": "Interfaces para la gestión de catálogos y deduplicación de ítems, en Clojure y React."
+        },
+        "excerptShort": {
+          "pt": "Interfaces para gestão de catálogos e deduplicação de itens, em Clojure e React..",
+          "en": "Interfaces for catalog management and item deduplication, in Clojure and React..",
+          "es": "Interfaces para la gestión de catálogos y deduplicación de ítems, en Clojure y React.."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-zougue-mpms/"
+      },
+      {
+        "id": "moleque-motor-pagamentos",
+        "title": {
+          "pt": "Motor de Pagamentos",
+          "en": "Motor de Pagamentos",
+          "es": "Motor de Pagamentos"
+        },
+        "subtitle": {
+          "pt": "Refatoração Polylith e Processamento Distribuído com Onyx",
+          "en": "Polylith Refactoring and Distributed Processing with Onyx",
+          "es": "Refactorización Polylith y Procesamiento Distribuido con Onyx"
+        },
+        "excerpt": {
+          "pt": "O núcleo de pagamentos da Moleque: liderei sua refatoração para a arquitetura Polylith e implementei Onyx para tarefas assíncronas, como a geração diária de relatórios.",
+          "en": "Moleque's payments core: I led its refactoring to the Polylith architecture and implemented Onyx for asynchronous tasks such as daily report generation.",
+          "es": "El núcleo de pagos de Moleque: lideré su refactorización hacia la arquitectura Polylith e implementé Onyx para tareas asíncronas, como la generación diaria de informes."
+        },
+        "excerptShort": {
+          "pt": "O núcleo de pagamentos da Moleque: liderei sua refatoração para a arquitetura Polylith e implementei Onyx para tarefas assíncronas, como a geração diária de relatórios..",
+          "en": "Moleque's payments core: I led its refactoring to the Polylith architecture and implemented Onyx for asynchronous tasks such as daily report generation..",
+          "es": "El núcleo de pagos de Moleque: lideré su refactorización hacia la arquitectura Polylith e implementé Onyx para tareas asíncronas, como la generación diaria de informes.."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-motor-pagamentos/"
+      },
+      {
+        "id": "moleque-modulo-inteligencia",
+        "title": {
+          "pt": "Módulo de Inteligência",
+          "en": "Módulo de Inteligência",
+          "es": "Módulo de Inteligência"
+        },
+        "subtitle": {
+          "pt": "Auto-Pipelines de Dados sobre Datomic",
+          "en": "Data Auto-Pipelines on Datomic",
+          "es": "Auto-Pipelines de Datos sobre Datomic"
+        },
+        "excerpt": {
+          "pt": "Auto-pipelines para integração com serviços de pagamento e antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico — coletando, processando e armazenando dados no Datomic.",
+          "en": "Auto-pipelines for integrating with payment and anti-fraud services — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico — collecting, processing, and storing data in Datomic.",
+          "es": "Auto-pipelines para la integración con servicios de pago y antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX y Unico — recolectando, procesando y almacenando datos en Datomic."
+        },
+        "excerptShort": {
+          "pt": "Auto-pipelines para integração com serviços de pagamento e antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico — coletando, processando e armazenando dados no Datomic..",
+          "en": "Auto-pipelines for integrating with payment and anti-fraud services — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico — collecting, processing, and storing data in Datomic..",
+          "es": "Auto-pipelines para la integración con servicios de pago y antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX y Unico — recolectando, procesando y almacenando datos en Datomic.."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-modulo-inteligencia/"
+      },
+      {
+        "id": "moleque-integracoes-pagamento",
+        "title": {
+          "pt": "Integrações de Pagamento",
+          "en": "Integrações de Pagamento",
+          "es": "Integrações de Pagamento"
+        },
+        "subtitle": {
+          "pt": "Adaptadores de Pix e Cartão de Crédito",
+          "en": "Pix and Credit-Card Adapters",
+          "es": "Adaptadores de Pix y Tarjeta de Crédito"
+        },
+        "excerpt": {
+          "pt": "Desenvolvimento e homologação de adaptadores para Pix e cartão de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede e outros — incluindo geração de QR Code para Pix.",
+          "en": "Development and certification of Pix and credit-card adapters, integrating Adyen, Cielo, Clearsale, VTEX, Rede, and others — including QR Code generation for Pix.",
+          "es": "Desarrollo y homologación de adaptadores para Pix y tarjeta de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede y otros — incluyendo la generación de códigos QR para Pix."
+        },
+        "excerptShort": {
+          "pt": "Desenvolvimento e homologação de adaptadores para Pix e cartão de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede e outros — incluindo geração de QR Code para Pix..",
+          "en": "Development and certification of Pix and credit-card adapters, integrating Adyen, Cielo, Clearsale, VTEX, Rede, and others — including QR Code generation for Pix..",
+          "es": "Desarrollo y homologación de adaptadores para Pix y tarjeta de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede y otros — incluyendo la generación de códigos QR para Pix.."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/moleque-integracoes-pagamento/"
+      }
+    ]
   }
 ]

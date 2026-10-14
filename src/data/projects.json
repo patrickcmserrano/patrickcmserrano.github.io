@@ -424,5 +424,265 @@
       "en": "Graph-based architecture (Pathom 3) integrated with an immutable database (Datahike) featuring time-travel capabilities. Ingestion runs via scrapers (HTTP/Etaoin) orchestrated by GitHub Actions and VPS servers, producing encrypted reports (Vault Mode) and sending alerts via Telegram.",
       "es": "Arquitectura basada en grafos (Pathom 3) integrada con una base de datos inmutable (Datahike) con capacidades de viaje en el tiempo. La ingesta se realiza mediante scrapers (HTTP/Etaoin) orquestados por GitHub Actions y VPS, generando informes cifrados (Vault Mode) y alertas vía Telegram."
     }
+  },
+  {
+    "id": "moleque-gateway-pagamentos",
+    "title": {
+      "pt": "Gateway de Pagamentos",
+      "en": "Gateway de Pagamentos",
+      "es": "Gateway de Pagamentos"
+    },
+    "subtitle": {
+      "pt": "Aplicação Web para Transações Seguras",
+      "en": "Web Application for Secure Transactions",
+      "es": "Aplicación Web para Transacciones Seguras"
+    },
+    "excerpt": {
+      "pt": "Aplicação web para um gateway de pagamentos, construída em ClojureScript e Fulcro. Participei da construção e da integração com as APIs, com foco na comunicação entre frontend e backend para transações seguras.",
+      "en": "A web application for a payment gateway, built in ClojureScript and Fulcro. I took part in building it and integrating its APIs, focused on frontend-backend communication for secure transactions.",
+      "es": "Una aplicación web para una pasarela de pagos, construida en ClojureScript y Fulcro. Participé en su construcción y en la integración con las APIs, con foco en la comunicación frontend-backend para transacciones seguras."
+    },
+    "role": {
+      "pt": "Desenvolvedor Frontend",
+      "en": "Frontend Developer",
+      "es": "Desarrollador Frontend"
+    },
+    "status": {
+      "pt": "Legado (2018-2021)",
+      "en": "Legacy (2018-2021)",
+      "es": "Legado (2018-2021)"
+    },
+    "stack": [
+      "ClojureScript",
+      "Fulcro",
+      "APIs REST"
+    ],
+    "details": {
+      "pt": "Foi o meu primeiro contato profissional com o ecossistema Clojure no frontend. Trabalhei no desenvolvimento de interfaces iniciais e na integração com as APIs do gateway, proporcionando uma solução funcional para transações seguras. Minha participação incluiu suporte na configuração de rotas e testes básicos, garantindo a comunicação eficiente entre frontend e backend.",
+      "en": "It was my first professional contact with the Clojure ecosystem on the frontend. I worked on the initial interfaces and on integrating the gateway's APIs, delivering a functional solution for secure transactions. My part included supporting route configuration and basic tests, ensuring efficient frontend-backend communication.",
+      "es": "Fue mi primer contacto profesional con el ecosistema Clojure en el frontend. Trabajé en las interfaces iniciales y en la integración con las APIs de la pasarela, aportando una solución funcional para transacciones seguras. Mi participación incluyó soporte en la configuración de rutas y pruebas básicas, garantizando una comunicación eficiente entre frontend y backend."
+    },
+    "architecture": {
+      "pt": "Stack em ClojureScript com **Fulcro** no frontend, consumindo as APIs do gateway. O foco estava na camada de apresentação e na integração — o roteamento e a comunicação com o backend, com testes básicos de apoio.",
+      "en": "A ClojureScript stack with **Fulcro** on the frontend, consuming the gateway's APIs. The focus was on the presentation layer and integration — routing and backend communication, with basic supporting tests.",
+      "es": "Stack en ClojureScript con **Fulcro** en el frontend, consumiendo las APIs de la pasarela. El foco estaba en la capa de presentación y en la integración — el enrutamiento y la comunicación con el backend, con pruebas básicas de apoyo."
+    }
+  },
+  {
+    "id": "moleque-fexo",
+    "title": {
+      "pt": "fexô",
+      "en": "fexô",
+      "es": "fexô"
+    },
+    "subtitle": {
+      "pt": "Plataforma Imobiliária Web e Mobile",
+      "en": "Web and Mobile Real Estate Platform",
+      "es": "Plataforma Inmobiliaria Web y Móvil"
+    },
+    "excerpt": {
+      "pt": "Plataforma web e mobile para anúncio, negociação, compra e venda de imóveis, conectando clientes a corretores. Atuei da fase inicial de planejamento até o desenvolvimento da aplicação mobile, em ClojureScript, Fulcro e React Native.",
+      "en": "A web and mobile platform for advertising, negotiating, buying, and selling properties, connecting clients to brokers. I worked from the initial planning phase through to the mobile application, in ClojureScript, Fulcro, and React Native.",
+      "es": "Una plataforma web y móvil para anunciar, negociar, comprar y vender inmuebles, conectando clientes con corredores. Trabajé desde la fase inicial de planificación hasta el desarrollo de la aplicación móvil, en ClojureScript, Fulcro y React Native."
+    },
+    "role": {
+      "pt": "Desenvolvedor Fullstack",
+      "en": "Fullstack Developer",
+      "es": "Desarrollador Fullstack"
+    },
+    "status": {
+      "pt": "Legado (2018-2021)",
+      "en": "Legacy (2018-2021)",
+      "es": "Legado (2018-2021)"
+    },
+    "stack": [
+      "ClojureScript",
+      "Fulcro",
+      "React Native",
+      "Pathom",
+      "Datomic"
+    ],
+    "details": {
+      "pt": "O fexô foi o projeto imobiliário da Moleque: uma plataforma que ligava quem quer comprar ou vender imóvel a corretores. Entrei ainda nas etapas de planejamento e participei do desenvolvimento das funcionalidades básicas de UI, com ClojureScript, React Native e ferramentas como Pathom e Datomic — e depois segui no desenvolvimento da aplicação mobile com Fulcro e React Native.",
+      "en": "fexô was Moleque's real-estate project: a platform connecting people who want to buy or sell property to brokers. I joined during the planning stages and took part in developing the basic UI features, with ClojureScript, React Native, and tools like Pathom and Datomic — and then continued on the mobile application with Fulcro and React Native.",
+      "es": "fexô fue el proyecto inmobiliario de Moleque: una plataforma que conectaba a quienes quieren comprar o vender un inmueble con corredores. Me sumé en las etapas de planificación y participé en el desarrollo de las funcionalidades básicas de UI, con ClojureScript, React Native y herramientas como Pathom y Datomic — y luego continué en la aplicación móvil con Fulcro y React Native."
+    },
+    "architecture": {
+      "pt": "Aplicação web e mobile em ClojureScript. O frontend usava **Fulcro** e **React Native**, com **Pathom** para o grafo de dados e **Datomic** como banco de dados na retaguarda. A plataforma cobria o ciclo do imóvel: anúncio, negociação, compra e venda.",
+      "en": "A web and mobile application in ClojureScript. The frontend used **Fulcro** and **React Native**, with **Pathom** for the data graph and **Datomic** as the backing database. The platform covered the property cycle: listing, negotiation, purchase, and sale.",
+      "es": "Una aplicación web y móvil en ClojureScript. El frontend usaba **Fulcro** y **React Native**, con **Pathom** para el grafo de datos y **Datomic** como base de datos en la retaguardia. La plataforma cubría el ciclo del inmueble: anuncio, negociación, compra y venta."
+    }
+  },
+  {
+    "id": "moleque-zougue-mpms",
+    "title": {
+      "pt": "Zougue MPMS",
+      "en": "Zougue MPMS",
+      "es": "Zougue MPMS"
+    },
+    "subtitle": {
+      "pt": "Gestão de Catálogos e Deduplicação de Itens",
+      "en": "Catalog Management and Item Deduplication",
+      "es": "Gestión de Catálogos y Deduplicación de Ítems"
+    },
+    "excerpt": {
+      "pt": "Interfaces para gestão de catálogos e deduplicação de itens, em Clojure e React.",
+      "en": "Interfaces for catalog management and item deduplication, in Clojure and React.",
+      "es": "Interfaces para la gestión de catálogos y deduplicación de ítems, en Clojure y React."
+    },
+    "role": {
+      "pt": "Desenvolvedor Fullstack",
+      "en": "Fullstack Developer",
+      "es": "Desarrollador Fullstack"
+    },
+    "status": {
+      "pt": "Legado (2018-2021)",
+      "en": "Legacy (2018-2021)",
+      "es": "Legado (2018-2021)"
+    },
+    "stack": [
+      "Clojure",
+      "React",
+      "Deduplicação"
+    ],
+    "details": {
+      "pt": "O Zougue MPMS foi um produto de gestão de catálogos. Desenvolvi as interfaces com Clojure e React, implementando a gestão de catálogos e um mecanismo de deduplicação de itens — o problema de um mesmo item aparecer repetido em fontes distintas.",
+      "en": "Zougue MPMS was a catalog-management product. I built the interfaces with Clojure and React, implementing catalog management and an item-deduplication mechanism — the problem of the same item showing up repeatedly across different sources.",
+      "es": "Zougue MPMS fue un producto de gestión de catálogos. Desarrollé las interfaces con Clojure y React, implementando la gestión de catálogos y un mecanismo de deduplicación de ítems — el problema de que un mismo ítem aparezca repetido en fuentes distintas."
+    },
+    "architecture": {
+      "pt": "Frontend em **Clojure** e **React**. A peça técnica central era a **deduplicação de itens**: reconhecer quando o mesmo item chegava por caminhos diferentes e consolidá-lo no catálogo.",
+      "en": "Frontend in **Clojure** and **React**. The central technical piece was **item deduplication**: recognising when the same item arrived through different paths and consolidating it in the catalog.",
+      "es": "Frontend en **Clojure** y **React**. La pieza técnica central era la **deduplicación de ítems**: reconocer cuándo el mismo ítem llegaba por caminos distintos y consolidarlo en el catálogo."
+    }
+  },
+  {
+    "id": "moleque-motor-pagamentos",
+    "title": {
+      "pt": "Motor de Pagamentos",
+      "en": "Motor de Pagamentos",
+      "es": "Motor de Pagamentos"
+    },
+    "subtitle": {
+      "pt": "Refatoração Polylith e Processamento Distribuído com Onyx",
+      "en": "Polylith Refactoring and Distributed Processing with Onyx",
+      "es": "Refactorización Polylith y Procesamiento Distribuido con Onyx"
+    },
+    "excerpt": {
+      "pt": "O núcleo de pagamentos da Moleque: liderei sua refatoração para a arquitetura Polylith e implementei Onyx para tarefas assíncronas, como a geração diária de relatórios.",
+      "en": "Moleque's payments core: I led its refactoring to the Polylith architecture and implemented Onyx for asynchronous tasks such as daily report generation.",
+      "es": "El núcleo de pagos de Moleque: lideré su refactorización hacia la arquitectura Polylith e implementé Onyx para tareas asíncronas, como la generación diaria de informes."
+    },
+    "role": {
+      "pt": "Liderança Técnica",
+      "en": "Technical Leadership",
+      "es": "Liderazgo Técnico"
+    },
+    "status": {
+      "pt": "Legado (2018-2025)",
+      "en": "Legacy (2018-2025)",
+      "es": "Legado (2018-2025)"
+    },
+    "stack": [
+      "Clojure",
+      "Polylith",
+      "Onyx"
+    ],
+    "details": {
+      "pt": "O Motor de Pagamentos é o núcleo de pagamentos da Moleque. Liderei a refatoração do Motor de Pagamentos e do **Formiguinhas Service** para a arquitetura **Polylith**, promovendo modularidade, reutilização, escalabilidade e testabilidade. Na sequência, implementei **Onyx** para gerenciar tarefas assíncronas — como a geração de relatórios: configurei workflows para processar comandos (ex.: \"gerar relatório\") em uma tarefa agendada diária, que gerava e enviava os relatórios por e-mail, garantindo escalabilidade e responsividade.",
+      "en": "The Payment Engine is Moleque's payments core. I led the refactoring of the Payment Engine and the **Formiguinhas Service** to the **Polylith** architecture, promoting modularity, reuse, scalability, and testability. Next, I implemented **Onyx** to manage asynchronous tasks — such as report generation: I configured workflows to process commands (e.g., \"generate report\") as a daily scheduled task that generated and emailed the reports, ensuring scalability and responsiveness.",
+      "es": "El Motor de Pagos es el núcleo de pagos de Moleque. Lideré la refactorización del Motor de Pagos y del **Formiguinhas Service** hacia la arquitectura **Polylith**, promoviendo modularidad, reutilización, escalabilidad y testabilidad. A continuación, implementé **Onyx** para gestionar tareas asíncronas — como la generación de informes: configuré flujos de trabajo para procesar comandos (ej.: \"generar informe\") en una tarea programada diaria que generaba y enviaba los informes por correo electrónico, garantizando escalabilidad y capacidad de respuesta."
+    },
+    "architecture": {
+      "pt": "A refatoração levou o núcleo para **Polylith** — componentes e bases isolados, com a lógica de negócio separada do I/O. Sobre essa base, **Onyx** entrou como o motor de processamento distribuído para as tarefas assíncronas: os workflows consumiam comandos e os executavam em uma tarefa agendada, publicando o resultado (o relatório) de volta por e-mail. É o mesmo vocabulário de sistemas distribuídos que aparece hoje nos meus próprios produtos.",
+      "en": "The refactoring moved the core to **Polylith** — isolated components and bases, with business logic separated from I/O. On that base, **Onyx** came in as the distributed-processing engine for asynchronous tasks: workflows consumed commands and ran them as a scheduled task, publishing the result (the report) back by email. It is the same distributed-systems vocabulary that shows up today in my own products.",
+      "es": "La refactorización llevó el núcleo a **Polylith** — componentes y bases aislados, con la lógica de negocio separada del I/O. Sobre esa base, **Onyx** entró como el motor de procesamiento distribuido para las tareas asíncronas: los flujos consumían comandos y los ejecutaban en una tarea programada, publicando el resultado (el informe) de vuelta por correo. Es el mismo vocabulario de sistemas distribuidos que aparece hoy en mis propios productos."
+    }
+  },
+  {
+    "id": "moleque-modulo-inteligencia",
+    "title": {
+      "pt": "Módulo de Inteligência",
+      "en": "Módulo de Inteligência",
+      "es": "Módulo de Inteligência"
+    },
+    "subtitle": {
+      "pt": "Auto-Pipelines de Dados sobre Datomic",
+      "en": "Data Auto-Pipelines on Datomic",
+      "es": "Auto-Pipelines de Datos sobre Datomic"
+    },
+    "excerpt": {
+      "pt": "Auto-pipelines para integração com serviços de pagamento e antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico — coletando, processando e armazenando dados no Datomic.",
+      "en": "Auto-pipelines for integrating with payment and anti-fraud services — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico — collecting, processing, and storing data in Datomic.",
+      "es": "Auto-pipelines para la integración con servicios de pago y antifraude — Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX y Unico — recolectando, procesando y almacenando datos en Datomic."
+    },
+    "role": {
+      "pt": "Desenvolvedor Fullstack",
+      "en": "Fullstack Developer",
+      "es": "Desarrollador Fullstack"
+    },
+    "status": {
+      "pt": "Legado (2018-2025)",
+      "en": "Legacy (2018-2025)",
+      "es": "Legado (2018-2025)"
+    },
+    "stack": [
+      "Clojure",
+      "Datomic",
+      "Pipelines de Dados"
+    ],
+    "details": {
+      "pt": "O Módulo de Inteligência foi a camada de dados da Moleque voltada a inteligência de pagamentos. Desenvolvi auto-pipelines para a integração com serviços como Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX e Unico, otimizando a coleta, o processamento e o armazenamento dos dados no banco **Datomic**. O objetivo era transformar chamadas dispersas a provedores em um fluxo de dados estruturado e consultável.",
+      "en": "The Intelligence Module was Moleque's data layer aimed at payments intelligence. I built auto-pipelines to integrate with services such as Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX, and Unico, optimising the collection, processing, and storage of data in the **Datomic** database. The goal was to turn scattered calls to providers into a structured, queryable data flow.",
+      "es": "El Módulo de Inteligencia fue la capa de datos de Moleque orientada a la inteligencia de pagos. Desarrollé auto-pipelines para la integración con servicios como Getnet, Pagar.me, Rede, ClearSale, MercadoPago, VTEX y Unico, optimizando la recolección, el procesamiento y el almacenamiento de los datos en la base **Datomic**. El objetivo era convertir llamadas dispersas a proveedores en un flujo de datos estructurado y consultable."
+    },
+    "architecture": {
+      "pt": "**Auto-pipelines** em Clojure, um por provedor, normalizando as respostas de cada serviço para um modelo de dados comum. O destino era o **Datomic**, escolhido pela natureza imutável e pelo histórico — cada transação fica registrada, o que permite consultar o estado dos dados em qualquer ponto do tempo. É a mesma ideia de imutabilidade e histórico que hoje aparece nos meus projetos com XTDB e Datahike.",
+      "en": "**Auto-pipelines** in Clojure, one per provider, normalising each service's responses into a common data model. The destination was **Datomic**, chosen for its immutable nature and history — every transaction is recorded, which allows querying the state of the data at any point in time. It is the same idea of immutability and history that shows up today in my projects with XTDB and Datahike.",
+      "es": "**Auto-pipelines** en Clojure, uno por proveedor, normalizando las respuestas de cada servicio hacia un modelo de datos común. El destino era **Datomic**, elegido por su naturaleza inmutable y su historial — cada transacción queda registrada, lo que permite consultar el estado de los datos en cualquier punto del tiempo. Es la misma idea de inmutabilidad e historial que hoy aparece en mis proyectos con XTDB y Datahike."
+    }
+  },
+  {
+    "id": "moleque-integracoes-pagamento",
+    "title": {
+      "pt": "Integrações de Pagamento",
+      "en": "Integrações de Pagamento",
+      "es": "Integrações de Pagamento"
+    },
+    "subtitle": {
+      "pt": "Adaptadores de Pix e Cartão de Crédito",
+      "en": "Pix and Credit-Card Adapters",
+      "es": "Adaptadores de Pix y Tarjeta de Crédito"
+    },
+    "excerpt": {
+      "pt": "Desenvolvimento e homologação de adaptadores para Pix e cartão de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede e outros — incluindo geração de QR Code para Pix.",
+      "en": "Development and certification of Pix and credit-card adapters, integrating Adyen, Cielo, Clearsale, VTEX, Rede, and others — including QR Code generation for Pix.",
+      "es": "Desarrollo y homologación de adaptadores para Pix y tarjeta de crédito, integrando Adyen, Cielo, Clearsale, VTEX, Rede y otros — incluyendo la generación de códigos QR para Pix."
+    },
+    "role": {
+      "pt": "Desenvolvedor Fullstack",
+      "en": "Fullstack Developer",
+      "es": "Desarrollador Fullstack"
+    },
+    "status": {
+      "pt": "Legado (2018-2025)",
+      "en": "Legacy (2018-2025)",
+      "es": "Legado (2018-2025)"
+    },
+    "stack": [
+      "Clojure",
+      "Pix",
+      "Integração de Pagamentos"
+    ],
+    "details": {
+      "pt": "Fui responsável por desenvolver e homologar os adaptadores de pagamento da Moleque: Pix e cartão de crédito, integrando com os serviços Adyen, Cielo, Clearsale, VTEX, Rede, dentre outros. O trabalho cobria o ciclo completo do adaptador — da implementação da API do provedor até a homologação —, incluindo a geração de QR Code para Pix.",
+      "en": "I was responsible for developing and certifying Moleque's payment adapters: Pix and credit card, integrating with the services Adyen, Cielo, Clearsale, VTEX, Rede, among others. The work covered the adapter's full cycle — from implementing the provider's API to certification — including QR Code generation for Pix.",
+      "es": "Fui responsable de desarrollar y homologar los adaptadores de pago de Moleque: Pix y tarjeta de crédito, integrando con los servicios Adyen, Cielo, Clearsale, VTEX, Rede, entre otros. El trabajo cubría el ciclo completo del adaptador — desde la implementación de la API del proveedor hasta la homologación —, incluyendo la generación de códigos QR para Pix."
+    },
+    "architecture": {
+      "pt": "Um adaptador por provedor, com uma interface comum por trás. Cada integração (Adyen, Cielo, Clearsale, VTEX, Rede...) tinha suas particularidades de API, e o adaptador era a camada que normalizava isso para o Motor de Pagamentos. A **homologação** contra o ambiente de cada provedor era parte do trabalho, não um passo separado — é o que garante que o pagamento funciona de ponta a ponta antes de ir para produção.",
+      "en": "One adapter per provider, behind a common interface. Each integration (Adyen, Cielo, Clearsale, VTEX, Rede...) had its own API particularities, and the adapter was the layer that normalised them for the Payment Engine. **Certification** against each provider's environment was part of the job, not a separate step — it is what ensures a payment works end to end before going to production.",
+      "es": "Un adaptador por proveedor, con una interfaz común por detrás. Cada integración (Adyen, Cielo, Clearsale, VTEX, Rede...) tenía sus particularidades de API, y el adaptador era la capa que las normalizaba para el Motor de Pagos. La **homologación** contra el entorno de cada proveedor era parte del trabajo, no un paso aparte — es lo que garantiza que el pago funcione de punta a punta antes de ir a producción."
+    }
   }
 ]
