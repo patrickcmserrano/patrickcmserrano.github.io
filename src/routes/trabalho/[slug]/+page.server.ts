@@ -16,7 +16,7 @@ interface ProjectData {
   url?: string;
   details: LocalizedString;
   architecture: LocalizedString;
-  diagrams?: { title: string; svg: string }[];
+  diagrams?: { title: LocalizedString; svg: LocalizedString }[];
 }
 
 // Gera as rotas estáticas na compilação (SSG)

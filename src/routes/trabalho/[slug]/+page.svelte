@@ -81,9 +81,9 @@
           <div class="space-y-6">
             {#each project.diagrams as diagram}
               <div>
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">{diagram.title}</p>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 font-mono uppercase tracking-widest mb-3">{getLoc(diagram.title, $currentLanguage)}</p>
                 <div class="overflow-x-auto rounded-xl">
-                  {@html diagram.svg}
+                  {@html getLoc(diagram.svg, $currentLanguage)}
                 </div>
               </div>
             {/each}
