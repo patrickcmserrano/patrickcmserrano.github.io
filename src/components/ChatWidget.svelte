@@ -163,6 +163,19 @@
       sendMessage();
     }
   }
+
+  function resetChat() {
+    sessionId = crypto.randomUUID();
+    try {
+      localStorage.setItem('rohana_sid', sessionId);
+      localStorage.removeItem('rohana_chat_history');
+    } catch {
+      // quota excedida ou private mode
+    }
+    messages = [defaultGreeting];
+    inputText = '';
+    isLoading = false;
+  }
 </script>
 
 <!-- Botão Flutuante (Trigger) -->
@@ -214,16 +227,29 @@
           <p class="text-[11px] text-slate-300">Concierge do Patrick Campelo Serrano</p>
         </div>
       </div>
-      <button
-        type="button"
-        class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
-        aria-label="Fechar"
-        onclick={toggleChat}
-      >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <div class="flex items-center gap-1">
+        <button
+          type="button"
+          class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
+          aria-label="Nova conversa"
+          title="Nova conversa"
+          onclick={resetChat}
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
+          aria-label="Fechar"
+          onclick={toggleChat}
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
     </header>
 
     <!-- Lista de Mensagens -->
