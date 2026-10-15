@@ -2,7 +2,7 @@
   "generatedAt": "2026-10-14",
   "metric": "commits",
   "author": "Patrick Serrano",
-  "source": "gh api --paginate (github, filtro por e-mail) / git log no clone (neotek)",
+  "source": "gh api --paginate (github, filtro por e-mail) / git log no clone (neotek, codecommit)",
   "authorEmails": [
     "patrickcmserrano@gmail.com",
     "patrick@nexusquant.com",
@@ -11,6 +11,14 @@
   ],
   "note": "Commits authored por Patrick Serrano sob qualquer das suas identidades. Exclui bots (ex.: github-actions[bot], 106 commits no AnilistExplorer). Exclui aniimo-crash-fix (de terceiro) e video-filters (sem commits). Os 6 repos da familia Ark (ark-engine, ark-streams, ark-terminal, ark-protocol, ark-indicators, bitget-go) ficam ativos por pertencerem a familia, embora ark-streams/ark-terminal/ark-* tenham ultimo commit em 2026-07.",
   "repos": [
+    {
+      "name": "motor-de-pagamentos",
+      "commits": 1426,
+      "forge": "codecommit",
+      "first": "2020-01-07",
+      "last": "2024-11-06",
+      "status": "dormant"
+    },
     {
       "name": "dev-machine",
       "commits": 394,

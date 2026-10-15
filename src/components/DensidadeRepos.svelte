@@ -16,7 +16,6 @@
 
   const gap = 6;
   const padding = { top: 8, right: 12, bottom: 8, left: 8 };
-  const max = Math.max(...densidade.repos.map((r: Repo) => r.commits));
 
   const labelFont = 12;
   const monospaceRatio = 0.62;
@@ -41,6 +40,10 @@
     showDormant ? sorted : sorted.filter((r: Repo) => r.status !== 'dormant')
   );
 
+  // Escala pelo maior repo ativo; o maior inativo é limitado à largura da trilha.
+  const top = $derived(visible[0]);
+  const max = $derived(top ? top.commits : 0);
+
   const height = $derived(
     padding.top +
       visible.length * (barHeight + gap) -
@@ -56,7 +59,7 @@
     visible.map((repo: Repo, i: number) => ({
       ...repo,
       y: padding.top + i * (barHeight + gap),
-      ratio: max > 0 ? repo.commits / max : 0
+      ratio: max > 0 ? Math.min(repo.commits / max, 1) : 0
     }))
   );
 
@@ -152,8 +155,8 @@
 
   <figcaption class="caption">
     Commits de <strong>{densidade.author}</strong> por repositório, entre
-    as duas forjas. Contagem absoluta; a barra é proporcional ao maior valor
-    ({densidade.repos[0].name}, {max}). Dados de {formatDate(densidade.generatedAt)}.
+    as três forjas. Contagem absoluta; a barra é proporcional ao maior valor
+    ({top?.name}, {max}). Dados de {formatDate(densidade.generatedAt)}.
   </figcaption>
 </figure>
 
