@@ -2,6 +2,7 @@
   import '../styles/global.css';
   import { initSimpleI18n } from '../lib/simple-i18n';
   import ChatWidget from '../components/ChatWidget.svelte';
+  import BlackHoleOverlay from '../components/BlackHoleOverlay.svelte';
 
   // Inicializar o i18n simplificado
   initSimpleI18n();
@@ -12,3 +13,4 @@
 
 {@render children()}
 <ChatWidget />
+<BlackHoleOverlay />

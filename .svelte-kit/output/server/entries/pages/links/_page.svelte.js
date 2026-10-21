@@ -1,4 +1,4 @@
-import { P as current_component, Q as sanitize_props, R as spread_props, S as fallback, a as attr, e as escape_html, T as bind_props, p as pop, b as push, U as attr_style, O as attr_class, M as stringify, I as ensure_array_like, J as head, K as store_get, N as unsubscribe_stores } from "../../../chunks/index.js";
+import { P as current_component, Q as sanitize_props, R as spread_props, S as fallback, a as attr, e as escape_html, T as bind_props, p as pop, b as push, U as attr_style, O as attr_class, N as stringify, K as ensure_array_like, M as head, s as store_get, u as unsubscribe_stores } from "../../../chunks/index.js";
 import { I as IconBase, a as Icon, L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { t, _ } from "../../../chunks/simple-i18n.js";
 function onDestroy(fn) {

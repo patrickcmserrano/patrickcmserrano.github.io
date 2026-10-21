@@ -1,5 +1,6 @@
-import { I as ensure_array_like, J as head, e as escape_html, p as pop, b as push, a as attr } from "../../../../chunks/index.js";
+import { K as ensure_array_like, M as head, e as escape_html, p as pop, b as push, a as attr } from "../../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
+import { B as BlackHoleToggle } from "../../../../chunks/BlackHoleToggle.js";
 import { h as html } from "../../../../chunks/html.js";
 function _page($$payload, $$props) {
   push();
@@ -11,7 +12,9 @@ function _page($$payload, $$props) {
     $$payload2.title = `<title>${escape_html(metadata.title)} — Patrick Campelo Serrano</title>`;
     $$payload2.out += `<meta name="description"${attr("content", metadata.excerpt)}>`;
   });
-  $$payload.out += `<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">Patrick Campelo Serrano</a> <div class="flex items-center gap-4">`;
+  $$payload.out += `<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">Patrick Campelo Serrano</a> <div class="flex items-center gap-3 md:gap-4">`;
+  BlackHoleToggle($$payload);
+  $$payload.out += `<!----> `;
   LanguageSelector($$payload);
   $$payload.out += `<!----> `;
   ThemeToggle($$payload);

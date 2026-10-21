@@ -46,11 +46,13 @@
     "@tailwindcss/vite": "^4.1.5",
     "@types/dompurify": "3.0.5",
     "@types/marked": "5.0.2",
+    "@types/three": "^0.186.0",
     "dompurify": "3.4.10",
     "marked": "18.0.3",
     "svelte-i18n": "^4.0.1",
     "svelte-icons": "^2.1.0",
     "svelte-motion": "^0.12.2",
-    "svelte-spa-router": "^4.0.1"
+    "svelte-spa-router": "^4.0.1",
+    "three": "^0.186.1"
   }
 }

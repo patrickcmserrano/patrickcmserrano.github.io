@@ -1,6 +1,7 @@
 <script lang="ts">
   import ThemeToggle from '../../../components/ThemeToggle.svelte';
   import LanguageSelector from '../../../components/LanguageSelector.svelte';
+  import BlackHoleToggle from '../../../components/BlackHoleToggle.svelte';
   
   // Props no Svelte 5 para data injetada do load
   let { data } = $props();
@@ -20,7 +21,8 @@
       <a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
         Patrick Campelo Serrano
       </a>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3 md:gap-4">
+        <BlackHoleToggle />
         <LanguageSelector />
         <ThemeToggle />
       </div>

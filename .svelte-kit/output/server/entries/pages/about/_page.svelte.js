@@ -1,5 +1,6 @@
-import { e as escape_html, K as store_get, N as unsubscribe_stores, p as pop, b as push, I as ensure_array_like, O as attr_class, M as stringify, a as attr, J as head } from "../../../chunks/index.js";
+import { e as escape_html, s as store_get, u as unsubscribe_stores, p as pop, b as push, K as ensure_array_like, O as attr_class, N as stringify, a as attr, M as head } from "../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
+import { B as BlackHoleToggle } from "../../../chunks/BlackHoleToggle.js";
 import { _ } from "../../../chunks/simple-i18n.js";
 import { h as html } from "../../../chunks/html.js";
 function AboutHero($$payload, $$props) {
@@ -205,7 +206,9 @@ function _page($$payload, $$props) {
     $$payload2.title = `<title>${escape_html(store_get($$store_subs ??= {}, "$_", _)("about.hero.title"))} — Patrick Campelo Serrano</title>`;
     $$payload2.out += `<meta name="description" content="Conheça a trajetória profissional de Patrick Campelo Serrano, engenheiro de software sênior com especialidade em Clojure, sistemas distribuídos e de pagamento.">`;
   });
-  $$payload.out += `<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Patrick Campelo Serrano</a> <div class="flex items-center gap-6"><a href="/" class="text-sm font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">${escape_html(store_get($$store_subs ??= {}, "$_", _)("nav.backToHome"))}</a> `;
+  $$payload.out += `<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Patrick Campelo Serrano</a> <div class="flex items-center gap-3 md:gap-6"><a href="/" class="text-sm font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">${escape_html(store_get($$store_subs ??= {}, "$_", _)("nav.backToHome"))}</a> `;
+  BlackHoleToggle($$payload);
+  $$payload.out += `<!----> `;
   LanguageSelector($$payload);
   $$payload.out += `<!----> `;
   ThemeToggle($$payload);

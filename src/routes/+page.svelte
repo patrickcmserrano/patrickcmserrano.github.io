@@ -1,6 +1,7 @@
 <script lang="ts">
   import ThemeToggle from '../components/ThemeToggle.svelte';
   import LanguageSelector from '../components/LanguageSelector.svelte';
+  import BlackHoleToggle from '../components/BlackHoleToggle.svelte';
   import DensidadeRepos from '../components/DensidadeRepos.svelte';
   import { _, currentLanguage } from '../lib/simple-i18n';
   
@@ -36,7 +37,8 @@
           <a href="/blog/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.blog')}</a>
           <a href="/links/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{$_('nav.links')}</a>
         </nav>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3 md:gap-4">
+          <BlackHoleToggle />
           <LanguageSelector />
           <ThemeToggle />
         </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import ThemeToggle from '../../components/ThemeToggle.svelte';
   import LanguageSelector from '../../components/LanguageSelector.svelte';
+  import BlackHoleToggle from '../../components/BlackHoleToggle.svelte';
   import { _ } from '../../lib/simple-i18n';
   import AboutHero from './components/AboutHero.svelte';
   import Products from './components/Products.svelte';
@@ -22,10 +23,11 @@
       <a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
         Patrick Campelo Serrano
       </a>
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3 md:gap-6">
         <a href="/" class="text-sm font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
           {$_('nav.backToHome')}
         </a>
+        <BlackHoleToggle />
         <LanguageSelector />
         <ThemeToggle />
       </div>
