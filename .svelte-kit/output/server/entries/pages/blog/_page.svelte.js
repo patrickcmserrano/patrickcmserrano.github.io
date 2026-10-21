@@ -1,4 +1,4 @@
-import { K as ensure_array_like, M as head, e as escape_html, s as store_get, a as attr, O as attr_class, N as stringify, u as unsubscribe_stores, p as pop, b as push } from "../../../chunks/index.js";
+import { d as ensure_array_like, P as head, e as escape_html, s as store_get, a as attr, f as attr_class, g as stringify, u as unsubscribe_stores, p as pop, b as push } from "../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { B as BlackHoleToggle } from "../../../chunks/BlackHoleToggle.js";
 import { _ } from "../../../chunks/simple-i18n.js";

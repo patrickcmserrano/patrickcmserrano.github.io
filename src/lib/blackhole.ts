@@ -13,3 +13,81 @@ export function closeBlackHole() {
 export function toggleBlackHole() {
   isBlackHoleOpen.update((v) => !v);
 }
+
+// --- Astrophysical presets and simulation configuration ---
+
+export interface BlackHolePreset {
+  id: string;
+  name: string;
+  subtitle: string;
+  /** Mass in solar masses */
+  massSolar: number;
+  /** Distance in light-years */
+  distanceLy: number;
+  /** Dimensionless spin a* in [0, 1) */
+  spin: number;
+  /** Observed shadow angular diameter in microarcseconds */
+  shadowMicroArcsec: number;
+  /** Reference observer inclination in degrees */
+  inclinationDeg: number;
+}
+
+export const SAGITTARIUS_A_PRESET: BlackHolePreset = {
+  id: 'sgr-a-star',
+  name: 'Sagittarius A*',
+  subtitle: 'Centro da Via Láctea',
+  massSolar: 4.154e6,
+  distanceLy: 26670,
+  spin: 0.9,
+  shadowMicroArcsec: 51.8,
+  inclinationDeg: 30
+};
+
+export type SpectralMode = 'visible' | 'eht';
+export type QualityPreset = 'auto' | 'performance' | 'balanced' | 'ultra';
+
+export interface BlackHoleSimConfig {
+  spectralMode: SpectralMode;
+  enableLensing: boolean;
+  enableDoppler: boolean;
+  autoRotate: boolean;
+  quality: QualityPreset;
+}
+
+export const DEFAULT_SIM_CONFIG: BlackHoleSimConfig = {
+  spectralMode: 'visible',
+  enableLensing: true,
+  enableDoppler: true,
+  autoRotate: true,
+  quality: 'auto'
+};
+
+export const blackHoleConfig = writable<BlackHoleSimConfig>({ ...DEFAULT_SIM_CONFIG });
+
+/** Live FPS reported by the renderer (0 when closed). */
+export const blackHoleFps = writable(0);
+
+/** Request a camera polar angle (degrees from the spin axis); `nonce` retriggers the same value. */
+export const blackHoleCameraRequest = writable<{ polarDeg: number; nonce: number } | null>(null);
+
+export function requestCameraPolar(polarDeg: number) {
+  blackHoleCameraRequest.set({ polarDeg, nonce: Date.now() });
+}
+
+/**
+ * ISCO radius in units of GM/c^2 for a prograde orbit (Bardeen, Press & Teukolsky 1972).
+ */
+export function iscoRadius(spin: number): number {
+  const a = Math.min(Math.max(spin, 0), 0.998);
+  const z1 = 1 + Math.cbrt(1 - a * a) * (Math.cbrt(1 + a) + Math.cbrt(1 - a));
+  const z2 = Math.sqrt(3 * a * a + z1 * z1);
+  return 3 + z2 - Math.sqrt((3 - z1) * (3 + z1 + 2 * z2));
+}
+
+/** Schwarzschild radius in km for a given mass in solar masses. */
+export function schwarzschildRadiusKm(massSolar: number): number {
+  return 2.953250077 * massSolar;
+}
+
+/** Approximate critical shadow radius for a non-rotating hole, in units of r_s (~2.598). */
+export const SHADOW_RADIUS_RS = (3 * Math.sqrt(3)) / 2;

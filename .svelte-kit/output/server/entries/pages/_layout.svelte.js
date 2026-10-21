@@ -1,8 +1,8 @@
 import "clsx";
-import { a as attr, p as pop, b as push, s as store_get, u as unsubscribe_stores } from "../../chunks/index.js";
+import { a as attr, p as pop, b as push, s as store_get, c as await_block, e as escape_html, d as ensure_array_like, f as attr_class, g as stringify, u as unsubscribe_stores } from "../../chunks/index.js";
 import { i as initSimpleI18n } from "../../chunks/simple-i18n.js";
 import "marked";
-import { i as isBlackHoleOpen } from "../../chunks/blackhole.js";
+import { S as SAGITTARIUS_A_PRESET, i as iscoRadius, a as isBlackHoleOpen, b as blackHoleFps, c as blackHoleConfig } from "../../chunks/blackhole2.js";
 function ChatWidget($$payload, $$props) {
   push();
   $$payload.out += `<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">`;
@@ -22,19 +22,63 @@ function ChatWidget($$payload, $$props) {
   $$payload.out += `<!--]-->`;
   pop();
 }
-function BlackHole($$payload, $$props) {
-  push();
-  $$payload.out += `<canvas class="block w-full h-full"></canvas>`;
-  pop();
-}
 function BlackHoleOverlay($$payload, $$props) {
   push();
   var $$store_subs;
+  let panelOpen = true;
+  const qualities = [
+    { id: "auto", label: "Auto" },
+    { id: "performance", label: "Perf." },
+    { id: "balanced", label: "Equil." },
+    { id: "ultra", label: "Ultra" }
+  ];
+  const cameras = [
+    { label: "EHT 30°", polar: 30 },
+    { label: "Gargantua", polar: 82 },
+    { label: "Polar", polar: 5 }
+  ];
+  let BlackHolePromise = null;
+  function loadBlackHole() {
+    BlackHolePromise ??= import("../../chunks/BlackHole.js");
+    return BlackHolePromise;
+  }
+  const chip = "px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-colors cursor-pointer";
+  const on = "bg-amber-500/20 border-amber-400/60 text-amber-200";
+  const off = "bg-white/5 border-white/15 text-slate-300 hover:bg-white/10";
   if (store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen)) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<div class="fixed inset-0 z-[100] w-screen h-screen bg-black overflow-hidden flex flex-col animate-fade-in svelte-etlq64" role="dialog" aria-label="Visualização do Black Hole" aria-modal="true"><div class="absolute inset-0 z-0 w-full h-full">`;
-    BlackHole($$payload);
-    $$payload.out += `<!----></div> <div class="relative z-10 w-full p-4 md:p-6 flex items-center justify-between pointer-events-none"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">BLACK HOLE</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom</span></div></div> <button type="button" class="pointer-events-auto group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div>`;
+    await_block(
+      $$payload,
+      loadBlackHole(),
+      () => {
+        $$payload.out += `<div class="w-full h-full flex items-center justify-center text-amber-300/80 font-mono text-xs">Carregando simulação relativística…</div>`;
+      },
+      (mod) => {
+        const BlackHole = mod.default;
+        $$payload.out += `<!---->`;
+        BlackHole($$payload, {});
+        $$payload.out += `<!---->`;
+      }
+    );
+    $$payload.out += `<!--]--></div> <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">${escape_html(SAGITTARIUS_A_PRESET.name.toUpperCase())} • ${escape_html(SAGITTARIUS_A_PRESET.subtitle)}</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom • ${escape_html(store_get($$store_subs ??= {}, "$blackHoleFps", blackHoleFps))} FPS</span></div></div> <div class="flex items-center gap-2 pointer-events-auto"><button type="button" class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"${attr("aria-expanded", panelOpen)} aria-label="Alternar painel de controles">${escape_html("Ocultar painel")}</button> <button type="button" class="group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div> `;
+    {
+      $$payload.out += "<!--[-->";
+      const each_array = ensure_array_like(cameras);
+      const each_array_1 = ensure_array_like(qualities);
+      $$payload.out += `<div class="absolute z-10 bottom-4 left-4 right-4 md:right-auto md:w-80 bg-black/65 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-white shadow-xl flex flex-col gap-3 max-h-[60vh] overflow-y-auto"><div><div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Ficha astrofísica</div> <dl class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[11px] font-mono text-slate-300"><dt class="text-slate-500">Massa</dt><dd>${escape_html((SAGITTARIUS_A_PRESET.massSolar / 1e6).toFixed(2))}×10⁶ M☉</dd> <dt class="text-slate-500">Distância</dt><dd>${escape_html(SAGITTARIUS_A_PRESET.distanceLy.toLocaleString("pt-BR"))} al</dd> <dt class="text-slate-500">Spin a*</dt><dd>≈ ${escape_html(SAGITTARIUS_A_PRESET.spin.toFixed(2))}</dd> <dt class="text-slate-500">ISCO</dt><dd>${escape_html(iscoRadius(SAGITTARIUS_A_PRESET.spin).toFixed(2))} GM/c²</dd> <dt class="text-slate-500">Sombra</dt><dd>${escape_html(SAGITTARIUS_A_PRESET.shadowMicroArcsec)} µas</dd></dl></div> <div><div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Espectro</div> <div class="flex gap-1.5 flex-wrap"><button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).spectralMode === "visible" ? on : off)}`, "svelte-etlq64")}>Visível</button> <button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).spectralMode === "eht" ? on : off)}`, "svelte-etlq64")}>EHT 230 GHz</button></div></div> <div><div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Física</div> <div class="flex gap-1.5 flex-wrap"><button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).enableLensing ? on : off)}`, "svelte-etlq64")}${attr("aria-pressed", store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).enableLensing)}>Lente gravitacional</button> <button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).enableDoppler ? on : off)}`, "svelte-etlq64")}${attr("aria-pressed", store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).enableDoppler)}>Doppler</button></div></div> <div><div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Câmera</div> <div class="flex gap-1.5 flex-wrap"><!--[-->`;
+      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+        let cam = each_array[$$index];
+        $$payload.out += `<button type="button"${attr_class(`${stringify(chip)} ${stringify(off)}`, "svelte-etlq64")}>${escape_html(cam.label)}</button>`;
+      }
+      $$payload.out += `<!--]--> <button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).autoRotate ? on : off)}`, "svelte-etlq64")}${attr("aria-pressed", store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).autoRotate)}>Auto-órbita</button></div></div> <div><div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Qualidade</div> <div class="flex gap-1.5 flex-wrap"><!--[-->`;
+      for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
+        let q = each_array_1[$$index_1];
+        $$payload.out += `<button type="button"${attr_class(`${stringify(chip)} ${stringify(store_get($$store_subs ??= {}, "$blackHoleConfig", blackHoleConfig).quality === q.id ? on : off)}`, "svelte-etlq64")}>${escape_html(q.label)}</button>`;
+      }
+      $$payload.out += `<!--]--></div></div></div>`;
+    }
+    $$payload.out += `<!--]--></div>`;
   } else {
     $$payload.out += "<!--[!-->";
   }

@@ -11,6 +11,9 @@ var get_prototype_of = Object.getPrototypeOf;
 var is_extensible = Object.isExtensible;
 const noop = () => {
 };
+function is_promise(value) {
+  return typeof value?.then === "function";
+}
 function run_all(arr) {
   for (var i = 0; i < arr.length; i++) {
     arr[i]();
@@ -82,6 +85,7 @@ function state_unsafe_mutation() {
 }
 let tracing_mode_flag = false;
 const HYDRATION_START = "[";
+const HYDRATION_START_ELSE = "[!";
 const HYDRATION_END = "]";
 const HYDRATION_ERROR = {};
 const UNINITIALIZED = Symbol();
@@ -1257,6 +1261,9 @@ function attr(name, value, is_boolean = false) {
 const whitespace = [..." 	\n\r\f \v\uFEFF"];
 function to_class(value, hash, directives) {
   var classname = value == null ? "" : "" + value;
+  if (hash) {
+    classname = classname ? classname + " " + hash : hash;
+  }
   if (directives) {
     for (var key in directives) {
       if (directives[key]) {
@@ -1430,6 +1437,7 @@ function get_parent_context(component_context2) {
   return null;
 }
 const BLOCK_OPEN = `<!--${HYDRATION_START}-->`;
+const BLOCK_OPEN_ELSE = `<!--${HYDRATION_START_ELSE}-->`;
 const BLOCK_CLOSE = `<!--${HYDRATION_END}-->`;
 class HeadPayload {
   /** @type {Set<{ hash: string; code: string }>} */
@@ -1560,6 +1568,18 @@ function bind_props(props_parent, props_now) {
     }
   }
 }
+function await_block(payload, promise, pending_fn, then_fn) {
+  if (is_promise(promise)) {
+    payload.out += BLOCK_OPEN;
+    promise.then(null, noop);
+    if (pending_fn !== null) {
+      pending_fn();
+    }
+  } else if (then_fn !== null) {
+    payload.out += BLOCK_OPEN_ELSE;
+    then_fn(promise);
+  }
+}
 function ensure_array_like(array_like_or_iterator) {
   if (array_like_or_iterator) {
     return array_like_or_iterator.length !== void 0 ? array_like_or_iterator : Array.from(array_like_or_iterator);
@@ -1567,55 +1587,56 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  component_context as A,
+  component_root as A,
   BROWSER as B,
-  pop$1 as C,
-  set as D,
-  get as E,
-  flushSync as F,
-  mutable_source as G,
+  create_text as C,
+  branch as D,
+  push$1 as E,
+  component_context as F,
+  pop$1 as G,
   HYDRATION_ERROR as H,
-  render as I,
-  setContext as J,
-  ensure_array_like as K,
+  set as I,
+  get as J,
+  flushSync as K,
   LEGACY_PROPS as L,
-  head as M,
-  stringify as N,
-  attr_class as O,
-  current_component as P,
-  sanitize_props as Q,
-  spread_props as R,
-  fallback as S,
-  bind_props as T,
-  attr_style as U,
-  slot as V,
-  safe_not_equal as W,
-  subscribe_to_store as X,
-  run_all as Y,
+  mutable_source as M,
+  render as N,
+  setContext as O,
+  head as P,
+  current_component as Q,
+  sanitize_props as R,
+  spread_props as S,
+  fallback as T,
+  bind_props as U,
+  attr_style as V,
+  slot as W,
+  safe_not_equal as X,
+  subscribe_to_store as Y,
+  run_all as Z,
   attr as a,
   push as b,
-  get_next_sibling as c,
-  define_property as d,
+  await_block as c,
+  ensure_array_like as d,
   escape_html as e,
-  set_active_reaction as f,
-  getContext as g,
-  set_active_effect as h,
-  is_array as i,
-  active_effect as j,
-  active_reaction as k,
-  init_operations as l,
-  get_first_child as m,
+  attr_class as f,
+  stringify as g,
+  getContext as h,
+  get_next_sibling as i,
+  define_property as j,
+  set_active_reaction as k,
+  set_active_effect as l,
+  is_array as m,
   noop as n,
-  HYDRATION_START as o,
+  active_effect as o,
   pop as p,
-  HYDRATION_END as q,
-  hydration_failed as r,
+  active_reaction as q,
+  init_operations as r,
   store_get as s,
-  clear_text_content as t,
+  get_first_child as t,
   unsubscribe_stores as u,
-  array_from as v,
-  component_root as w,
-  create_text as x,
-  branch as y,
-  push$1 as z
+  HYDRATION_START as v,
+  HYDRATION_END as w,
+  hydration_failed as x,
+  clear_text_content as y,
+  array_from as z
 };

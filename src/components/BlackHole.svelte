@@ -2,342 +2,272 @@
   import { onMount } from "svelte";
   import * as THREE from "three";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-  import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-  import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-  import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+  import {
+    blackHoleConfig,
+    blackHoleFps,
+    blackHoleCameraRequest,
+    SAGITTARIUS_A_PRESET,
+    iscoRadius,
+    type BlackHoleSimConfig
+  } from "../lib/blackhole";
+  import {
+    vertexShader,
+    fragmentShader,
+    generateNoiseData,
+    MAX_STEPS
+  } from "../lib/blackholeShader";
 
-  let { stage = 0 } = $props<{ stage?: number }>();
   let canvas: HTMLCanvasElement;
 
   onMount(() => {
-    // --- Scene Setup ---
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
-
-    const camera = new THREE.PerspectiveCamera(
-      60,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.set(0, 3, 12);
+    const preset = SAGITTARIUS_A_PRESET;
+    // ISCO in GM/c^2 -> r_s units (r_s = 2 GM/c^2)
+    const rIsco = iscoRadius(preset.spin) / 2;
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: false,
+      alpha: false,
       powerPreference: "high-performance",
-      alpha: true
+      depth: false,
+      stencil: false
     });
-    renderer.setSize(window.innerWidth, window.innerHeight, false);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ReinhardToneMapping;
 
-    // Ensure canvas is interactive
+    const camera = new THREE.PerspectiveCamera(
+      50,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    const startPolar = THREE.MathUtils.degToRad(preset.inclinationDeg + 30);
+    camera.position.setFromSpherical(new THREE.Spherical(32, startPolar, 0.6));
+
     canvas.style.touchAction = "none";
     canvas.style.pointerEvents = "auto";
     canvas.style.cursor = "grab";
 
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.minDistance = 5;
-    controls.maxDistance = 50;
+    controls.dampingFactor = 0.06;
+    controls.minDistance = 3.5;
+    controls.maxDistance = 70;
+    controls.minPolarAngle = 0.05;
+    controls.maxPolarAngle = Math.PI - 0.05;
     controls.enablePan = false;
-    controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
 
-    // Feedback for grab
-    const onMouseDown = () => {
-      canvas.style.cursor = "grabbing";
-    };
-    const onMouseUp = () => {
-      canvas.style.cursor = "grab";
-    };
-
+    const onMouseDown = () => (canvas.style.cursor = "grabbing");
+    const onMouseUp = () => (canvas.style.cursor = "grab");
     canvas.addEventListener("mousedown", onMouseDown);
-    canvas.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("mouseup", onMouseUp);
 
-    // --- Post Processing (Bloom) ---
-    const renderScene = new RenderPass(scene, camera);
-
-    const bloomPass = new UnrealBloomPass(
-      new THREE.Vector2(window.innerWidth, window.innerHeight),
-      0.8, // Strength
-      0.4, // Radius
-      0.7  // Threshold
+    // Precomputed tileable noise LUT (replaces per-step 3D simplex noise)
+    const noiseTexture = new THREE.DataTexture(
+      generateNoiseData(256),
+      256,
+      256,
+      THREE.RGBAFormat
     );
+    noiseTexture.wrapS = noiseTexture.wrapT = THREE.RepeatWrapping;
+    noiseTexture.magFilter = noiseTexture.minFilter = THREE.LinearFilter;
+    noiseTexture.generateMipmaps = false;
+    noiseTexture.needsUpdate = true;
 
-    const composer = new EffectComposer(renderer);
-    composer.addPass(renderScene);
-    composer.addPass(bloomPass);
-
-    // --- Starfield ---
-    const starGeometry = new THREE.BufferGeometry();
-    const starCount = 3000;
-    const posArray = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 150;
-    }
-    starGeometry.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
-    const starMaterial = new THREE.PointsMaterial({
-      size: 0.15,
-      color: 0xffffff
-    });
-    const stars = new THREE.Points(starGeometry, starMaterial);
-    scene.add(stars);
-
-    // --- Black Hole Components ---
-
-    // 1. Event Horizon (The Black Sphere) - OPAQUE CORE
-    const blackHoleGeo = new THREE.SphereGeometry(2, 64, 64);
-    const blackHoleMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
-    const blackHole = new THREE.Mesh(blackHoleGeo, blackHoleMat);
-    scene.add(blackHole);
-
-    // 2. Photon Ring
-    const photonGeo = new THREE.SphereGeometry(2.1, 64, 64);
-    const photonMat = new THREE.ShaderMaterial({
-      uniforms: {
-        uTime: { value: 0 }
-      },
-      vertexShader: `
-        varying vec3 vNormal;
-        varying vec3 vViewPosition;
-        void main() {
-          vNormal = normalize(normalMatrix * normal);
-          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-          vViewPosition = -mvPosition.xyz;
-          gl_Position = projectionMatrix * mvPosition;
-        }
-      `,
-      fragmentShader: `
-        uniform float uTime;
-        varying vec3 vNormal;
-        varying vec3 vViewPosition;
-        void main() {
-          vec3 normal = normalize(vNormal);
-          vec3 viewDir = normalize(vViewPosition);
-          float fresnel = pow(1.0 - dot(normal, viewDir), 3.0); 
-          fresnel = smoothstep(0.3, 0.8, fresnel);
-          float pulse = 0.8 + 0.2 * sin(uTime * 2.0);
-          gl_FragColor = vec4(1.0, 0.8, 0.4, fresnel * pulse);
-        }
-      `,
-      transparent: true,
-      side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-    const photonRing = new THREE.Mesh(photonGeo, photonMat);
-    scene.add(photonRing);
-
-    // 2.5 Secondary Glow for 3D depth
-    const glowGeo = new THREE.SphereGeometry(2.3, 64, 64);
-    const glowMat = new THREE.ShaderMaterial({
-      uniforms: {},
-      vertexShader: `
-        varying vec3 vNormal;
-        void main() {
-          vNormal = normalize(normalMatrix * normal);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        varying vec3 vNormal;
-        void main() {
-          float edge = pow(1.0 - abs(vNormal.z), 1.2);
-          gl_FragColor = vec4(1.0, 0.5, 0.2, edge * 0.3);
-        }
-      `,
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-    const outerGlow = new THREE.Mesh(glowGeo, glowMat);
-    scene.add(outerGlow);
-
-    // 3. Accretion Disk (Shader Based)
-    const diskGeo = new THREE.PlaneGeometry(14, 14, 1, 1);
-
-    const vertexShader = `
-      varying vec2 vUv;
-      void main() {
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `;
-
-    const fragmentShader = `
-      uniform float uTime;
-      varying vec2 vUv;
-
-      vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-      vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-      vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
-      vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-
-      float snoise(vec3 v) {
-        const vec2 C = vec2(1.0/6.0, 1.0/3.0);
-        const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
-
-        vec3 i = floor(v + dot(v, C.yyy));
-        vec3 x0 = v - i + dot(i, C.xxx);
-
-        vec3 g = step(x0.yzx, x0.xyz);
-        vec3 l = 1.0 - g;
-        vec3 i1 = min(g.xyz, l.zxy);
-        vec3 i2 = max(g.xyz, l.zxy);
-
-        vec3 x1 = x0 - i1 + C.xxx;
-        vec3 x2 = x0 - i2 + C.yyy;
-        vec3 x3 = x0 - D.yyy;
-
-        i = mod289(i); 
-        vec4 p = permute(permute(permute( 
-                  i.z + vec4(0.0, i1.z, i2.z, 1.0))
-                + i.y + vec4(0.0, i1.y, i2.y, 1.0)) 
-                + i.x + vec4(0.0, i1.x, i2.x, 1.0));
-
-        float n_ = 0.142857142857;
-        vec3 ns = n_ * D.wyz - D.xzx;
-
-        vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
-
-        vec4 x_ = floor(j * ns.z);
-        vec4 y_ = floor(j - 7.0 * x_);
-
-        vec4 x = x_ * ns.x + ns.yyyy;
-        vec4 y = y_ * ns.x + ns.yyyy;
-        vec4 h = 1.0 - abs(x) - abs(y);
-
-        vec4 b0 = vec4(x.xy, y.xy);
-        vec4 b1 = vec4(x.zw, y.zw);
-
-        vec4 s0 = floor(b0) * 2.0 + 1.0;
-        vec4 s1 = floor(b1) * 2.0 + 1.0;
-        vec4 sh = -step(h, vec4(0.0));
-
-        vec4 a0 = b0.xzyw + s0.xzyw * sh.xxyy;
-        vec4 a1 = b1.xzyw + s1.xzyw * sh.zzww;
-
-        vec3 p0 = vec3(a0.xy, h.x);
-        vec3 p1 = vec3(a0.zw, h.y);
-        vec3 p2 = vec3(a1.xy, h.z);
-        vec3 p3 = vec3(a1.zw, h.w);
-
-        vec4 norm = taylorInvSqrt(vec4(dot(p0, p0), dot(p1, p1), dot(p2, p2), dot(p3, p3)));
-        p0 *= norm.x;
-        p1 *= norm.y;
-        p2 *= norm.z;
-        p3 *= norm.w;
-
-        vec4 m = max(0.6 - vec4(dot(x0, x0), dot(x1, x1), dot(x2, x2), dot(x3, x3)), 0.0);
-        m = m * m;
-        return 42.0 * dot(m * m, vec4(dot(p0, x0), dot(p1, x1), dot(p2, x2), dot(p3, x3)));
-      }
-
-      void main() {
-        vec2 uv = vUv - 0.5;
-        float r = length(uv); 
-        
-        if (r < 0.28) discard; 
-        
-        float outerGlow = 1.0 - smoothstep(0.4, 0.5, r);
-        float innerGlow = smoothstep(0.28, 0.30, r);
-        
-        float alpha = outerGlow * innerGlow;
-        if (alpha < 0.01) discard;
-
-        float angle = atan(uv.y, uv.x);
-        float spiralAngle = angle + r * 8.0 + uTime * 0.4;
-
-        float n = snoise(vec3(cos(spiralAngle) * 3.0, sin(spiralAngle) * 3.0, uTime * 0.5 - r * 3.0));
-        n += 0.5 * snoise(vec3(cos(spiralAngle) * 10.0, sin(spiralAngle) * 10.0, uTime * 1.0));
-        
-        float intensity = 0.5 + 0.5 * n;
-        
-        vec3 colorHot = vec3(2.5, 1.8, 0.8);
-        vec3 colorCool = vec3(1.0, 0.25, 0.05); 
-        
-        float heat = smoothstep(0.5, 0.29, r); 
-        heat = clamp(heat + n * 0.3, 0.0, 1.0);
-        
-        vec3 finalColor = mix(colorCool, colorHot, heat * intensity);
-        finalColor *= 1.2 + intensity * 1.5;
-
-        gl_FragColor = vec4(finalColor, alpha);
-      }
-    `;
-
-    const diskMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        uTime: { value: 0 }
-      },
+    const material = new THREE.ShaderMaterial({
       vertexShader,
       fragmentShader,
-      side: THREE.DoubleSide,
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
+      depthTest: false,
+      depthWrite: false,
+      uniforms: {
+        uRes: { value: new THREE.Vector2(1, 1) },
+        uCamPos: { value: new THREE.Vector3() },
+        uCamWorld: { value: new THREE.Matrix4() },
+        uTanHalfFov: { value: Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) },
+        uTime: { value: 0 },
+        uSpin: { value: preset.spin },
+        uRin: { value: rIsco },
+        uROut: { value: 12 },
+        uMaxSteps: { value: 160 },
+        uLensing: { value: 1 },
+        uDoppler: { value: 1 },
+        uMode: { value: 0 },
+        uNoise: { value: noiseTexture },
+        uSky: { value: null },
+        uSkyGain: { value: 5.0 },
+        uSkyReady: { value: 0 }
+      }
     });
 
-    const disk = new THREE.Mesh(diskGeo, diskMaterial);
-    disk.rotation.x = -Math.PI / 2 + 0.2;
-    scene.add(disk);
+    // Real galactic sky panorama (lazy: fetched only when the view opens)
+    let skyTexture: THREE.Texture | null = null;
+    let disposed = false;
+    new THREE.TextureLoader().load("/images/galactic-sky-4k.webp", (tex) => {
+      if (disposed) {
+        tex.dispose();
+        return;
+      }
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.ClampToEdgeWrapping;
+      tex.magFilter = tex.minFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+      skyTexture = tex;
+      material.uniforms.uSky.value = tex;
+      material.uniforms.uSkyReady.value = 1;
+    });
 
-    // --- Animation ---
+    const quadGeo = new THREE.PlaneGeometry(2, 2);
+    const quad = new THREE.Mesh(quadGeo, material);
+    quad.frustumCulled = false;
+    const scene = new THREE.Scene();
+    scene.add(quad);
+
+    // --- Quality / adaptive resolution ---
+    const dprCap = () => Math.min(window.devicePixelRatio || 1, 1.5);
+    let config: BlackHoleSimConfig;
+    let resScale = Math.min(dprCap(), 0.85);
+
+    const applyResolution = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      renderer.setPixelRatio(resScale);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      const size = renderer.getDrawingBufferSize(new THREE.Vector2());
+      material.uniforms.uRes.value.set(size.x, size.y);
+    };
+
+    const applyConfig = (c: BlackHoleSimConfig) => {
+      config = c;
+      material.uniforms.uLensing.value = c.enableLensing ? 1 : 0;
+      material.uniforms.uDoppler.value = c.enableDoppler ? 1 : 0;
+      material.uniforms.uMode.value = c.spectralMode === "eht" ? 1 : 0;
+      controls.autoRotate = c.autoRotate;
+      if (c.quality === "performance") {
+        resScale = 0.5;
+        material.uniforms.uMaxSteps.value = 100;
+      } else if (c.quality === "balanced") {
+        resScale = Math.min(dprCap(), 0.8);
+        material.uniforms.uMaxSteps.value = 160;
+      } else if (c.quality === "ultra") {
+        resScale = dprCap();
+        material.uniforms.uMaxSteps.value = MAX_STEPS;
+      } else {
+        resScale = Math.min(dprCap(), 0.85);
+        material.uniforms.uMaxSteps.value = 170;
+      }
+      applyResolution();
+    };
+
+    const unsubConfig = blackHoleConfig.subscribe(applyConfig);
+
+    // --- Camera preset requests (smooth polar-angle transition) ---
+    let targetPolar: number | null = null;
+    const unsubCam = blackHoleCameraRequest.subscribe((req) => {
+      if (req) targetPolar = THREE.MathUtils.degToRad(req.polarDeg);
+    });
+    const sph = new THREE.Spherical();
+
+    // --- Animation loop with FPS tracking ---
     const clock = new THREE.Clock();
-    let animationId: number;
-    let currentDistance = 25;
+    let animationId = 0;
+    let running = true;
+    let frameCount = 0;
+    let acc = 0;
+    let adaptCooldown = 0;
 
     const animate = () => {
+      if (!running) return;
       animationId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      const dt = Math.min(clock.getDelta(), 0.1);
+      material.uniforms.uTime.value += dt;
 
-      diskMaterial.uniforms.uTime.value = elapsedTime;
-      photonMat.uniforms.uTime.value = elapsedTime;
-
-      const targetDistance = 25 - (stage * 3.0);
-      currentDistance += (targetDistance - currentDistance) * 0.03;
-      controls.minDistance = currentDistance;
-      controls.maxDistance = currentDistance;
+      if (targetPolar !== null) {
+        sph.setFromVector3(camera.position);
+        sph.phi += (targetPolar - sph.phi) * 0.08;
+        if (Math.abs(targetPolar - sph.phi) < 0.003) targetPolar = null;
+        camera.position.setFromSpherical(sph);
+      }
 
       controls.update();
-      composer.render();
+      camera.updateMatrixWorld();
+      material.uniforms.uCamPos.value.copy(camera.position);
+      material.uniforms.uCamWorld.value.copy(camera.matrixWorld);
+      renderer.render(scene, camera);
+
+      // Frame-time monitor
+      frameCount++;
+      acc += dt;
+      if (frameCount >= 30) {
+        const avg = acc / frameCount;
+        frameCount = 0;
+        acc = 0;
+        if (adaptCooldown > 0) adaptCooldown--;
+        if (config.quality === "auto" && adaptCooldown === 0) {
+          const maxScale = dprCap();
+          if (avg > 0.0215 && resScale > 0.4) {
+            resScale = Math.max(0.4, resScale * 0.85);
+            applyResolution();
+            adaptCooldown = 2;
+          } else if (avg < 0.0135 && resScale < maxScale) {
+            resScale = Math.min(maxScale, resScale * 1.08);
+            applyResolution();
+            adaptCooldown = 4;
+          }
+        }
+      }
     };
+
+    // FPS display uses a dedicated counter for accuracy
+    let fpsFrames = 0;
+    const fpsInterval = setInterval(() => {
+      blackHoleFps.set(fpsFrames * 2);
+      fpsFrames = 0;
+    }, 500);
+    const origRender = renderer.render.bind(renderer);
+    renderer.render = ((s: THREE.Scene, c: THREE.Camera) => {
+      fpsFrames++;
+      origRender(s, c);
+    }) as typeof renderer.render;
+
     animate();
 
-    const onWindowResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height, false);
-      composer.setSize(width, height);
+    const onVisibility = () => {
+      if (document.hidden) {
+        running = false;
+        cancelAnimationFrame(animationId);
+      } else if (!running) {
+        running = true;
+        clock.getDelta();
+        animate();
+      }
     };
+    document.addEventListener("visibilitychange", onVisibility);
 
+    const onWindowResize = () => applyResolution();
     window.addEventListener("resize", onWindowResize);
     window.visualViewport?.addEventListener("resize", onWindowResize);
 
     return () => {
+      disposed = true;
+      skyTexture?.dispose();
+      running = false;
+      cancelAnimationFrame(animationId);
+      clearInterval(fpsInterval);
+      unsubConfig();
+      unsubCam();
+      blackHoleFps.set(0);
       canvas.removeEventListener("mousedown", onMouseDown);
-      canvas.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", onWindowResize);
       window.visualViewport?.removeEventListener("resize", onWindowResize);
-      cancelAnimationFrame(animationId);
       controls.dispose();
+      quadGeo.dispose();
+      material.dispose();
+      noiseTexture.dispose();
       renderer.dispose();
-      composer.dispose();
-      blackHoleGeo.dispose();
-      blackHoleMat.dispose();
-      photonGeo.dispose();
-      photonMat.dispose();
-      glowGeo.dispose();
-      glowMat.dispose();
-      diskGeo.dispose();
-      diskMaterial.dispose();
-      starGeometry.dispose();
-      starMaterial.dispose();
+      renderer.forceContextLoss();
     };
   });
 </script>

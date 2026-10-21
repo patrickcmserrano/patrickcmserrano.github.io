@@ -1,4 +1,4 @@
-import { S as fallback, a as attr, e as escape_html, V as slot, T as bind_props, Q as sanitize_props, R as spread_props, U as attr_style, M as head, p as pop, b as push, O as attr_class, s as store_get, u as unsubscribe_stores } from "./index.js";
+import { T as fallback, a as attr, e as escape_html, W as slot, U as bind_props, R as sanitize_props, S as spread_props, V as attr_style, P as head, p as pop, b as push, f as attr_class, s as store_get, u as unsubscribe_stores } from "./index.js";
 import { c as currentLanguage } from "./simple-i18n.js";
 function IconBase($$payload, $$props) {
   let title = fallback($$props["title"], null);

@@ -1,5 +1,5 @@
 import { s as store_get, u as unsubscribe_stores, p as pop, b as push } from "./index.js";
-import { i as isBlackHoleOpen } from "./blackhole.js";
+import { a as isBlackHoleOpen } from "./blackhole2.js";
 function BlackHoleToggle($$payload, $$props) {
   push();
   var $$store_subs;
