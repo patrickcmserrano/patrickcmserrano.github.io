@@ -62,6 +62,7 @@ declare module '$env/static/private' {
 	export const ANTIGRAVITY_AGENT: string;
 	export const XDG_SESSION_ID: string;
 	export const PAGER: string;
+	export const GIT_EDITOR: string;
 	export const SHLVL: string;
 	export const DISPLAY: string;
 	export const KDE_SESSION_VERSION: string;
@@ -76,6 +77,7 @@ declare module '$env/static/private' {
 	export const DEBUGINFOD_URLS: string;
 	export const __MISE_ORIG_PATH: string;
 	export const INIT_CWD: string;
+	export const MANAGERPID: string;
 	export const OLDPWD: string;
 	export const GTK_RC_FILES: string;
 	export const KDE_FULL_SESSION: string;
@@ -86,9 +88,9 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const LC_NAME: string;
 	export const LC_ADDRESS: string;
-	export const SDL_GAMECONTROLLERCONFIG: string;
 	export const ANTIGRAVITY_LS_VERSION: string;
 	export const LANGUAGE: string;
+	export const HGEDITOR: string;
 	export const MEMORY_PRESSURE_WRITE: string;
 	export const PATH: string;
 	export const KDE_SESSION_UID: string;
@@ -148,15 +150,16 @@ declare module '$env/static/private' {
 	export const KONSOLE_DBUS_SERVICE: string;
 	export const XDG_SEAT: string;
 	export const npm_package_version: string;
+	export const SDL_GAMECONTROLLERCONFIG: string;
+	export const JJ_EDITOR: string;
+	export const XDG_SEAT_PATH: string;
 	export const WAYLAND_DISPLAY: string;
 	export const MEMORY_PRESSURE_WATCH: string;
 	export const npm_config_userconfig: string;
 	export const KONSOLE_DBUS_SESSION: string;
-	export const XDG_SEAT_PATH: string;
 	export const _: string;
 	export const XDG_CURRENT_DESKTOP: string;
 	export const ANTIGRAVITY_CSRF_TOKEN: string;
-	export const MANAGERPID: string;
 }
 
 /**
@@ -267,6 +270,7 @@ declare module '$env/dynamic/private' {
 		ANTIGRAVITY_AGENT: string;
 		XDG_SESSION_ID: string;
 		PAGER: string;
+		GIT_EDITOR: string;
 		SHLVL: string;
 		DISPLAY: string;
 		KDE_SESSION_VERSION: string;
@@ -281,6 +285,7 @@ declare module '$env/dynamic/private' {
 		DEBUGINFOD_URLS: string;
 		__MISE_ORIG_PATH: string;
 		INIT_CWD: string;
+		MANAGERPID: string;
 		OLDPWD: string;
 		GTK_RC_FILES: string;
 		KDE_FULL_SESSION: string;
@@ -291,9 +296,9 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		LC_NAME: string;
 		LC_ADDRESS: string;
-		SDL_GAMECONTROLLERCONFIG: string;
 		ANTIGRAVITY_LS_VERSION: string;
 		LANGUAGE: string;
+		HGEDITOR: string;
 		MEMORY_PRESSURE_WRITE: string;
 		PATH: string;
 		KDE_SESSION_UID: string;
@@ -353,15 +358,16 @@ declare module '$env/dynamic/private' {
 		KONSOLE_DBUS_SERVICE: string;
 		XDG_SEAT: string;
 		npm_package_version: string;
+		SDL_GAMECONTROLLERCONFIG: string;
+		JJ_EDITOR: string;
+		XDG_SEAT_PATH: string;
 		WAYLAND_DISPLAY: string;
 		MEMORY_PRESSURE_WATCH: string;
 		npm_config_userconfig: string;
 		KONSOLE_DBUS_SESSION: string;
-		XDG_SEAT_PATH: string;
 		_: string;
 		XDG_CURRENT_DESKTOP: string;
 		ANTIGRAVITY_CSRF_TOKEN: string;
-		MANAGERPID: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

@@ -3,8 +3,9 @@
   import LanguageSelector from '../../components/LanguageSelector.svelte';
   import { _ } from '../../lib/simple-i18n';
   import AboutHero from './components/AboutHero.svelte';
-  import Skills from './components/Skills.svelte';
+  import Products from './components/Products.svelte';
   import Experience from './components/Experience.svelte';
+  import Skills from './components/Skills.svelte';
   import Education from './components/Education.svelte';
   import Contact from './components/Contact.svelte';
 </script>
@@ -34,8 +35,9 @@
   <!-- Main Content -->
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
     <AboutHero />
-    <Skills />
+    <Products />
     <Experience />
+    <Skills />
     <Education />
     <Contact />
   </main>
