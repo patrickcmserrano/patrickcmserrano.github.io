@@ -89,15 +89,6 @@
     </div>
   </section>
 
-  <!-- Densidade por Repositório -->
-  <section class="border-t border-slate-200 dark:border-slate-800 py-20">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.density.title')}</h2>
-      <p class="text-slate-600 dark:text-slate-400 mb-10">{$_('home.density.subtitle')}</p>
-      <DensidadeRepos />
-    </div>
-  </section>
-
   <!-- Featured Projects Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-100/40 dark:bg-slate-900/10 py-20">
     <div class="max-w-5xl mx-auto px-4">
@@ -179,6 +170,15 @@
           </article>
         {/each}
       </div>
+    </div>
+  </section>
+
+  <!-- Densidade por Repositório -->
+  <section class="border-t border-slate-200 dark:border-slate-800 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.density.title')}</h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-10">{$_('home.density.subtitle')}</p>
+      <DensidadeRepos />
     </div>
   </section>
 
