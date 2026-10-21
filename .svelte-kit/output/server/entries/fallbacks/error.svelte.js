@@ -1,4 +1,4 @@
-import { n as noop, h as getContext, e as escape_html, p as pop, b as push } from "../../chunks/index.js";
+import { n as noop, g as getContext, e as escape_html, p as pop, b as push } from "../../chunks/index.js";
 import "clsx";
 import "../../chunks/exports.js";
 import "@sveltejs/kit/internal/server";

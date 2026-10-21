@@ -1,4 +1,4 @@
-import { d as ensure_array_like, P as head, e as escape_html, s as store_get, a as attr, u as unsubscribe_stores, p as pop, b as push } from "../../../../chunks/index.js";
+import { f as ensure_array_like, O as head, e as escape_html, d as store_get, a as attr, u as unsubscribe_stores, p as pop, b as push } from "../../../../chunks/index.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
 import { c as currentLanguage, _ } from "../../../../chunks/simple-i18n.js";
 import { h as html } from "../../../../chunks/html.js";
@@ -18,7 +18,7 @@ function _page($$payload, $$props) {
     $$payload2.title = `<title>${escape_html(getLoc(project.title, store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage)))} — Patrick Campelo Serrano</title>`;
     $$payload2.out += `<meta name="description"${attr("content", getLoc(project.excerpt, store_get($$store_subs ??= {}, "$currentLanguage", currentLanguage)))}>`;
   });
-  $$payload.out += `<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">Patrick Campelo Serrano</a> <div class="flex items-center gap-4">`;
+  $$payload.out += `<div class="min-h-screen bg-slate-50/90 dark:bg-transparent text-slate-900 dark:text-slate-100 transition-colors duration-300"><header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">Patrick Campelo Serrano</a> <div class="flex items-center gap-4">`;
   LanguageSelector($$payload);
   $$payload.out += `<!----> `;
   ThemeToggle($$payload);

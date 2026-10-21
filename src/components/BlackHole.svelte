@@ -17,7 +17,14 @@
     MAX_STEPS
   } from "../lib/blackholeShader";
 
+  let { isAmbient = false } = $props<{ isAmbient?: boolean }>();
+
   let canvas: HTMLCanvasElement;
+  let updateAmbientMode: (ambient: boolean) => void = () => {};
+
+  $effect(() => {
+    updateAmbientMode(isAmbient);
+  });
 
   onMount(() => {
     const preset = SAGITTARIUS_A_PRESET;
@@ -43,8 +50,6 @@
     camera.position.setFromSpherical(new THREE.Spherical(32, startPolar, 0.6));
 
     canvas.style.touchAction = "none";
-    canvas.style.pointerEvents = "auto";
-    canvas.style.cursor = "grab";
 
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
@@ -56,8 +61,12 @@
     controls.enablePan = false;
     controls.autoRotateSpeed = 0.5;
 
-    const onMouseDown = () => (canvas.style.cursor = "grabbing");
-    const onMouseUp = () => (canvas.style.cursor = "grab");
+    const onMouseDown = () => {
+      if (!isAmbient) canvas.style.cursor = "grabbing";
+    };
+    const onMouseUp = () => {
+      if (!isAmbient) canvas.style.cursor = "grab";
+    };
     canvas.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mouseup", onMouseUp);
 
@@ -124,7 +133,7 @@
     // --- Quality / adaptive resolution ---
     const dprCap = () => Math.min(window.devicePixelRatio || 1, 1.5);
     let config: BlackHoleSimConfig;
-    let resScale = Math.min(dprCap(), 0.85);
+    let resScale = 0.55;
 
     const applyResolution = () => {
       const w = window.innerWidth;
@@ -142,24 +151,57 @@
       material.uniforms.uLensing.value = c.enableLensing ? 1 : 0;
       material.uniforms.uDoppler.value = c.enableDoppler ? 1 : 0;
       material.uniforms.uMode.value = c.spectralMode === "eht" ? 1 : 0;
-      controls.autoRotate = c.autoRotate;
-      if (c.quality === "performance") {
-        resScale = 0.5;
-        material.uniforms.uMaxSteps.value = 100;
-      } else if (c.quality === "balanced") {
-        resScale = Math.min(dprCap(), 0.8);
-        material.uniforms.uMaxSteps.value = 160;
-      } else if (c.quality === "ultra") {
-        resScale = dprCap();
-        material.uniforms.uMaxSteps.value = MAX_STEPS;
+      if (isAmbient) {
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.18;
+        resScale = 0.55;
+        material.uniforms.uMaxSteps.value = 75;
       } else {
-        resScale = Math.min(dprCap(), 0.85);
-        material.uniforms.uMaxSteps.value = 170;
+        controls.autoRotate = c.autoRotate;
+        controls.autoRotateSpeed = 0.5;
+        if (c.quality === "performance") {
+          resScale = 0.5;
+          material.uniforms.uMaxSteps.value = 100;
+        } else if (c.quality === "balanced") {
+          resScale = Math.min(dprCap(), 0.8);
+          material.uniforms.uMaxSteps.value = 160;
+        } else if (c.quality === "ultra") {
+          resScale = dprCap();
+          material.uniforms.uMaxSteps.value = MAX_STEPS;
+        } else {
+          resScale = Math.min(dprCap(), 0.85);
+          material.uniforms.uMaxSteps.value = 170;
+        }
       }
       applyResolution();
     };
 
     const unsubConfig = blackHoleConfig.subscribe(applyConfig);
+
+    updateAmbientMode = (ambient: boolean) => {
+      if (ambient) {
+        controls.enabled = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.18;
+        resScale = 0.55;
+        material.uniforms.uMaxSteps.value = 75;
+        canvas.style.pointerEvents = "none";
+        canvas.style.cursor = "default";
+      } else {
+        controls.enabled = true;
+        canvas.style.pointerEvents = "auto";
+        canvas.style.cursor = "grab";
+        if (config) {
+          applyConfig(config);
+        } else {
+          resScale = Math.min(dprCap(), 0.85);
+          material.uniforms.uMaxSteps.value = 170;
+        }
+      }
+      applyResolution();
+    };
+
+    updateAmbientMode(isAmbient);
 
     // --- Camera preset requests (smooth polar-angle transition) ---
     let targetPolar: number | null = null;
@@ -195,7 +237,7 @@
       material.uniforms.uCamWorld.value.copy(camera.matrixWorld);
       renderer.render(scene, camera);
 
-      // Frame-time monitor
+      // Frame-time monitor (only adapts when open in full mode)
       frameCount++;
       acc += dt;
       if (frameCount >= 30) {
@@ -203,7 +245,7 @@
         frameCount = 0;
         acc = 0;
         if (adaptCooldown > 0) adaptCooldown--;
-        if (config.quality === "auto" && adaptCooldown === 0) {
+        if (!isAmbient && config?.quality === "auto" && adaptCooldown === 0) {
           const maxScale = dprCap();
           if (avg > 0.0215 && resScale > 0.4) {
             resScale = Math.max(0.4, resScale * 0.85);

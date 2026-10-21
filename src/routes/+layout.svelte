@@ -11,6 +11,8 @@
   let { children } = $props();
 </script>
 
-{@render children()}
+<div class="relative z-10">
+  {@render children()}
+</div>
 <ChatWidget />
 <BlackHoleOverlay />

@@ -68,7 +68,7 @@
   <meta name="description" content="Agregador de links profissionais, redes sociais e projetos em destaque." />
 </svelte:head>
 
-<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="min-h-screen bg-slate-50/90 dark:bg-transparent text-slate-900 dark:text-slate-100 transition-colors duration-300">
   <main class="mx-auto px-4 py-6 space-y-6 app-container">
     <div class="header-controls">
       <div class="left-controls">

@@ -9,6 +9,7 @@
     iscoRadius,
     type QualityPreset
   } from '../lib/blackhole';
+  import BlackHole from './BlackHole.svelte';
 
   let panelOpen = $state(true);
 
@@ -25,14 +26,7 @@
     { label: 'Polar', polar: 5 }
   ];
 
-  // Lazy-load the WebGL component only on first open: zero cost while closed.
-  let BlackHolePromise: Promise<typeof import('./BlackHole.svelte')> | null = null;
-  function loadBlackHole() {
-    BlackHolePromise ??= import('./BlackHole.svelte');
-    return BlackHolePromise;
-  }
-
-  // Listeners and scroll lock only exist while the overlay is open.
+  // Keyboard shortcut (Escape) and scroll lock when open
   $effect(() => {
     if (!$isBlackHoleOpen) return;
     const onKey = (event: KeyboardEvent) => {
@@ -59,30 +53,24 @@
   const off = 'bg-white/5 border-white/15 text-slate-300 hover:bg-white/10';
 </script>
 
-{#if $isBlackHoleOpen}
-  <div
-    class="fixed inset-0 z-[100] w-screen h-screen bg-black overflow-hidden flex flex-col animate-fade-in"
-    role="dialog"
-    aria-label="Visualização do Black Hole"
-    aria-modal="true"
-  >
-    <div class="absolute inset-0 z-0 w-full h-full">
-      {#await loadBlackHole()}
-        <div class="w-full h-full flex items-center justify-center text-amber-300/80 font-mono text-xs">
-          Carregando simulação relativística…
-        </div>
-      {:then mod}
-        {@const BlackHole = mod.default}
-        <BlackHole />
-      {:catch}
-        <div class="w-full h-full flex items-center justify-center text-red-300 font-mono text-xs">
-          Não foi possível carregar a visualização.
-        </div>
-      {/await}
-    </div>
+<div
+  class="fixed inset-0 overflow-hidden transition-all duration-700 pointer-events-none {$isBlackHoleOpen ? 'z-[100] pointer-events-auto' : 'z-0'}"
+  role={$isBlackHoleOpen ? 'dialog' : 'presentation'}
+  aria-label={$isBlackHoleOpen ? 'Visualização do Black Hole' : undefined}
+  aria-modal={$isBlackHoleOpen ? 'true' : undefined}
+>
+  <div class="absolute inset-0 z-0 w-full h-full">
+    <BlackHole isAmbient={!$isBlackHoleOpen} />
+  </div>
 
+  <!-- Ambient dark scrim: quase totalmente preto escuro mas de forma que de pra ver no fundo -->
+  <div
+    class="absolute inset-0 pointer-events-none transition-opacity duration-700 {$isBlackHoleOpen ? 'opacity-0' : 'opacity-100 bg-[#030712]/80 dark:bg-[#000000]/84 backdrop-blur-[0.5px]'}"
+  ></div>
+
+  {#if $isBlackHoleOpen}
     <!-- Top bar -->
-    <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3">
+    <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in">
       <div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3">
         <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
         <div class="flex flex-col">
@@ -123,7 +111,7 @@
     <!-- Info + controls panel -->
     {#if panelOpen}
       <div
-        class="absolute z-10 bottom-4 left-4 right-4 md:right-auto md:w-80 bg-black/65 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-white shadow-xl flex flex-col gap-3 max-h-[60vh] overflow-y-auto"
+        class="absolute z-10 bottom-4 left-4 right-4 md:right-auto md:w-80 bg-black/65 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-white shadow-xl flex flex-col gap-3 max-h-[60vh] overflow-y-auto animate-fade-in"
       >
         <div>
           <div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Ficha astrofísica</div>
@@ -172,8 +160,8 @@
         </div>
       </div>
     {/if}
-  </div>
-{/if}
+  {/if}
+</div>
 
 <style>
   @keyframes fadeIn {
