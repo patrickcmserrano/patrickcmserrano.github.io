@@ -83,8 +83,8 @@
     <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
       <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-2xl opacity-20 dark:opacity-30"></div>
       <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-900 shadow-2xl">
-        <img src="/images/profile.jpg" alt="Patrick Campelo Serrano" class="hidden dark:block w-full h-full object-cover" />
-        <img src="/images/profile_light.jpg" alt="Patrick Campelo Serrano" class="block dark:hidden w-full h-full object-cover" />
+        <img src="/images/profile.png" alt="Patrick Campelo Serrano" class="hidden dark:block w-full h-full object-cover" />
+        <img src="/images/profile_light.png" alt="Patrick Campelo Serrano" class="block dark:hidden w-full h-full object-cover" />
       </div>
     </div>
   </section>
