@@ -1,8 +1,9 @@
 import "clsx";
-import { a as attr, p as pop, b as push, c as attr_class, s as stringify, d as store_get, e as escape_html, f as ensure_array_like, u as unsubscribe_stores } from "../../chunks/index.js";
+import { a as attr, p as pop, b as push, s as store_get, e as escape_html, c as ensure_array_like, d as attr_class, f as stringify, u as unsubscribe_stores } from "../../chunks/index.js";
 import { i as initSimpleI18n } from "../../chunks/simple-i18n.js";
 import "marked";
 import { S as SAGITTARIUS_A_PRESET, i as iscoRadius, a as isBlackHoleOpen, b as blackHoleFps, c as blackHoleConfig } from "../../chunks/blackhole.js";
+import { B as BlackHole } from "../../chunks/BlackHole2.js";
 function ChatWidget($$payload, $$props) {
   push();
   $$payload.out += `<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">`;
@@ -20,11 +21,6 @@ function ChatWidget($$payload, $$props) {
     $$payload.out += "<!--[!-->";
   }
   $$payload.out += `<!--]-->`;
-  pop();
-}
-function BlackHole($$payload, $$props) {
-  push();
-  $$payload.out += `<canvas class="block w-full h-full"></canvas>`;
   pop();
 }
 function BlackHoleOverlay($$payload, $$props) {
@@ -45,14 +41,11 @@ function BlackHoleOverlay($$payload, $$props) {
   const chip = "px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-colors cursor-pointer";
   const on = "bg-amber-500/20 border-amber-400/60 text-amber-200";
   const off = "bg-white/5 border-white/15 text-slate-300 hover:bg-white/10";
-  $$payload.out += `<div${attr_class(`fixed inset-0 overflow-hidden transition-all duration-700 pointer-events-none ${stringify(store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "z-[100] pointer-events-auto" : "z-0")}`)}${attr("role", store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "dialog" : "presentation")}${attr("aria-label", store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "Visualização do Black Hole" : void 0)}${attr("aria-modal", store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "true" : void 0)}><div class="absolute inset-0 z-0 w-full h-full">`;
-  BlackHole($$payload, {
-    isAmbient: !store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen)
-  });
-  $$payload.out += `<!----></div> <div${attr_class(`absolute inset-0 pointer-events-none transition-opacity duration-700 ${stringify(store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "opacity-0" : "opacity-100 bg-[#030712]/80 dark:bg-[#000000]/84 backdrop-blur-[0.5px]")}`)}></div> `;
   if (store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen)) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in svelte-etlq64"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">${escape_html(SAGITTARIUS_A_PRESET.name.toUpperCase())} • ${escape_html(SAGITTARIUS_A_PRESET.subtitle)}</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom • ${escape_html(store_get($$store_subs ??= {}, "$blackHoleFps", blackHoleFps))} FPS</span></div></div> <div class="flex items-center gap-2 pointer-events-auto"><button type="button" class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"${attr("aria-expanded", panelOpen)} aria-label="Alternar painel de controles">${escape_html("Ocultar painel")}</button> <button type="button" class="group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div> `;
+    $$payload.out += `<div class="fixed inset-0 z-[100] overflow-hidden bg-black pointer-events-auto transition-opacity duration-300" role="dialog" aria-label="Visualização do Black Hole" aria-modal="true"><div class="absolute inset-0 z-0 w-full h-full">`;
+    BlackHole($$payload, { isAmbient: false });
+    $$payload.out += `<!----></div> <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in svelte-etlq64"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">${escape_html(SAGITTARIUS_A_PRESET.name.toUpperCase())} • ${escape_html(SAGITTARIUS_A_PRESET.subtitle)}</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom • ${escape_html(store_get($$store_subs ??= {}, "$blackHoleFps", blackHoleFps))} FPS</span></div></div> <div class="flex items-center gap-2 pointer-events-auto"><button type="button" class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"${attr("aria-expanded", panelOpen)} aria-label="Alternar painel de controles">${escape_html("Ocultar painel")}</button> <button type="button" class="group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div> `;
     {
       $$payload.out += "<!--[-->";
       const each_array = ensure_array_like(cameras);
@@ -69,11 +62,11 @@ function BlackHoleOverlay($$payload, $$props) {
       }
       $$payload.out += `<!--]--></div></div></div>`;
     }
-    $$payload.out += `<!--]-->`;
+    $$payload.out += `<!--]--></div>`;
   } else {
     $$payload.out += "<!--[!-->";
   }
-  $$payload.out += `<!--]--></div>`;
+  $$payload.out += `<!--]-->`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
 }

@@ -136,8 +136,9 @@
     let resScale = 0.55;
 
     const applyResolution = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const rect = canvas.getBoundingClientRect();
+      const w = Math.floor(rect.width > 0 ? rect.width : window.innerWidth);
+      const h = Math.floor(rect.height > 0 ? rect.height : window.innerHeight);
       renderer.setPixelRatio(resScale);
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
@@ -180,15 +181,19 @@
 
     updateAmbientMode = (ambient: boolean) => {
       if (ambient) {
-        controls.enabled = false;
+        controls.enabled = true;
+        controls.enableZoom = false; // Preserva o scroll nativo da página
+        controls.enablePan = false;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.18;
-        resScale = 0.55;
-        material.uniforms.uMaxSteps.value = 75;
-        canvas.style.pointerEvents = "none";
-        canvas.style.cursor = "default";
+        controls.autoRotateSpeed = 0.45;
+        resScale = 0.65;
+        material.uniforms.uMaxSteps.value = 95;
+        canvas.style.pointerEvents = "auto";
+        canvas.style.cursor = "grab";
       } else {
         controls.enabled = true;
+        controls.enableZoom = true;
+        controls.enablePan = true;
         canvas.style.pointerEvents = "auto";
         canvas.style.cursor = "grab";
         if (config) {
@@ -202,6 +207,11 @@
     };
 
     updateAmbientMode(isAmbient);
+
+    const ro = new ResizeObserver(() => applyResolution());
+    if (canvas.parentElement) {
+      ro.observe(canvas.parentElement);
+    }
 
     // --- Camera preset requests (smooth polar-angle transition) ---
     let targetPolar: number | null = null;
@@ -304,6 +314,7 @@
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", onWindowResize);
       window.visualViewport?.removeEventListener("resize", onWindowResize);
+      ro.disconnect();
       controls.dispose();
       quadGeo.dispose();
       material.dispose();

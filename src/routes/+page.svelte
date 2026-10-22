@@ -3,6 +3,8 @@
   import LanguageSelector from '../components/LanguageSelector.svelte';
   import BlackHoleToggle from '../components/BlackHoleToggle.svelte';
   import DensidadeRepos from '../components/DensidadeRepos.svelte';
+  import BlackHole from '../components/BlackHole.svelte';
+  import { openBlackHole } from '../lib/blackhole';
   import { _, currentLanguage } from '../lib/simple-i18n';
   
   // Props no Svelte 5 para receber dados do servidor
@@ -23,10 +25,10 @@
   <meta name="description" content="Engenheiro Clojure/ClojureScript Sênior especialista em sistemas distribuídos, event-driven, quant-trading e arquiteturas minimalistas." />
 </svelte:head>
 
-<div class="min-h-screen bg-slate-50/90 dark:bg-transparent text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="min-h-screen bg-slate-50/90 dark:bg-[#07070d] text-slate-900 dark:text-slate-100 transition-colors duration-300">
   <!-- Header -->
-  <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+  <header class="border-b border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-black/40 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
         Patrick Campelo Serrano
       </a>
@@ -46,52 +48,154 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center md:text-left flex flex-col md:flex-row items-center gap-12">
-    <div class="flex-1 space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        {$_('home.status')}
+  <!-- Hero Section (Texto de um lado, Objeto Celeste do outro) -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 min-h-[calc(100vh-5rem)] flex flex-col-reverse md:flex-row items-center justify-between gap-8 lg:gap-14 py-12 md:py-16">
+    <!-- Left Column: Typography & Actions -->
+    <div class="flex-1 max-w-xl space-y-6 text-left">
+      <!-- Eyebrow: Dourado elegante e status -->
+      <div class="flex flex-wrap items-center gap-3">
+        <p class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-amber-500 dark:text-[#e5c158]">
+          {$_('home.eyebrow') || 'Engenharia de Software • Sistemas Distribuídos'}
+        </p>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          {$_('home.status')}
+        </div>
       </div>
       
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-        {$_('home.hero1')} <br />
-        <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-          {$_('home.hero2')}
-        </span>
+      <!-- H1 Titular -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.08]">
+        Patrick Campelo Serrano
       </h1>
       
-      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+      <!-- Subtitle / Tagline -->
+      <p class="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-700 dark:text-[#d2d2d7] leading-snug">
+        {$_('home.hero1')} {$_('home.hero2')}
+      </p>
+
+      <!-- Bio Descritiva -->
+      <p class="text-base md:text-lg text-slate-600 dark:text-[#a1a1a6] leading-relaxed">
         {$_('home.bio')}
       </p>
 
-      <!-- CTAs -->
-      <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-        <a href="/trabalho/" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-lg shadow-indigo-600/20 transition cursor-pointer text-sm">
+      <!-- Botões Pílula Estilo Apple -->
+      <div class="flex flex-wrap items-center gap-2.5 pt-2">
+        <a 
+          href="/trabalho/" 
+          class="bg-[#0071e3] hover:bg-[#0077ed] text-white inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight shadow-lg shadow-blue-500/25 transition duration-200 active:scale-[0.97]"
+        >
           {$_('home.projectsBtn')}
+          <span class="text-sm">&rarr;</span>
         </a>
-        <a href="/blog/" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 font-bold transition cursor-pointer text-sm">
+        <a 
+          href="/about/" 
+          class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight transition duration-200 active:scale-[0.97] shadow-sm"
+        >
+          {$_('nav.about')}
+        </a>
+        <a 
+          href="/blog/" 
+          class="bg-slate-200/80 dark:bg-white/10 text-slate-800 dark:text-white hover:bg-slate-300 dark:hover:bg-white/20 border border-slate-300/80 dark:border-white/15 inline-flex items-center gap-1.5 rounded-full px-4 sm:px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight transition duration-200 active:scale-[0.97]"
+        >
           {$_('home.blogBtn')}
         </a>
-        <a href="/links/" class="px-6 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold transition cursor-pointer text-sm">
+        <a 
+          href="/links/" 
+          class="bg-slate-200/80 dark:bg-white/10 text-slate-800 dark:text-white hover:bg-slate-300 dark:hover:bg-white/20 border border-slate-300/80 dark:border-white/15 inline-flex items-center gap-1.5 rounded-full px-4 sm:px-5 py-2.5 text-sm sm:text-base font-normal tracking-tight transition duration-200 active:scale-[0.97]"
+        >
           {$_('home.linksBtn')}
         </a>
       </div>
+
+      <!-- Redes Sociais Minimalistas -->
+      <ul class="flex items-center gap-1 pt-2">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/patrickcmserrano/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="flex size-10 items-center justify-center rounded-full text-slate-500 dark:text-[#a1a1a6] hover:bg-slate-200/70 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/patrickcmserrano"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="flex size-10 items-center justify-center rounded-full text-slate-500 dark:text-[#a1a1a6] hover:bg-slate-200/70 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/@pat_rocks"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube Pat Rocks"
+            class="flex size-10 items-center justify-center rounded-full text-slate-500 dark:text-[#a1a1a6] hover:bg-slate-200/70 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/@codecraft_ofc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube CodeCraft"
+            class="flex size-10 items-center justify-center rounded-full text-slate-500 dark:text-[#a1a1a6] hover:bg-slate-200/70 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <!-- Avatar / Decorative Graphique -->
-    <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
-      <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-2xl opacity-20 dark:opacity-30"></div>
-      <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-900 shadow-2xl">
-        <img src="/images/profile.png" alt="Patrick Campelo Serrano" class="hidden dark:block w-full h-full object-cover" />
-        <img src="/images/profile_light.png" alt="Patrick Campelo Serrano" class="block dark:hidden w-full h-full object-cover" />
+    <!-- Right Column: Objeto Celeste (Sagittarius A* 3D Simulation) -->
+    <div class="w-full md:w-1/2 h-[340px] sm:h-[400px] md:h-[460px] lg:h-[500px] relative flex items-center justify-center group">
+      <!-- Glow cósmico de ambiência -->
+      <div class="absolute inset-0 bg-radial from-amber-500/10 via-indigo-950/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Container do Objeto Celeste -->
+      <div class="relative w-full h-full rounded-3xl overflow-hidden border border-slate-200/50 dark:border-white/10 shadow-2xl bg-black">
+        <BlackHole isAmbient={true} />
+
+        <!-- Botão sutil de acionamento em tela cheia -->
+        <div class="absolute bottom-4 right-4 pointer-events-auto">
+          <button
+            type="button"
+            onclick={openBlackHole}
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-black/70 hover:bg-black/90 text-amber-300 border border-amber-400/30 backdrop-blur-md transition-all shadow-lg hover:border-amber-400/70 cursor-pointer active:scale-95"
+            aria-label="Expandir simulação do buraco negro"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="font-mono text-[11px]">Sagittarius A* • 3D</span>
+            <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Featured Projects Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-100/40 dark:bg-slate-900/10 py-20">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
         <div>
           <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.featuredProjects')}</h2>
@@ -136,7 +240,7 @@
 
   <!-- Recent Articles Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 py-20">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
         <div>
           <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.recentArticles')}</h2>
@@ -175,7 +279,7 @@
 
   <!-- Densidade por Repositório -->
   <section class="border-t border-slate-200 dark:border-slate-800 py-20">
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl font-extrabold tracking-tight mb-2">{$_('home.density.title')}</h2>
       <p class="text-slate-600 dark:text-slate-400 mb-10">{$_('home.density.subtitle')}</p>
       <DensidadeRepos />
@@ -184,7 +288,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-12">
-    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="text-sm text-slate-500 dark:text-slate-400 text-center md:text-left">
         <p>&copy; {new Date().getFullYear()} Patrick Campelo Serrano. {$_('footer.copyright')}</p>
         <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">Desenvolvido com SvelteKit SSG & Tailwind CSS (copilotado pelo Gemini 3.5 Flash AGY).</p>
