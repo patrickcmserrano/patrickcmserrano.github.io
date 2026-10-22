@@ -41,7 +41,7 @@
     <!-- Article Header -->
     <header class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
       <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono">
-        <span>{new Date(metadata.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <span>{new Date(metadata.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</span>
         <span>•</span>
         <span>{metadata.readTime || '10 min'}</span>
       </div>

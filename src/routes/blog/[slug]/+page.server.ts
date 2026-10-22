@@ -49,9 +49,12 @@ export async function load({ params }) {
     throw new Error(`Post not found: ${slug}`);
   }
   
+  // Remover o título H1 inicial do markdown (evita duplicação com o <h1> do cabeçalho da página)
+  const contentWithoutLeadingH1 = content.replace(/^\s*#\s+[^\r\n]+[\r\n]*/, '');
+
   // Converter markdown para HTML no servidor
   // Como são arquivos locais confiáveis e estáticos, a conversão direta é segura e muito rápida
-  const parsedHtml = await marked(content);
+  const parsedHtml = await marked(contentWithoutLeadingH1);
   
   // Buscar metadados adicionais
   let metadata: PostMetadata = {

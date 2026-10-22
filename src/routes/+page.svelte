@@ -306,7 +306,7 @@
           <article class="flex flex-col md:flex-row md:items-center justify-between p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition duration-200 gap-4">
             <div>
               <div class="flex items-center gap-3 text-xs text-slate-500 mb-2 font-mono">
-                <span>{new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <span>{new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</span>
                 <span>•</span>
                 <span>{post.readTime}</span>
               </div>

@@ -106,7 +106,7 @@
             <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
               <div>
                 <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono">
-                  <span>{new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                  <span>{new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</span>
                   <span>•</span>
                   <span>{post.readTime || '10 min'}</span>
                 </div>

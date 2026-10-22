@@ -111,7 +111,8 @@ function _page($$payload, $$props) {
     $$payload.out += `<article class="flex flex-col md:flex-row md:items-center justify-between p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition duration-200 gap-4"><div><div class="flex items-center gap-3 text-xs text-slate-500 mb-2 font-mono"><span>${escape_html(new Date(post.date).toLocaleDateString("pt-BR", {
       year: "numeric",
       month: "long",
-      day: "numeric"
+      day: "numeric",
+      timeZone: "UTC"
     }))}</span> <span>•</span> <span>${escape_html(post.readTime)}</span></div> <h3 class="text-lg font-bold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><a${attr("href", `/blog/${stringify(post.id)}/`)}>${escape_html(post.title)}</a></h3> <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 line-clamp-2">${escape_html(post.excerpt)}</p></div> <a${attr("href", `/blog/${stringify(post.id)}/`)} class="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex-shrink-0">${escape_html(store_get($$store_subs ??= {}, "$_", _)("home.readArticle"))} →</a></article>`;
   }
   $$payload.out += `<!--]--></div></div></section> <section class="border-t border-slate-200 dark:border-slate-800 py-20"><div class="max-w-6xl mx-auto px-4 sm:px-6"><h2 class="text-3xl font-extrabold tracking-tight mb-2">${escape_html(store_get($$store_subs ??= {}, "$_", _)("home.density.title"))}</h2> <p class="text-slate-600 dark:text-slate-400 mb-10">${escape_html(store_get($$store_subs ??= {}, "$_", _)("home.density.subtitle"))}</p> `;

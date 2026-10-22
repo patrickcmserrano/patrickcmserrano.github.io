@@ -21,7 +21,8 @@ function _page($$payload, $$props) {
   $$payload.out += `<!----></div></div></header> <main class="max-w-4xl mx-auto px-4 py-12"><div class="mb-8"><a href="/blog/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group"><span class="group-hover:-translate-x-1 transition-transform">←</span> Voltar para todos os artigos</a></div> <header class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800"><div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono"><span>${escape_html(new Date(metadata.date).toLocaleDateString("pt-BR", {
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
+    timeZone: "UTC"
   }))}</span> <span>•</span> <span>${escape_html(metadata.readTime || "10 min")}</span></div> <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">${escape_html(metadata.title)}</h1> <div class="flex flex-wrap gap-2"><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let tag = each_array[$$index];

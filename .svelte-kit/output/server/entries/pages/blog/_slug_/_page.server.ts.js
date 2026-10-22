@@ -32,7 +32,8 @@ async function load({ params }) {
   } else {
     throw new Error(`Post not found: ${slug}`);
   }
-  const parsedHtml = await marked(content);
+  const contentWithoutLeadingH1 = content.replace(/^\s*#\s+[^\r\n]+[\r\n]*/, "");
+  const parsedHtml = await marked(contentWithoutLeadingH1);
   let metadata = {
     id: slug,
     title: slug.replace(/-/g, " "),

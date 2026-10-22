@@ -44,7 +44,8 @@ function _page($$payload, $$props) {
       $$payload.out += `<article class="flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden hover:shadow-lg dark:hover:shadow-slate-950/40 hover:-translate-y-1 transition duration-300"><div class="p-6 md:p-8 flex-1 flex flex-col justify-between"><div><div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono"><span>${escape_html(new Date(post.date).toLocaleDateString("pt-BR", {
         year: "numeric",
         month: "long",
-        day: "numeric"
+        day: "numeric",
+        timeZone: "UTC"
       }))}</span> <span>•</span> <span>${escape_html(post.readTime || "10 min")}</span></div> <h2 class="text-xl font-bold mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><a${attr("href", `/blog/${stringify(post.id)}/`)}>${escape_html(post.title)}</a></h2> <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6">${escape_html(post.excerpt)}</p></div> <div><div class="flex flex-wrap gap-1.5 mb-4"><!--[-->`;
       for (let $$index_1 = 0, $$length2 = each_array_2.length; $$index_1 < $$length2; $$index_1++) {
         let tag = each_array_2[$$index_1];

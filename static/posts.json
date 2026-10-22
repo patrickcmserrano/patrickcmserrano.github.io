@@ -1,5 +1,42 @@
 [
   {
+    "id": "2026-10-22-ai-factory-privacidade-por-arquitetura",
+    "title": "Privacidade Não é Política, é Arquitetura: Construindo uma Plataforma Privada de IA sobre FreeBSD Jails, vLLM e Slurm",
+    "excerpt": "Deep-dive técnico na arquitetura da AI Factory (Ping Hai) entregue em produção: sanitização pré-vetor com Presidio, quarentena criptografada, RAG owner-scoped fail-closed, carimbo obrigatório de saída (Stop Chain 503), auditoria encadeada cega ao conteúdo, identidade federada Keycloak/LDAP e inferência própria com vLLM sob Slurm em FreeBSD Jails.",
+    "date": "2026-10-22",
+    "readTime": "12 min",
+    "tags": [
+      "AI Factory",
+      "Ping Hai",
+      "Arquitetura",
+      "FreeBSD",
+      "vLLM",
+      "Slurm",
+      "Clojure",
+      "Privacidade",
+      "RAG"
+    ]
+  },
+  {
+    "id": "2026-10-22-dev-diary-retrospectiva-trimestral",
+    "title": "Diário de Dev #14 — 1.050+ Commits Depois: Da AI Factory em FreeBSD ao Sagittarius A* e o Roteiro dos Próximos Artigos",
+    "excerpt": "Retrospectiva técnica do trimestre (julho a outubro de 2026) cobrindo 1.054 commits em 15 repositórios: a entrega da AI Factory privada em FreeBSD Jails + vLLM/Slurm, o gateway small-router em Go + EDN/Malli, o motor Rohana em Clojure, o dataset de 19.528 terrenos no TechSentry, a simulação relativística de Sagittarius A* e o roteiro da nova série de artigos.",
+    "date": "2026-10-22",
+    "readTime": "14 min",
+    "tags": [
+      "Dev Diary",
+      "AI Factory",
+      "small-router",
+      "Rohana",
+      "TechSentry",
+      "Ark Streams",
+      "Clojure",
+      "Go",
+      "FreeBSD",
+      "WebGL"
+    ]
+  },
+  {
     "id": "2026-07-08-dev-diary-ark-streams",
     "title": "Diário de Dev #13 — Segurança, Testes e Vereditos Quant com Claude Fable 5 no ark-streams",
     "excerpt": "Uma retrospectiva técnica de uma semana dedicada a hardening de API, cobertura massiva de testes, refatoração de workers e o uso inovador do Claude Fable 5 para pesquisa quantitativa e validação robusta de estratégias no ark-streams.",
