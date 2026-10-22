@@ -1,8 +1,8 @@
 import "clsx";
-import { a as attr, p as pop, b as push, c as attr_class, s as stringify, d as store_get, e as escape_html, f as ensure_array_like, u as unsubscribe_stores } from "../../chunks/index.js";
+import { a as attr, p as pop, b as push, s as store_get, c as attr_class, d as stringify, e as escape_html, f as attr_style, g as ensure_array_like, u as unsubscribe_stores } from "../../chunks/index.js";
 import { i as initSimpleI18n } from "../../chunks/simple-i18n.js";
 import "marked";
-import { S as SAGITTARIUS_A_PRESET, i as iscoRadius, a as isBlackHoleOpen, b as blackHoleFps, c as blackHoleConfig } from "../../chunks/blackhole.js";
+import { S as SAGITTARIUS_A_PRESET, i as iscoRadius, e as earthScreenPosition, v as viewFromEarth, l as lookAtEarth, r as requestCameraPolar, a as isBlackHoleOpen, b as blackHoleFps, c as blackHoleConfig } from "../../chunks/blackhole.js";
 function ChatWidget($$payload, $$props) {
   push();
   $$payload.out += `<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">`;
@@ -31,6 +31,7 @@ function BlackHoleOverlay($$payload, $$props) {
   push();
   var $$store_subs;
   let panelOpen = true;
+  let showEarth = true;
   const qualities = [
     { id: "auto", label: "Auto" },
     { id: "performance", label: "Perf." },
@@ -38,10 +39,38 @@ function BlackHoleOverlay($$payload, $$props) {
     { id: "ultra", label: "Ultra" }
   ];
   const cameras = [
-    { label: "EHT 30°", polar: 30 },
-    { label: "Gargantua", polar: 82 },
-    { label: "Polar", polar: 5 }
+    {
+      label: "Visão da Terra (EHT)",
+      action: () => viewFromEarth()
+    },
+    {
+      label: "Rumo à Terra",
+      action: () => lookAtEarth()
+    },
+    {
+      label: "Gargantua (82°)",
+      action: () => requestCameraPolar(82)
+    },
+    {
+      label: "Polar (5°)",
+      action: () => requestCameraPolar(5)
+    }
   ];
+  let edgePos = (() => {
+    if (!store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition) || typeof window === "undefined") return null;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const margin = 70;
+    const cx = w * 0.5;
+    const cy = h * 0.5;
+    const maxRx = Math.max(80, cx - margin);
+    const maxRy = Math.max(80, cy - margin);
+    const ang = store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition).angleRad;
+    const ex = cx + Math.cos(ang) * maxRx;
+    const ey = cy + Math.sin(ang) * maxRy;
+    const deg = ang * 180 / Math.PI + 90;
+    return { x: ex, y: ey, deg };
+  })();
   const chip = "px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-colors cursor-pointer";
   const on = "bg-amber-500/20 border-amber-400/60 text-amber-200";
   const off = "bg-white/5 border-white/15 text-slate-300 hover:bg-white/10";
@@ -52,7 +81,23 @@ function BlackHoleOverlay($$payload, $$props) {
   $$payload.out += `<!----></div> <div${attr_class(`absolute inset-0 pointer-events-none transition-opacity duration-700 ${stringify(store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen) ? "opacity-0" : "opacity-100 bg-[#030712]/60 dark:bg-[#000000]/55 backdrop-blur-[0.5px]")}`)}></div> `;
   if (store_get($$store_subs ??= {}, "$isBlackHoleOpen", isBlackHoleOpen)) {
     $$payload.out += "<!--[-->";
-    $$payload.out += `<div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in svelte-etlq64"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">${escape_html(SAGITTARIUS_A_PRESET.name.toUpperCase())} • ${escape_html(SAGITTARIUS_A_PRESET.subtitle)}</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom • ${escape_html(store_get($$store_subs ??= {}, "$blackHoleFps", blackHoleFps))} FPS</span></div></div> <div class="flex items-center gap-2 pointer-events-auto"><button type="button" class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"${attr("aria-expanded", panelOpen)} aria-label="Alternar painel de controles">${escape_html("Ocultar painel")}</button> <button type="button" class="group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div> `;
+    $$payload.out += `<div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in svelte-etlq64"><div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span> <div class="flex flex-col"><span class="text-xs md:text-sm font-bold tracking-wide font-mono text-amber-300">${escape_html(SAGITTARIUS_A_PRESET.name.toUpperCase())} • ${escape_html(SAGITTARIUS_A_PRESET.subtitle)}</span> <span class="text-[10px] md:text-xs text-slate-400 hidden sm:inline">Arraste para orbitar • Scroll para zoom • ${escape_html(store_get($$store_subs ??= {}, "$blackHoleFps", blackHoleFps))} FPS</span></div></div> <div class="flex items-center gap-2 pointer-events-auto"><button type="button"${attr_class(`flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-semibold backdrop-blur-md border transition-all cursor-pointer ${stringify("bg-cyan-500/25 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20")}`)}${attr("aria-pressed", showEarth)} aria-label="Alternar indicador de onde fica a Terra"><span class="text-sm">🌍</span> <span class="hidden sm:inline">${escape_html("Terra visível")}</span></button> <button type="button" class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"${attr("aria-expanded", panelOpen)} aria-label="Alternar painel de controles">${escape_html("Ocultar painel")}</button> <button type="button" class="group flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/50 text-white rounded-2xl text-xs md:text-sm font-semibold tracking-wide transition-all duration-200 shadow-xl cursor-pointer" aria-label="Fechar visualização do Black Hole"><span class="hidden sm:inline text-slate-300 group-hover:text-white transition-colors">Fechar</span> <span class="font-mono text-[10px] text-slate-400 border border-white/20 rounded px-1.5 py-0.5 hidden md:inline">ESC</span> <svg class="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button></div></div> `;
+    if (store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition)) {
+      $$payload.out += "<!--[-->";
+      if (store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition).visible) {
+        $$payload.out += "<!--[-->";
+        $$payload.out += `<div class="absolute z-20 pointer-events-none transition-all duration-100 ease-out animate-fade-in svelte-etlq64"${attr_style(`left: ${stringify(store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition).x)}px; top: ${stringify(store_get($$store_subs ??= {}, "$earthScreenPosition", earthScreenPosition).y)}px; transform: translate(-50%, -50%);`)}><div class="relative flex items-center justify-center"><div class="absolute w-14 h-14 rounded-full border border-cyan-400/40 animate-ping pointer-events-none"></div> <div class="w-9 h-9 rounded-full border-2 border-cyan-400 bg-cyan-950/50 backdrop-blur-md flex items-center justify-center shadow-lg shadow-cyan-500/50"><span class="text-sm select-none">🌍</span></div> <div class="absolute left-12 top-0 -translate-y-1/2 w-64 sm:w-72 bg-black/85 backdrop-blur-md border border-cyan-400/50 rounded-2xl p-3.5 shadow-2xl text-white pointer-events-auto"><div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-cyan-500/20"><span class="text-xs font-bold text-cyan-300 font-mono flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> TERRA / SISTEMA SOLAR</span> <span class="text-[10px] text-cyan-200/80 font-mono">l=180° b=+0.14°</span></div> <p class="text-[11px] text-slate-300 leading-snug">Localizada a <strong class="text-cyan-200">26.670 anos-luz</strong> de Sagittarius A*, na direção do Anti-centro Galáctico (constelação de Touro/Auriga).</p> <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between"><span class="text-[10px] text-slate-400 font-mono">Tempo-luz: ~26.700 anos</span> <button type="button" class="px-2.5 py-1 rounded-lg text-[10px] bg-cyan-500/25 hover:bg-cyan-500/45 text-cyan-200 border border-cyan-400/40 font-mono font-medium transition cursor-pointer">Centrar mira →</button></div></div></div></div>`;
+      } else if (edgePos) {
+        $$payload.out += "<!--[1-->";
+        $$payload.out += `<div class="absolute z-20 pointer-events-auto cursor-pointer animate-fade-in svelte-etlq64"${attr_style(`left: ${stringify(edgePos.x)}px; top: ${stringify(edgePos.y)}px; transform: translate(-50%, -50%);`)} role="button" tabindex="0" aria-label="Girar câmera em direção à Terra"><div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 hover:bg-cyan-950/80 border border-cyan-400/60 text-cyan-300 text-xs font-mono shadow-xl backdrop-blur-md transition-transform hover:scale-105 active:scale-95"><span${attr_style(`transform: rotate(${stringify(edgePos.deg)}deg); display: inline-block;`)}>↑</span> <span>🌍 Terra (26.670 al)</span></div></div>`;
+      } else {
+        $$payload.out += "<!--[!-->";
+      }
+      $$payload.out += `<!--]-->`;
+    } else {
+      $$payload.out += "<!--[!-->";
+    }
+    $$payload.out += `<!--]--> `;
     {
       $$payload.out += "<!--[-->";
       const each_array = ensure_array_like(cameras);

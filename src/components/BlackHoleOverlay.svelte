@@ -4,7 +4,11 @@
     closeBlackHole,
     blackHoleConfig,
     blackHoleFps,
+    requestCameraView,
     requestCameraPolar,
+    lookAtEarth,
+    viewFromEarth,
+    earthScreenPosition,
     SAGITTARIUS_A_PRESET as P,
     iscoRadius,
     type QualityPreset
@@ -12,6 +16,7 @@
   import BlackHole from './BlackHole.svelte';
 
   let panelOpen = $state(true);
+  let showEarth = $state(true);
 
   const qualities: { id: QualityPreset; label: string }[] = [
     { id: 'auto', label: 'Auto' },
@@ -21,10 +26,28 @@
   ];
 
   const cameras = [
-    { label: 'EHT 30°', polar: 30 },
-    { label: 'Gargantua', polar: 82 },
-    { label: 'Polar', polar: 5 }
+    { label: 'Visão da Terra (EHT)', action: () => viewFromEarth() },
+    { label: 'Rumo à Terra', action: () => lookAtEarth() },
+    { label: 'Gargantua (82°)', action: () => requestCameraPolar(82) },
+    { label: 'Polar (5°)', action: () => requestCameraPolar(5) }
   ];
+
+  // Screen edge position for off-screen Earth pointer
+  let edgePos = $derived.by(() => {
+    if (!$earthScreenPosition || typeof window === 'undefined') return null;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const margin = 70;
+    const cx = w * 0.5;
+    const cy = h * 0.5;
+    const maxRx = Math.max(80, cx - margin);
+    const maxRy = Math.max(80, cy - margin);
+    const ang = $earthScreenPosition.angleRad;
+    const ex = cx + Math.cos(ang) * maxRx;
+    const ey = cy + Math.sin(ang) * maxRy;
+    const deg = (ang * 180) / Math.PI + 90;
+    return { x: ex, y: ey, deg };
+  });
 
   // Keyboard shortcut (Escape) and scroll lock when open
   $effect(() => {
@@ -86,6 +109,16 @@
       <div class="flex items-center gap-2 pointer-events-auto">
         <button
           type="button"
+          onclick={() => (showEarth = !showEarth)}
+          class="flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-semibold backdrop-blur-md border transition-all cursor-pointer {showEarth ? 'bg-cyan-500/25 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20' : 'bg-black/60 hover:bg-white/10 border-white/20 text-slate-300'}"
+          aria-pressed={showEarth}
+          aria-label="Alternar indicador de onde fica a Terra"
+        >
+          <span class="text-sm">🌍</span>
+          <span class="hidden sm:inline">{showEarth ? 'Terra visível' : 'Apontar Terra'}</span>
+        </button>
+        <button
+          type="button"
           onclick={() => (panelOpen = !panelOpen)}
           class="px-3 py-2 bg-black/60 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-xs font-semibold cursor-pointer"
           aria-expanded={panelOpen}
@@ -107,6 +140,66 @@
         </button>
       </div>
     </div>
+
+    <!-- Earth in background sky indicator & HUD -->
+    {#if showEarth && $earthScreenPosition}
+      {#if $earthScreenPosition.visible}
+        <div
+          class="absolute z-20 pointer-events-none transition-all duration-100 ease-out animate-fade-in"
+          style="left: {$earthScreenPosition.x}px; top: {$earthScreenPosition.y}px; transform: translate(-50%, -50%);"
+        >
+          <div class="relative flex items-center justify-center">
+            <!-- Pulsing outer reticle -->
+            <div class="absolute w-14 h-14 rounded-full border border-cyan-400/40 animate-ping pointer-events-none"></div>
+            <div class="w-9 h-9 rounded-full border-2 border-cyan-400 bg-cyan-950/50 backdrop-blur-md flex items-center justify-center shadow-lg shadow-cyan-500/50">
+              <span class="text-sm select-none">🌍</span>
+            </div>
+
+            <!-- Target info card -->
+            <div
+              class="absolute left-12 top-0 -translate-y-1/2 w-64 sm:w-72 bg-black/85 backdrop-blur-md border border-cyan-400/50 rounded-2xl p-3.5 shadow-2xl text-white pointer-events-auto"
+            >
+              <div class="flex items-center justify-between pb-1.5 mb-1.5 border-b border-cyan-500/20">
+                <span class="text-xs font-bold text-cyan-300 font-mono flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  TERRA / SISTEMA SOLAR
+                </span>
+                <span class="text-[10px] text-cyan-200/80 font-mono">l=180° b=+0.14°</span>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-snug">
+                Localizada a <strong class="text-cyan-200">26.670 anos-luz</strong> de Sagittarius A*, na direção do Anti-centro Galáctico (constelação de Touro/Auriga).
+              </p>
+              <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between">
+                <span class="text-[10px] text-slate-400 font-mono">Tempo-luz: ~26.700 anos</span>
+                <button
+                  type="button"
+                  onclick={() => lookAtEarth()}
+                  class="px-2.5 py-1 rounded-lg text-[10px] bg-cyan-500/25 hover:bg-cyan-500/45 text-cyan-200 border border-cyan-400/40 font-mono font-medium transition cursor-pointer"
+                >
+                  Centrar mira &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {:else if edgePos}
+        <!-- Off-screen indicator pointing towards Earth -->
+        <div
+          class="absolute z-20 pointer-events-auto cursor-pointer animate-fade-in"
+          style="left: {edgePos.x}px; top: {edgePos.y}px; transform: translate(-50%, -50%);"
+          onclick={() => lookAtEarth()}
+          role="button"
+          tabindex="0"
+          onkeydown={(e) => e.key === 'Enter' && lookAtEarth()}
+          aria-label="Girar câmera em direção à Terra"
+        >
+          <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 hover:bg-cyan-950/80 border border-cyan-400/60 text-cyan-300 text-xs font-mono shadow-xl backdrop-blur-md transition-transform hover:scale-105 active:scale-95">
+            <span style="transform: rotate({edgePos.deg}deg); display: inline-block;">&uarr;</span>
+            <span>🌍 Terra (26.670 al)</span>
+          </div>
+        </div>
+      {/if}
+    {/if}
 
     <!-- Info + controls panel -->
     {#if panelOpen}
@@ -144,7 +237,7 @@
           <div class="text-[10px] uppercase tracking-widest text-amber-300/80 font-mono mb-1">Câmera</div>
           <div class="flex gap-1.5 flex-wrap">
             {#each cameras as cam}
-              <button type="button" class="{chip} {off}" onclick={() => requestCameraPolar(cam.polar)}>{cam.label}</button>
+              <button type="button" class="{chip} {off}" onclick={cam.action}>{cam.label}</button>
             {/each}
             <button type="button" class="{chip} {$blackHoleConfig.autoRotate ? on : off}" aria-pressed={$blackHoleConfig.autoRotate} onclick={() => setConfig('autoRotate', !$blackHoleConfig.autoRotate)}>Auto-órbita</button>
           </div>

@@ -6,6 +6,7 @@
     blackHoleConfig,
     blackHoleFps,
     blackHoleCameraRequest,
+    earthScreenPosition,
     SAGITTARIUS_A_PRESET,
     iscoRadius,
     type BlackHoleSimConfig
@@ -215,12 +216,22 @@
       ro.observe(canvas.parentElement);
     }
 
-    // --- Camera preset requests (smooth polar-angle transition) ---
+    // --- Camera preset requests (smooth polar & azimuthal transitions) ---
     let targetPolar: number | null = null;
+    let targetAzimuth: number | null = null;
     const unsubCam = blackHoleCameraRequest.subscribe((req) => {
-      if (req) targetPolar = THREE.MathUtils.degToRad(req.polarDeg);
+      if (req) {
+        targetPolar = THREE.MathUtils.degToRad(req.polarDeg);
+        if (req.azimuthDeg !== undefined) {
+          targetAzimuth = THREE.MathUtils.degToRad(req.azimuthDeg);
+        }
+      }
     });
     const sph = new THREE.Spherical();
+
+    // Direction vector towards Earth / Solar System in galactic coordinates (l=180°, b=+0.14°)
+    const earthDirection = new THREE.Vector3(-1.0, 0.00244, 0.0).normalize();
+    const earthSkyPoint = earthDirection.clone().multiplyScalar(500);
 
     // --- Animation loop with FPS tracking ---
     const clock = new THREE.Clock();
@@ -236,10 +247,17 @@
       const dt = Math.min(clock.getDelta(), 0.1);
       material.uniforms.uTime.value += dt;
 
-      if (targetPolar !== null) {
+      if (targetPolar !== null || targetAzimuth !== null) {
         sph.setFromVector3(camera.position);
-        sph.phi += (targetPolar - sph.phi) * 0.08;
-        if (Math.abs(targetPolar - sph.phi) < 0.003) targetPolar = null;
+        if (targetPolar !== null) {
+          sph.phi += (targetPolar - sph.phi) * 0.08;
+          if (Math.abs(targetPolar - sph.phi) < 0.003) targetPolar = null;
+        }
+        if (targetAzimuth !== null) {
+          let diff = (targetAzimuth - sph.theta + Math.PI) % (2 * Math.PI) - Math.PI;
+          sph.theta += diff * 0.08;
+          if (Math.abs(diff) < 0.003) targetAzimuth = null;
+        }
         camera.position.setFromSpherical(sph);
       }
 
@@ -248,6 +266,27 @@
       material.uniforms.uCamPos.value.copy(camera.position);
       material.uniforms.uCamWorld.value.copy(camera.matrixWorld);
       renderer.render(scene, camera);
+
+      // Earth screen projection (only computed when expanded)
+      if (!isAmbient) {
+        const pt = earthSkyPoint.clone().project(camera);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const isBehind = pt.z >= 1.0;
+        const sx = (pt.x * 0.5 + 0.5) * w;
+        const sy = (-pt.y * 0.5 + 0.5) * h;
+        const inView = !isBehind && sx >= 30 && sx <= w - 30 && sy >= 30 && sy <= h - 30;
+        const dx = isBehind ? -pt.x : pt.x;
+        const dy = isBehind ? pt.y : -pt.y;
+        const angleRad = Math.atan2(dy, dx);
+        earthScreenPosition.set({
+          visible: inView,
+          x: Math.round(sx),
+          y: Math.round(sy),
+          angleRad,
+          distanceLy: preset.distanceLy
+        });
+      }
 
       // Frame-time monitor (only adapts when open in full mode)
       frameCount++;
@@ -316,6 +355,7 @@
       clearInterval(fpsInterval);
       unsubConfig();
       unsubCam();
+      earthScreenPosition.set(null);
       blackHoleFps.set(0);
       canvas.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);

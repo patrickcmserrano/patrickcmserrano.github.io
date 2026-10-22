@@ -67,11 +67,36 @@ export const blackHoleConfig = writable<BlackHoleSimConfig>({ ...DEFAULT_SIM_CON
 /** Live FPS reported by the renderer (0 when closed). */
 export const blackHoleFps = writable(0);
 
-/** Request a camera polar angle (degrees from the spin axis); `nonce` retriggers the same value. */
-export const blackHoleCameraRequest = writable<{ polarDeg: number; nonce: number } | null>(null);
+export interface EarthScreenIndicator {
+  visible: boolean;
+  x: number;
+  y: number;
+  angleRad: number;
+  distanceLy: number;
+}
+
+/** Screen projection of Earth / Solar System in galactic background */
+export const earthScreenPosition = writable<EarthScreenIndicator | null>(null);
+
+/** Request a camera polar and/or azimuthal angle; `nonce` retriggers the same value. */
+export const blackHoleCameraRequest = writable<{ polarDeg: number; azimuthDeg?: number; nonce: number } | null>(null);
+
+export function requestCameraView(polarDeg: number, azimuthDeg?: number) {
+  blackHoleCameraRequest.set({ polarDeg, azimuthDeg, nonce: Date.now() });
+}
 
 export function requestCameraPolar(polarDeg: number) {
-  blackHoleCameraRequest.set({ polarDeg, nonce: Date.now() });
+  requestCameraView(polarDeg);
+}
+
+/** Align camera looking towards Earth / Solar System (Galactic Anti-Center) */
+export function lookAtEarth() {
+  requestCameraView(90, 0);
+}
+
+/** Align camera to the Event Horizon Telescope (EHT) viewing perspective from Earth (~30° inclination) */
+export function viewFromEarth() {
+  requestCameraView(60, 180);
 }
 
 /**

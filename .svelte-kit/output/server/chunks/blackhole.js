@@ -17,6 +17,20 @@ const DEFAULT_SIM_CONFIG = {
 };
 const blackHoleConfig = writable({ ...DEFAULT_SIM_CONFIG });
 const blackHoleFps = writable(0);
+const earthScreenPosition = writable(null);
+const blackHoleCameraRequest = writable(null);
+function requestCameraView(polarDeg, azimuthDeg) {
+  blackHoleCameraRequest.set({ polarDeg, azimuthDeg, nonce: Date.now() });
+}
+function requestCameraPolar(polarDeg) {
+  requestCameraView(polarDeg);
+}
+function lookAtEarth() {
+  requestCameraView(90, 0);
+}
+function viewFromEarth() {
+  requestCameraView(60, 180);
+}
 function iscoRadius(spin) {
   const a = Math.min(Math.max(spin, 0), 0.998);
   const z1 = 1 + Math.cbrt(1 - a * a) * (Math.cbrt(1 + a) + Math.cbrt(1 - a));
@@ -28,5 +42,9 @@ export {
   isBlackHoleOpen as a,
   blackHoleFps as b,
   blackHoleConfig as c,
-  iscoRadius as i
+  earthScreenPosition as e,
+  iscoRadius as i,
+  lookAtEarth as l,
+  requestCameraPolar as r,
+  viewFromEarth as v
 };
