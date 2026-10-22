@@ -105,10 +105,14 @@
           <article class="flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden hover:shadow-lg dark:hover:shadow-slate-950/40 hover:-translate-y-1 transition duration-300">
             <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
               <div>
-                <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono">
+                <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono flex-wrap">
                   <span>{new Date(post.date).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</span>
                   <span>•</span>
                   <span>{post.readTime || '10 min'}</span>
+                  {#if post.hasAudio}
+                    <span>•</span>
+                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold">🎧 Narrado</span>
+                  {/if}
                 </div>
                 <h2 class="text-xl font-bold mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
                   <a href="/blog/{post.id}/">{post.title}</a>

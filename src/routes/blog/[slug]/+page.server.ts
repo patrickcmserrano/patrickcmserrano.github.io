@@ -12,6 +12,115 @@ interface PostMetadata {
   tags: string[];
 }
 
+export interface ArticleSection {
+  id: string;
+  title: string;
+  isIntro: boolean;
+  headingHtml: string;
+  bodyHtml: string;
+}
+
+export interface SectionAudioEntry {
+  sectionId: string;
+  title: string;
+  file: string;
+  url: string;
+  duration: number;
+  mimeType: string;
+  recordedAt: string;
+}
+
+export interface PostAudioManifest {
+  slug: string;
+  updatedAt?: string;
+  sections: Record<string, SectionAudioEntry>;
+}
+
+function slugifyHeading(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/<[^>]+>/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 64) || 'secao';
+}
+
+function stripHtmlTags(html: string): string {
+  return html
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .trim();
+}
+
+function splitHtmlIntoSections(html: string): ArticleSection[] {
+  const h2Regex = /<h2(?:\s+[^>]*)?>([\s\S]*?)<\/h2>/gi;
+  const matches = [...html.matchAll(h2Regex)];
+
+  if (matches.length === 0) {
+    return [
+      {
+        id: 'intro',
+        title: 'Artigo Completo',
+        isIntro: true,
+        headingHtml: '',
+        bodyHtml: html
+      }
+    ];
+  }
+
+  const sections: ArticleSection[] = [];
+  const usedIds = new Set<string>();
+
+  const firstIndex = matches[0].index ?? 0;
+  const introBody = html.slice(0, firstIndex).trim();
+  if (introBody.replace(/<hr\s*\/?>/gi, '').trim().length > 0) {
+    sections.push({
+      id: 'intro',
+      title: 'Introdução',
+      isIntro: true,
+      headingHtml: '',
+      bodyHtml: introBody
+    });
+    usedIds.add('intro');
+  }
+
+  for (let i = 0; i < matches.length; i++) {
+    const match = matches[i];
+    const headingFullHtml = match[0];
+    const headingInnerHtml = match[1];
+    const cleanTitle = stripHtmlTags(headingInnerHtml) || `Seção ${i + 1}`;
+
+    let baseId = `sec-${slugifyHeading(cleanTitle)}`;
+    let uniqueId = baseId;
+    let counter = 2;
+    while (usedIds.has(uniqueId)) {
+      uniqueId = `${baseId}-${counter}`;
+      counter++;
+    }
+    usedIds.add(uniqueId);
+
+    const bodyStart = (match.index ?? 0) + headingFullHtml.length;
+    const bodyEnd = i + 1 < matches.length ? (matches[i + 1].index ?? html.length) : html.length;
+    const bodyHtml = html.slice(bodyStart, bodyEnd).trim();
+
+    sections.push({
+      id: uniqueId,
+      title: cleanTitle,
+      isIntro: false,
+      headingHtml: headingFullHtml,
+      bodyHtml
+    });
+  }
+
+  return sections;
+}
+
 // Gera as rotas estáticas na compilação (SSG)
 export async function entries() {
   try {
@@ -55,6 +164,24 @@ export async function load({ params }) {
   // Converter markdown para HTML no servidor
   // Como são arquivos locais confiáveis e estáticos, a conversão direta é segura e muito rápida
   const parsedHtml = await marked(contentWithoutLeadingH1);
+  const sections = splitHtmlIntoSections(parsedHtml);
+
+  // Carregar manifesto de áudios gravados (se existir)
+  let audioManifest: PostAudioManifest = {
+    slug,
+    sections: {}
+  };
+  try {
+    const manifestPath = path.resolve(`static/audio/posts/${slug}/manifest.json`);
+    if (fs.existsSync(manifestPath)) {
+      audioManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+      if (!audioManifest.sections) {
+        audioManifest.sections = {};
+      }
+    }
+  } catch (error) {
+    console.error(`Erro ao carregar manifesto de áudio para ${slug}:`, error);
+  }
   
   // Buscar metadados adicionais
   let metadata: PostMetadata = {
@@ -83,6 +210,8 @@ export async function load({ params }) {
     slug,
     metadata,
     html: parsedHtml,
+    sections,
+    audioManifest,
     lang
   };
 }

@@ -41,12 +41,19 @@ function _page($$payload, $$props) {
     for (let $$index_2 = 0, $$length = each_array_1.length; $$index_2 < $$length; $$index_2++) {
       let post = each_array_1[$$index_2];
       const each_array_2 = ensure_array_like(post.tags);
-      $$payload.out += `<article class="flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden hover:shadow-lg dark:hover:shadow-slate-950/40 hover:-translate-y-1 transition duration-300"><div class="p-6 md:p-8 flex-1 flex flex-col justify-between"><div><div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono"><span>${escape_html(new Date(post.date).toLocaleDateString("pt-BR", {
+      $$payload.out += `<article class="flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden hover:shadow-lg dark:hover:shadow-slate-950/40 hover:-translate-y-1 transition duration-300"><div class="p-6 md:p-8 flex-1 flex flex-col justify-between"><div><div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono flex-wrap"><span>${escape_html(new Date(post.date).toLocaleDateString("pt-BR", {
         year: "numeric",
         month: "long",
         day: "numeric",
         timeZone: "UTC"
-      }))}</span> <span>•</span> <span>${escape_html(post.readTime || "10 min")}</span></div> <h2 class="text-xl font-bold mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><a${attr("href", `/blog/${stringify(post.id)}/`)}>${escape_html(post.title)}</a></h2> <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6">${escape_html(post.excerpt)}</p></div> <div><div class="flex flex-wrap gap-1.5 mb-4"><!--[-->`;
+      }))}</span> <span>•</span> <span>${escape_html(post.readTime || "10 min")}</span> `;
+      if (post.hasAudio) {
+        $$payload.out += "<!--[-->";
+        $$payload.out += `<span>•</span> <span class="text-indigo-600 dark:text-indigo-400 font-semibold">🎧 Narrado</span>`;
+      } else {
+        $$payload.out += "<!--[!-->";
+      }
+      $$payload.out += `<!--]--></div> <h2 class="text-xl font-bold mb-3 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><a${attr("href", `/blog/${stringify(post.id)}/`)}>${escape_html(post.title)}</a></h2> <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6">${escape_html(post.excerpt)}</p></div> <div><div class="flex flex-wrap gap-1.5 mb-4"><!--[-->`;
       for (let $$index_1 = 0, $$length2 = each_array_2.length; $$index_1 < $$length2; $$index_1++) {
         let tag = each_array_2[$$index_1];
         $$payload.out += `<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${escape_html(tag)}</span>`;
