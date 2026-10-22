@@ -3,13 +3,57 @@
   import LanguageSelector from '../components/LanguageSelector.svelte';
   import BlackHoleToggle from '../components/BlackHoleToggle.svelte';
   import DensidadeRepos from '../components/DensidadeRepos.svelte';
-  import { openBlackHole } from '../lib/blackhole';
+  import { openBlackHole, setAmbientCenterTarget } from '../lib/blackhole';
   import { _, currentLanguage } from '../lib/simple-i18n';
   
   // Props no Svelte 5 para receber dados do servidor
   let { data } = $props();
   let featuredProjects = $derived(data.featuredProjects || []);
   let recentPosts = $derived(data.recentPosts || []);
+
+  let heroPortalEl: HTMLElement | null = $state(null);
+
+  $effect(() => {
+    if (typeof window === 'undefined') return;
+
+    const updateTarget = () => {
+      if (!heroPortalEl) {
+        setAmbientCenterTarget(null);
+        return;
+      }
+      const rect = heroPortalEl.getBoundingClientRect();
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (w <= 0 || h <= 0) return;
+
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const ndcX = (cx / w) * 2 - 1;
+      const rawNdcY = 1.0 - 2.0 * (cy / h);
+
+      // When scrollY is 0 (hero in view), rawNdcY centers the black hole exactly in the frame.
+      // When scrolling down, smoothly blend towards 0 (vertical center of viewport) so it stays visible as background.
+      const scrollProgress = Math.min(1, Math.max(0, window.scrollY / (h * 0.75)));
+      const ndcY = rawNdcY * (1 - scrollProgress) + 0.0 * scrollProgress;
+
+      setAmbientCenterTarget({ ndcX, ndcY });
+    };
+
+    updateTarget();
+
+    const ro = new ResizeObserver(updateTarget);
+    if (heroPortalEl) ro.observe(heroPortalEl);
+
+    window.addEventListener('resize', updateTarget, { passive: true });
+    window.addEventListener('scroll', updateTarget, { passive: true });
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', updateTarget);
+      window.removeEventListener('scroll', updateTarget);
+      setAmbientCenterTarget(null);
+    };
+  });
 
   const getLoc = (field: any, lang: string) => {
     if (field && typeof field === 'object') {
@@ -170,12 +214,20 @@
       <div class="absolute inset-0 bg-radial from-amber-500/15 via-indigo-950/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Portal translúcido cósmico -->
-      <div class="relative w-full h-full rounded-3xl overflow-hidden border border-slate-200/40 dark:border-white/10 shadow-2xl backdrop-blur-[0.5px] bg-white/5 dark:bg-white/[0.02]">
+      <div
+        bind:this={heroPortalEl}
+        onclick={openBlackHole}
+        onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && openBlackHole()}
+        role="button"
+        tabindex="0"
+        aria-label="Expandir simulação de Sagittarius A*"
+        class="relative w-full h-full rounded-3xl overflow-hidden border border-slate-200/40 dark:border-white/10 shadow-2xl backdrop-blur-[0.5px] bg-white/5 dark:bg-white/[0.02] cursor-pointer transition-colors duration-300 group-hover:border-amber-400/40"
+      >
         <!-- Botão sutil de acionamento em tela cheia -->
         <div class="absolute bottom-4 right-4 pointer-events-auto">
           <button
             type="button"
-            onclick={openBlackHole}
+            onclick={(e) => { e.stopPropagation(); openBlackHole(); }}
             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-black/70 hover:bg-black/90 text-amber-300 border border-amber-400/30 backdrop-blur-md transition-all shadow-lg hover:border-amber-400/70 cursor-pointer active:scale-95"
             aria-label="Expandir simulação do buraco negro"
           >

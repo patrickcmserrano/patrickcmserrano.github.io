@@ -7,9 +7,11 @@
     blackHoleFps,
     blackHoleCameraRequest,
     earthScreenPosition,
+    ambientCenterTarget,
     SAGITTARIUS_A_PRESET,
     iscoRadius,
-    type BlackHoleSimConfig
+    type BlackHoleSimConfig,
+    type AmbientCenterTarget
   } from "../lib/blackhole";
   import {
     vertexShader,
@@ -181,10 +183,21 @@
 
     const unsubConfig = blackHoleConfig.subscribe(applyConfig);
 
+    let dynamicAmbientTarget: AmbientCenterTarget | null = null;
+    const currentCenterOffset = new THREE.Vector2(0, 0);
+    const unsubTarget = ambientCenterTarget.subscribe((t) => {
+      dynamicAmbientTarget = t;
+    });
+
     updateAmbientMode = (ambient: boolean) => {
       const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
       if (ambient) {
-        material.uniforms.uCenterOffset.value.set(isDesktop ? 0.38 : 0.0, isDesktop ? 0.0 : 0.2);
+        if (dynamicAmbientTarget) {
+          currentCenterOffset.set(dynamicAmbientTarget.ndcX, dynamicAmbientTarget.ndcY);
+        } else {
+          currentCenterOffset.set(isDesktop ? 0.35 : 0.0, isDesktop ? -0.05 : 0.15);
+        }
+        material.uniforms.uCenterOffset.value.copy(currentCenterOffset);
         controls.enabled = false;
         controls.autoRotate = true;
         controls.autoRotateSpeed = 0.22;
@@ -193,6 +206,7 @@
         canvas.style.pointerEvents = "none";
         canvas.style.cursor = "default";
       } else {
+        currentCenterOffset.set(0.0, 0.0);
         material.uniforms.uCenterOffset.value.set(0.0, 0.0);
         controls.enabled = true;
         controls.enableZoom = true;
@@ -263,6 +277,25 @@
 
       controls.update();
       camera.updateMatrixWorld();
+
+      // Smooth center offset tracking (ambient aligns to hero element; modal centers to 0,0)
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
+      if (isAmbient) {
+        let tx = isDesktop ? 0.35 : 0.0;
+        let ty = isDesktop ? -0.05 : 0.15;
+        if (dynamicAmbientTarget) {
+          tx = dynamicAmbientTarget.ndcX;
+          ty = dynamicAmbientTarget.ndcY;
+        }
+        currentCenterOffset.x += (tx - currentCenterOffset.x) * 0.1;
+        currentCenterOffset.y += (ty - currentCenterOffset.y) * 0.1;
+        material.uniforms.uCenterOffset.value.copy(currentCenterOffset);
+      } else {
+        currentCenterOffset.x += (0.0 - currentCenterOffset.x) * 0.15;
+        currentCenterOffset.y += (0.0 - currentCenterOffset.y) * 0.15;
+        material.uniforms.uCenterOffset.value.copy(currentCenterOffset);
+      }
+
       material.uniforms.uCamPos.value.copy(camera.position);
       material.uniforms.uCamWorld.value.copy(camera.matrixWorld);
       renderer.render(scene, camera);
@@ -355,6 +388,7 @@
       clearInterval(fpsInterval);
       unsubConfig();
       unsubCam();
+      unsubTarget();
       earthScreenPosition.set(null);
       blackHoleFps.set(0);
       canvas.removeEventListener("mousedown", onMouseDown);

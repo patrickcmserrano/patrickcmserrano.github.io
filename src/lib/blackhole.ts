@@ -78,6 +78,19 @@ export interface EarthScreenIndicator {
 /** Screen projection of Earth / Solar System in galactic background */
 export const earthScreenPosition = writable<EarthScreenIndicator | null>(null);
 
+export interface AmbientCenterTarget {
+  /** NDC coordinates in [-1, 1], where (0,0) is center, (-1,-1) bottom-left, (+1,+1) top-right */
+  ndcX: number;
+  ndcY: number;
+}
+
+/** Dynamic ambient center offset for aligning Sagittarius A* with DOM hero elements */
+export const ambientCenterTarget = writable<AmbientCenterTarget | null>(null);
+
+export function setAmbientCenterTarget(target: AmbientCenterTarget | null) {
+  ambientCenterTarget.set(target);
+}
+
 /** Request a camera polar and/or azimuthal angle; `nonce` retriggers the same value. */
 export const blackHoleCameraRequest = writable<{ polarDeg: number; azimuthDeg?: number; nonce: number } | null>(null);
 
