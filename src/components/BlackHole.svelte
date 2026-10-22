@@ -103,7 +103,8 @@
         uNoise: { value: noiseTexture },
         uSky: { value: null },
         uSkyGain: { value: 5.0 },
-        uSkyReady: { value: 0 }
+        uSkyReady: { value: 0 },
+        uCenterOffset: { value: new THREE.Vector2(0, 0) }
       }
     });
 
@@ -180,17 +181,18 @@
     const unsubConfig = blackHoleConfig.subscribe(applyConfig);
 
     updateAmbientMode = (ambient: boolean) => {
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
       if (ambient) {
-        controls.enabled = true;
-        controls.enableZoom = false; // Preserva o scroll nativo da página
-        controls.enablePan = false;
+        material.uniforms.uCenterOffset.value.set(isDesktop ? 0.38 : 0.0, isDesktop ? 0.0 : 0.2);
+        controls.enabled = false;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.45;
-        resScale = 0.65;
-        material.uniforms.uMaxSteps.value = 95;
-        canvas.style.pointerEvents = "auto";
-        canvas.style.cursor = "grab";
+        controls.autoRotateSpeed = 0.22;
+        resScale = 0.75;
+        material.uniforms.uMaxSteps.value = 110;
+        canvas.style.pointerEvents = "none";
+        canvas.style.cursor = "default";
       } else {
+        material.uniforms.uCenterOffset.value.set(0.0, 0.0);
         controls.enabled = true;
         controls.enableZoom = true;
         controls.enablePan = true;
@@ -296,7 +298,13 @@
     };
     document.addEventListener("visibilitychange", onVisibility);
 
-    const onWindowResize = () => applyResolution();
+    const onWindowResize = () => {
+      if (isAmbient) {
+        const isDesktop = window.innerWidth >= 768;
+        material.uniforms.uCenterOffset.value.set(isDesktop ? 0.38 : 0.0, isDesktop ? 0.0 : 0.2);
+      }
+      applyResolution();
+    };
     window.addEventListener("resize", onWindowResize);
     window.visualViewport?.addEventListener("resize", onWindowResize);
 

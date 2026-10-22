@@ -39,6 +39,7 @@ export const fragmentShader = /* glsl */ `
   uniform sampler2D uSky;
   uniform float uSkyGain;
   uniform float uSkyReady;
+  uniform vec2 uCenterOffset;
 
   varying vec2 vNdc;
 
@@ -118,7 +119,7 @@ export const fragmentShader = /* glsl */ `
   }
 
   void main() {
-    vec2 p = vNdc;
+    vec2 p = vNdc - uCenterOffset;
     p.x *= uRes.x / uRes.y;
     vec3 vel = normalize(mat3(uCamWorld) * vec3(p * uTanHalfFov, -1.0));
     vec3 pos = uCamPos;

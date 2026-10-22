@@ -14,28 +14,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link href="../../_app/immutable/entry/start.B3qezb52.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/4bPHxvfC.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/BUoQSc5_.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.Cn66BgJ5.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DQ6t7_oL.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/B_J8hLpb.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/OtQZ2obG.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/Bb1kZ67D.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/0.0mJsV9BF.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DrkpwwC4.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DYw1cS00.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/6abF-riu.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CmsOhWSa.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/D-utFv8B.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/8.BN7P7NJa.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/DiSvSzm9.js" rel="modulepreload">
+    <link href="../../_app/immutable/entry/start.zeNyyq-X.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CqSfaY5U.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/V3BLG7Or.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.MpcDJP1s.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/iCzJ2NVs.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/iAw-Whe_.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D79LS_Lg.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D5E_HFBM.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.BpU6FWWL.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DK9y2IuN.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CiU5MM20.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DWTvyFkl.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DGAQqA1E.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/8.CXQC7rhF.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/_6ftJLp4.js" rel="modulepreload">
 		<!--[--><meta name="description" content="Rohana is a multi-tenant Clojure engine for conversational AI agents with tenant-specific RAG, grounding, and guardrails via EDN files. The product is sold under the Daelaam brand; the end client talks to the business's own persona. Messages flow through a local event bus built on Aeron IPC, with service over WhatsApp and Telegram."><!--]--><!--[--><script>
     // Aplicar tema salvo no carregamento da página (escuro por padrão)
     const mode = localStorage.getItem('mode') || 'dark';
     document.documentElement.setAttribute('data-mode', mode);
   </script><!----><!--]--><title>Rohana — Patrick Campelo Serrano</title>
-		<link href="../../_app/immutable/assets/0.CJ-R_XyA.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/0.p38jyIeO.css" rel="stylesheet">
 		<link href="../../_app/immutable/assets/LanguageSelector.BUSG7h5-.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -63,20 +62,20 @@
 <li><strong>Security (LGPD)</strong>: Fail-closed privacy gate — every chunk passes through Presidio before embedding and before persistence; if the gate fails for a chunk, only that fragment is discarded. The operational audit trail is published to the bus on per-tenant subjects (<code>audit.operational.*</code>, <code>audit.interaction.*</code>).</li>
 <li><strong>Provisioning</strong>: Registering a new tenant simply involves adding an <code>.edn</code> file and indexing their documents — zero code changes and zero deployments.</li>
 </ul>
-<!----></div></section> <!--[--><section class="pt-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800"><div><h3 class="font-bold text-slate-900 dark:text-white">Live Demo</h3> <p class="text-sm text-slate-500">Access the online demo or project page.</p></div> <a href="https://patrickcmserrano.github.io/rohana/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition text-sm">Access Site / Demo</a></section><!--]--> <!--[!--><!--]--></div></main></div><!----><!----></div> <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end"><!--[--><div class="mb-2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 text-white dark:bg-white/90 dark:text-slate-900 text-xs font-semibold shadow-lg backdrop-blur border border-slate-700/50 dark:border-slate-200/50 animate-bounce"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Converse com a Rohana (IA)</div><!--]--> <button type="button" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-indigo-500/30" aria-label="Abrir chat com a Rohana"><!--[!--><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><!--]--> <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-slate-950 rounded-full"></span></button></div> <!--[!--><!--]--><!----> <!--[!--><!--]--><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+<!----></div></section> <!--[--><section class="pt-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800"><div><h3 class="font-bold text-slate-900 dark:text-white">Live Demo</h3> <p class="text-sm text-slate-500">Access the online demo or project page.</p></div> <a href="https://patrickcmserrano.github.io/rohana/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition text-sm">Access Site / Demo</a></section><!--]--> <!--[!--><!--]--></div></main></div><!----><!----></div> <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end"><!--[--><div class="mb-2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 text-white dark:bg-white/90 dark:text-slate-900 text-xs font-semibold shadow-lg backdrop-blur border border-slate-700/50 dark:border-slate-200/50 animate-bounce"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Converse com a Rohana (IA)</div><!--]--> <button type="button" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-indigo-500/30" aria-label="Abrir chat com a Rohana"><!--[!--><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg><!--]--> <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-slate-950 rounded-full"></span></button></div> <!--[!--><!--]--><!----> <div class="fixed inset-0 overflow-hidden transition-all duration-700 pointer-events-none z-0" role="presentation"><div class="absolute inset-0 z-0 w-full h-full"><canvas class="block w-full h-full"></canvas><!----></div> <div class="absolute inset-0 pointer-events-none transition-opacity duration-700 opacity-100 bg-[#030712]/60 dark:bg-[#000000]/55 backdrop-blur-[0.5px]"></div> <!--[!--><!--]--></div><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
 			
 			<script>
 				{
 					
-					__sveltekit_2c8o7v = {
+					__sveltekit_1w5kqq9 = {
 						base: new URL("../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../_app/immutable/entry/start.B3qezb52.js"),
-						import("../../_app/immutable/entry/app.Cn66BgJ5.js")
+						import("../../_app/immutable/entry/start.zeNyyq-X.js"),
+						import("../../_app/immutable/entry/app.MpcDJP1s.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 8],

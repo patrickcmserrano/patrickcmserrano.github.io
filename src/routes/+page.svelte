@@ -3,7 +3,6 @@
   import LanguageSelector from '../components/LanguageSelector.svelte';
   import BlackHoleToggle from '../components/BlackHoleToggle.svelte';
   import DensidadeRepos from '../components/DensidadeRepos.svelte';
-  import BlackHole from '../components/BlackHole.svelte';
   import { openBlackHole } from '../lib/blackhole';
   import { _, currentLanguage } from '../lib/simple-i18n';
   
@@ -25,7 +24,7 @@
   <meta name="description" content="Engenheiro Clojure/ClojureScript Sênior especialista em sistemas distribuídos, event-driven, quant-trading e arquiteturas minimalistas." />
 </svelte:head>
 
-<div class="min-h-screen bg-slate-50/90 dark:bg-[#07070d] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="min-h-screen bg-slate-50/90 dark:bg-transparent text-slate-900 dark:text-slate-100 transition-colors duration-300">
   <!-- Header -->
   <header class="border-b border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-black/40 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
@@ -166,20 +165,18 @@
     </div>
 
     <!-- Right Column: Objeto Celeste (Sagittarius A* 3D Simulation) -->
-    <div class="w-full md:w-1/2 h-[340px] sm:h-[400px] md:h-[460px] lg:h-[500px] relative flex items-center justify-center group">
+    <div class="w-full md:w-1/2 h-[340px] sm:h-[400px] md:h-[460px] lg:h-[500px] relative flex items-center justify-center group pointer-events-auto">
       <!-- Glow cósmico de ambiência -->
-      <div class="absolute inset-0 bg-radial from-amber-500/10 via-indigo-950/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute inset-0 bg-radial from-amber-500/15 via-indigo-950/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- Container do Objeto Celeste -->
-      <div class="relative w-full h-full rounded-3xl overflow-hidden border border-slate-200/50 dark:border-white/10 shadow-2xl bg-black">
-        <BlackHole isAmbient={true} />
-
+      <!-- Portal translúcido cósmico -->
+      <div class="relative w-full h-full rounded-3xl overflow-hidden border border-slate-200/40 dark:border-white/10 shadow-2xl backdrop-blur-[0.5px] bg-white/5 dark:bg-white/[0.02]">
         <!-- Botão sutil de acionamento em tela cheia -->
         <div class="absolute bottom-4 right-4 pointer-events-auto">
           <button
             type="button"
             onclick={openBlackHole}
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-black/70 hover:bg-black/90 text-amber-300 border border-amber-400/30 backdrop-blur-md transition-all shadow-lg hover:border-amber-400/70 cursor-pointer active:scale-95"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-black/70 hover:bg-black/90 text-amber-300 border border-amber-400/30 backdrop-blur-md transition-all shadow-lg hover:border-amber-400/70 cursor-pointer active:scale-95"
             aria-label="Expandir simulação do buraco negro"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>

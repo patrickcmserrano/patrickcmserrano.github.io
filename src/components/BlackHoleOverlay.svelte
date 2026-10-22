@@ -53,19 +53,24 @@
   const off = 'bg-white/5 border-white/15 text-slate-300 hover:bg-white/10';
 </script>
 
-{#if $isBlackHoleOpen}
 <div
-  class="fixed inset-0 z-[100] overflow-hidden bg-black pointer-events-auto transition-opacity duration-300"
-  role="dialog"
-  aria-label="Visualização do Black Hole"
-  aria-modal="true"
+  class="fixed inset-0 overflow-hidden transition-all duration-700 pointer-events-none {$isBlackHoleOpen ? 'z-[100] pointer-events-auto' : 'z-0'}"
+  role={$isBlackHoleOpen ? 'dialog' : 'presentation'}
+  aria-label={$isBlackHoleOpen ? 'Visualização do Black Hole' : undefined}
+  aria-modal={$isBlackHoleOpen ? 'true' : undefined}
 >
   <div class="absolute inset-0 z-0 w-full h-full">
-    <BlackHole isAmbient={false} />
+    <BlackHole isAmbient={!$isBlackHoleOpen} />
   </div>
 
-  <!-- Top bar -->
-  <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in">
+  <!-- Ambient dark scrim: opaco mas translúcido para ver o fundo cósmico -->
+  <div
+    class="absolute inset-0 pointer-events-none transition-opacity duration-700 {$isBlackHoleOpen ? 'opacity-0' : 'opacity-100 bg-[#030712]/60 dark:bg-[#000000]/55 backdrop-blur-[0.5px]'}"
+  ></div>
+
+  {#if $isBlackHoleOpen}
+    <!-- Top bar -->
+    <div class="relative z-10 w-full p-4 md:p-6 flex items-start justify-between pointer-events-none gap-3 animate-fade-in">
       <div class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-2xl text-white shadow-xl flex items-center gap-3">
         <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
         <div class="flex flex-col">
@@ -155,8 +160,8 @@
         </div>
       </div>
     {/if}
-  </div>
-{/if}
+  {/if}
+</div>
 
 <style>
   @keyframes fadeIn {
