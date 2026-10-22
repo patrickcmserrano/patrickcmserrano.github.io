@@ -107,15 +107,15 @@ Este Diário de Dev #14 é a visão do helicóptero. Como cada uma dessas frente
 
 1. **[Artigo #1 — *Privacidade Não é Política, é Arquitetura: Construindo uma Plataforma Privada de IA sobre FreeBSD Jails, vLLM e Slurm*](/blog/2026-10-22-ai-factory-privacidade-por-arquitetura/)**
    Como desenhamos isolamento em nível de sistema operacional, sanitização de PII pré-vetor com quarentena criptografada e orquestração de GPUs locais sem depender de nuvens públicas.
-2. **Artigo #2 — *`small-router`: Por Que Construí um Gateway de Inferência em Go com Contratos em EDN/Malli***
+2. **[Artigo #2 — *`small-router`: Por Que Construí um Gateway de Inferência em Go com Contratos em EDN/Malli*](/blog/2026-10-22-small-router-gateway-go-contratos-edn-malli/)**
    Bastidores do plano de execução para agentes de código: resiliência (retry, backoff, circuit breaker), observabilidade 100% cega ao conteúdo e a ponte entre Go e o ecossistema Clojure/Babashka.
-3. **Artigo #3 — *Engenharia de Contexto Determinística: Medindo o Impacto do `context-graph-engine` em Agentes de Código***
+3. **[Artigo #3 — *Engenharia de Contexto Determinística: Medindo o Impacto do `context-graph-engine` em Agentes de Código*](/blog/2026-10-22-context-graph-engine-engenharia-contexto-deterministica/)**
    Como transformar um repositório em um grafo navegável com orçamento estrito de tokens e o que os benchmarks A/B (`BEFORE` vs. `AFTER`) revelaram sobre o comportamento real dos LLMs.
-4. **Artigo #4 — *Sagittarius A\* no Browser e um Agente Clojure Vivo no Portfólio***
+4. **[Artigo #4 — *Sagittarius A\* no Browser, Planeta Terra em Tempo Real e um Agente Clojure Vivo no Portfólio*](/blog/2026-10-22-sagittarius-a-webgl-rohana-agente-clojure/)**
    A matemática e os shaders GLSL por trás do *ray-marching* relativístico integrado ao mapa da NASA, e como embutimos a **Rohana** (Clojure + Pathom 3 + Turbovec) para atender visitantes em tempo real.
-5. **Artigo #5 — *Scraping de Sobrevivência com Clojure: Garimpando 19.500 Terrenos, Leilões e iPhones no `TechSentry`***
+5. **[Artigo #5 — *Scraping de Sobrevivência com Clojure: Garimpando 19.528 Terrenos, Leilões e iPhones no `TechSentry`*](/blog/2026-10-22-techsentry-scraping-sobrevivencia-clojure-terrenos-leiloes/)**
    Como contornamos filtros silenciosos da OLX, limpamos ruído de dados do mundo real (de carros batidos a anúncios internacionais infiltrados) e automatizamos tudo na madrugada com `systemd`.
-6. **Artigo #6 — *Diário Quant #15: Modularizando a Família Ark, Carry de Funding e Bitemporalidade no `ark-engine`***
+6. **[Artigo #6 — *Diário Quant #15: Modularizando a Família Ark, Carry Condicional de Funding e Bitemporalidade no `ark-engine`*](/blog/2026-10-22-diario-quant-15-familia-ark-carry-funding-xtdb/)**
    Os detalhes estatísticos do *Carry Condicional de Funding*, a extração dos protocolos Go com *golden fixtures* e a evolução do nosso ledger bitemporal em XTDB.
 
 ---

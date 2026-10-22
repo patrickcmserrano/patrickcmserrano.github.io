@@ -137,6 +137,6 @@ Modelos de linguagem mudam a cada trimestre. Um modelo que hoje é o estado da a
 
 ### 🔜 No Próximo Artigo da Série...
 
-Na **Parte 2** desta série, vamos descer um nível no plano de execução para explorar o **[`small-router`](/trabalho/small-router/)**: como construí em **Go** um gateway de inferência *provider-agnostic* com *circuit breaker*, observabilidade 100% cega ao conteúdo, console desktop nativo em **Wails v2 + Svelte** e por que decidi usar **EDN e schemas Malli (Clojure/Babashka)** para governar seus contratos.
+Na **[Parte 2 desta série](/blog/2026-10-22-small-router-gateway-go-contratos-edn-malli/)**, vamos descer um nível no plano de execução para explorar o **[`small-router`](/trabalho/small-router/)**: como construí em **Go** um gateway de inferência *provider-agnostic* com *circuit breaker*, observabilidade 100% cega ao conteúdo, console desktop nativo em **Wails v2 + Svelte** e por que decidi usar **EDN e schemas Malli (Clojure/Babashka)** para governar seus contratos.
 
 *Se a sua empresa já tentou colocar documentos internos num chat de IA e esbarrou em privacidade, custo de inferência ou integração de identidade, conheça mais sobre o trabalho da **Ping Hai** em [/trabalho/ai-factory/](/trabalho/ai-factory/) ou fale diretamente comigo.*
