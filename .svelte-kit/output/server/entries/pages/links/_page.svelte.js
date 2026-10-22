@@ -1,4 +1,4 @@
-import { Q as sanitize_props, R as spread_props, S as fallback, a as attr, e as escape_html, T as bind_props, p as pop, b as push, f as attr_style, c as attr_class, d as stringify, g as ensure_array_like, P as head, s as store_get, u as unsubscribe_stores } from "../../../chunks/index.js";
+import { Q as sanitize_props, R as spread_props, S as fallback, a as attr, e as escape_html, T as bind_props, p as pop, b as push, f as attr_style, c as attr_class, s as stringify, g as ensure_array_like, P as head, d as store_get, u as unsubscribe_stores } from "../../../chunks/index.js";
 import { I as IconBase, a as Icon, L as LanguageSelector, T as ThemeToggle } from "../../../chunks/LanguageSelector.js";
 import { o as onDestroy } from "../../../chunks/index-server.js";
 import { t, _ } from "../../../chunks/simple-i18n.js";

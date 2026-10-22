@@ -1,5 +1,8 @@
 import { w as writable } from "./index2.js";
 const isBlackHoleOpen = writable(false);
+const activeCelestialTarget = writable("sgr-a");
+const isInterstellarTraveling = writable(false);
+const interstellarTravelTarget = writable(null);
 const SAGITTARIUS_A_PRESET = {
   name: "Sagittarius A*",
   subtitle: "Centro da Via Láctea",
@@ -40,9 +43,12 @@ function iscoRadius(spin) {
 export {
   SAGITTARIUS_A_PRESET as S,
   isBlackHoleOpen as a,
-  blackHoleFps as b,
-  blackHoleConfig as c,
+  activeCelestialTarget as b,
+  isInterstellarTraveling as c,
+  interstellarTravelTarget as d,
   earthScreenPosition as e,
+  blackHoleFps as f,
+  blackHoleConfig as g,
   iscoRadius as i,
   lookAtEarth as l,
   requestCameraPolar as r,

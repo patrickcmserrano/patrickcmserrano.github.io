@@ -1,4 +1,4 @@
-import { g as ensure_array_like, P as head, e as escape_html, a as attr, c as attr_class, d as stringify, p as pop, b as push } from "../../../../chunks/index.js";
+import { g as ensure_array_like, P as head, e as escape_html, a as attr, c as attr_class, s as stringify, p as pop, b as push } from "../../../../chunks/index.js";
 import { o as onDestroy } from "../../../../chunks/index-server.js";
 import { L as LanguageSelector, T as ThemeToggle } from "../../../../chunks/LanguageSelector.js";
 import { B as BlackHoleToggle } from "../../../../chunks/BlackHoleToggle.js";

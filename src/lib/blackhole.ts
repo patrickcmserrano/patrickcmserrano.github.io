@@ -2,6 +2,36 @@ import { writable } from 'svelte/store';
 
 export const isBlackHoleOpen = writable(false);
 
+export type CelestialTarget = 'sgr-a' | 'earth';
+export const activeCelestialTarget = writable<CelestialTarget>('sgr-a');
+export const isInterstellarTraveling = writable<boolean>(false);
+export const interstellarTravelTarget = writable<CelestialTarget | null>(null);
+
+export function travelToEarth() {
+  lookAtEarth();
+  interstellarTravelTarget.set('earth');
+  isInterstellarTraveling.set(true);
+  setTimeout(() => {
+    activeCelestialTarget.set('earth');
+  }, 950);
+  setTimeout(() => {
+    isInterstellarTraveling.set(false);
+    interstellarTravelTarget.set(null);
+  }, 1500);
+}
+
+export function travelToBlackHole() {
+  interstellarTravelTarget.set('sgr-a');
+  isInterstellarTraveling.set(true);
+  setTimeout(() => {
+    activeCelestialTarget.set('sgr-a');
+  }, 950);
+  setTimeout(() => {
+    isInterstellarTraveling.set(false);
+    interstellarTravelTarget.set(null);
+  }, 1500);
+}
+
 export function openBlackHole() {
   isBlackHoleOpen.set(true);
 }
