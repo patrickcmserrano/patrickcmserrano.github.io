@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-10-25-hackeando-runtime-jvm-minecraft-hotpatch-asm",
+    "title": "Hackeando o Runtime do Minecraft ao Vivo: Hotpatching de JVM, ASM e Manipulação de Estado sem Reiniciar o Servidor",
+    "excerpt": "Deep-dive de engenharia de sistemas em tempo real: como usamos a Java Attach API, bytecode ASM no HotSpot, transposição de ClassLoaders (Knot/Fabric vs AppClassLoader) e ServerThread scheduling para recuperar inventários e corrigir skins em produção com zero downtime. Inclui a extensão com Clojure/nREPL e um guia de estudos com 8 conceitos avançados de JVM.",
+    "date": "2026-10-25",
+    "readTime": "18 min",
+    "tags": [
+      "Java",
+      "JVM",
+      "Minecraft",
+      "Clojure",
+      "nREPL",
+      "Engenharia Reversa",
+      "ASM",
+      "Hotpatching",
+      "Fabric",
+      "Sistemas"
+    ]
+  },
+  {
     "id": "2026-10-22-ai-factory-privacidade-por-arquitetura",
     "title": "Privacidade Não é Política, é Arquitetura: Construindo uma Plataforma Privada de IA sobre FreeBSD Jails, vLLM e Slurm",
     "excerpt": "Deep-dive técnico na arquitetura da AI Factory (Ping Hai) entregue em produção: sanitização pré-vetor com Presidio, quarentena criptografada, RAG owner-scoped fail-closed, carimbo obrigatório de saída (Stop Chain 503), auditoria encadeada cega ao conteúdo, identidade federada Keycloak/LDAP e inferência própria com vLLM sob Slurm em FreeBSD Jails.",
