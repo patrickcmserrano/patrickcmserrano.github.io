@@ -120,6 +120,97 @@
     ]
   },
   {
+    "id": "context-graph-engine",
+    "title": {
+      "pt": "context-graph-engine (repo-index)",
+      "en": "context-graph-engine (repo-index)",
+      "es": "context-graph-engine (repo-index)"
+    },
+    "subtitle": {
+      "pt": "Indexador Sintático Determinístico e Pipeline de Contexto para Agentes de Código",
+      "en": "Deterministic Syntactic Indexer & Context Pipeline for Coding Agents",
+      "es": "Indexador Sintáctico Determinístico y Pipeline de Contexto para Agentes de Código"
+    },
+    "excerpt": {
+      "pt": "Compilador determinístico de contexto escrito em Go puro (stdlib-only, zero LLM e zero rede). Em vez de o agente gastar dezenas de turnos explorando o repositório com glob e grep, o repo-index extrai fatos com proveniência exata e empacota um envelope com prefixo estável — reduzindo em 82% o custo, 97% as chamadas de ferramenta e empurrando o prompt cache para 94–95%.",
+      "en": "Deterministic context compiler written in pure Go (stdlib-only, zero LLM, zero network). Instead of an agent burning dozens of turns exploring a repository with glob and grep, repo-index extracts facts with exact provenance and packs a stable-prefix envelope — cutting cost by 82%, tool calls by 97%, and pushing prompt cache hit rates to 94–95%.",
+      "es": "Compilador determinístico de contexto escrito en Go puro (stdlib-only, cero LLM y cero red). En lugar de que el agente gaste decenas de turnos explorando el repositorio con glob y grep, repo-index extrae hechos con proveniencia exacta y empaqueta un envelope con prefijo estable — reduciendo el costo en 82%, las llamadas de herramientas en 97% y llevando el prompt cache a 94–95%."
+    },
+    "role": {
+      "pt": "Arquiteto de Software & Builder",
+      "en": "Software Architect & Builder",
+      "es": "Arquitecto de Software y Creador"
+    },
+    "status": {
+      "pt": "Em Produção (AI Factory)",
+      "en": "In Production (AI Factory)",
+      "es": "En Producción (AI Factory)"
+    },
+    "stack": [
+      "Go (stdlib-only)",
+      "Static AST Analysis",
+      "Clojure & Go Parsers",
+      "JSON Provenance",
+      "Prompt Cache Optimization"
+    ],
+    "details": {
+      "pt": "Um agente chamado para atuar em um repositório desconhecido gasta a maior parte do orçamento apenas descobrindo o que existe ali: listando diretórios, disparando glob e grep, e relendo os mesmos arquivos a cada nova sessão. O `context-graph-engine` (`repo-index`) resolve esse gargalo calculando a estrutura do repositório uma única vez de forma 100% determinística, sem LLM, sem embeddings e sem chamadas de rede.\n\nO binário extrai fatos do sistema de arquivos, estado Git (com credenciais removidas), namespaces Clojure (`requires`, aliases, public vars, reader conditionals), pacotes Go (módulo, imports e símbolos exportados), dependências (`deps.edn` / `go.mod`), comandos de desenvolvimento, testes e superfícies de segurança. Tudo é serializado de forma byte-a-byte idêntica e determinística — sem timestamps nem caminhos absolutos — onde cada fato carrega sua proveniência exata (`source`, `line`, `rule`, `confidence`).",
+      "en": "An agent asked to work on an unfamiliar repository spends most of its budget just discovering what exists: listing directories, firing glob and grep calls, and re-reading the same files on every new session. `context-graph-engine` (`repo-index`) eliminates that waste by computing the repository's structure once, 100% deterministically, with zero LLMs, zero embeddings, and zero network calls.\n\nThe binary extracts filesystem facts, Git state (with credentials stripped), Clojure namespaces (`requires`, aliases, public vars, reader conditionals), Go packages (module path, imports, exported symbols), dependencies (`deps.edn` / `go.mod`), dev commands, tests, and security surfaces. Everything serializes byte-identically — no timestamps or absolute paths — with every derived fact carrying exact provenance (`source`, `line`, `rule`, `confidence`).",
+      "es": "Un agente llamado para trabajar en un repositorio desconocido gasta la mayor parte de su presupuesto solo descubriendo qué existe allí: listando directorios, disparando glob y grep, y releyendo los mismos archivos en cada sesión. `context-graph-engine` (`repo-index`) resuelve este cuello de botella calculando la estructura del repositorio una sola vez de forma 100% determinística, sin LLM, sin embeddings y sin red.\n\nEl binario extrae hechos del sistema de archivos, estado Git (sin credenciales), namespaces Clojure, paquetes Go, dependencias (`deps.edn` / `go.mod`), comandos de desarrollo, tests y superficies de seguridad. Todo se serializa de forma idéntica byte a byte, donde cada hecho lleva su proveniencia exacta (`source`, `line`, `rule`, `confidence`)."
+    },
+    "architecture": {
+      "pt": "O pipeline separa rigorosamente quatro camadas que nunca se misturam: **(1) Index (`scan`)**: o que existe no repositório com proveniência exata (`facts.json` + `graph.json`); **(2) Navigation (`navigate`)**: o que é relevante para um perfil de tarefa declarativo (`--task`), aplicando política explícita e auditável sem LLM; **(3) Pack (`pack`)**: o que cabe no orçamento de tokens (`--budget-soft` / `--budget-hard`) e em qual ordem estável; **(4) Agent (`envelope`)**: o texto final entregue ao agente no Turno 0.\n\nInclui ainda verificação de frescor (`verify` retornando códigos `OK`, `STALE_INDEX`, `INDEX_INVALID`), comparação semântica entre snapshots (`diff`), consultas diretas (`query`) e proteção de artefatos (`protect` com saída `WRITE_DENIED`). Em benchmarks comparativos reais, o envelope de prefixo estável elevou o acerto de *prompt cache* para 94–95% e reduziu em 82% o custo e 97% o tempo de execução.",
+      "en": "The pipeline strictly separates four layers that never mix: **(1) Index (`scan`)**: what exists in the repository with exact provenance (`facts.json` + `graph.json`); **(2) Navigation (`navigate`)**: what is relevant to a declarative task profile (`--task`), applying explicit, auditable policy without LLMs; **(3) Pack (`pack`)**: what fits within the token budget (`--budget-soft` / `--budget-hard`) and in what stable order; **(4) Agent (`envelope`)**: the final text handed to the agent at Turn 0.\n\nIt also provides staleness checks (`verify` returning `OK`, `STALE_INDEX`, `INDEX_INVALID`), snapshot diffing (`diff`), structured queries (`query`), and protected-artifact enforcement (`protect` returning `WRITE_DENIED`). In real comparative benchmarks, the stable-prefix envelope pushed prompt cache hit rates to 94–95%, cutting cost by 82% and wall-clock time by 97%.",
+      "es": "El pipeline separa estrictamente cuatro capas que nunca se mezclan: **(1) Index (`scan`)**: qué existe en el repositorio con proveniencia exacta (`facts.json` + `graph.json`); **(2) Navigation (`navigate`)**: qué es relevante para un perfil de tarea declarativo (`--task`), aplicando política explícita sin LLM; **(3) Pack (`pack`)**: qué cabe en el presupuesto de tokens (`--budget-soft` / `--budget-hard`) y en qué orden estable; **(4) Agent (`envelope`)**: el texto final entregado al agente en el Turno 0.\n\nIncluye verificación de frescura (`verify`), comparación entre snapshots (`diff`), consultas estructuradas (`query`) y protección de artefactos (`protect`). En benchmarks reales, el envelope con prefijo estable llevó el prompt cache a 94–95%, reduciendo costos en 82% y tiempo de ejecución en 97%."
+    }
+  },
+  {
+    "id": "swe-dispatcher",
+    "title": {
+      "pt": "swe-dispatcher",
+      "en": "swe-dispatcher",
+      "es": "swe-dispatcher"
+    },
+    "subtitle": {
+      "pt": "Orquestrador Autônomo de Sprints de Engenharia sobre Worktrees e Cotas Heterogêneas",
+      "en": "Autonomous Software Engineering Sprint Orchestrator over Worktrees and Heterogeneous Quotas",
+      "es": "Orquestador Autónomo de Sprints de Ingeniería sobre Worktrees y Cuotas Heterogéneas"
+    },
+    "excerpt": {
+      "pt": "Orquestrador da AI Factory local escrito em Clojure/Babashka para rodar sprints inteiras de forma autônoma e segura. Integra compilação de contexto determinístico (repo-index) no Turno 0, encadeamento em Git worktrees isolados, gates TDD fail-closed (Red → Green com Locked-Test físico) e agendamento work-conserving entre cotas heterogêneas de modelos.",
+      "en": "Local AI Factory orchestrator written in Clojure/Babashka to run entire engineering sprints autonomously and safely. Integrates deterministic Turn-0 context compilation (repo-index), isolated Git worktree chaining, fail-closed TDD gates (Red → Green with physical Locked-Test), and work-conserving scheduling across heterogeneous model quotas.",
+      "es": "Orquestador de la AI Factory local escrito en Clojure/Babashka para ejecutar sprints completas de forma autónoma y segura. Integra compilación determinística de contexto (repo-index) en el Turno 0, encadenamiento en Git worktrees aislados, gates TDD fail-closed (Red → Green con Locked-Test físico) y programación work-conserving entre cuotas heterogéneas."
+    },
+    "role": {
+      "pt": "Arquiteto de Software & Builder",
+      "en": "Software Architect & Builder",
+      "es": "Arquitecto de Software y Creador"
+    },
+    "status": {
+      "pt": "Em Produção (AI Factory)",
+      "en": "In Production (AI Factory)",
+      "es": "En Producción (AI Factory)"
+    },
+    "stack": [
+      "Clojure",
+      "Babashka",
+      "Git Worktrees",
+      "clj-kondo",
+      "OTLP / OpenTelemetry",
+      "EDN"
+    ],
+    "details": {
+      "pt": "Executar um agente para um bug pontual é simples; o desafio de engenharia começa ao encadear 15 tarefas consecutivas em repositórios reais sem alucinar assinaturas, corromper a `master` ou estourar janelas de cota. O `swe-dispatcher` resolve isso com dois motores complementares em Clojure/Babashka: o `sprint_runner.clj` (orquestração serial encadeada com `claude -p` ou `agy -p` em `stream-json`) e o `swe_runner.clj` (execução headless direta via `small-router` e abertura automática de PRs como `ark-swe[bot]`).\n\nCada tarefa roda confinada ao seu próprio Git worktree (`feat/<ID>`), herdando o código da tarefa anterior via `chain-plan` sem tocar a branch principal. O sistema também traz telemetria OTLP completa (`agy-otlp-hook`) correlacionando `task.id` e `session_id` com custos reais no `small-router`.",
+      "en": "Running a coding agent on an isolated bug is easy; the engineering challenge begins when chaining 15 consecutive tasks across production repositories without hallucinated signatures, broken `master` branches, or exhausted quota windows. `swe-dispatcher` solves this with two complementary engines in Clojure/Babashka: `sprint_runner.clj` (chained serial sprint orchestration with `claude -p` or `agy -p` over `stream-json`) and `swe_runner.clj` (headless execution via `small-router` with automated PR delivery via `ark-swe[bot]`).\n\nEach task runs confined to its own Git worktree (`feat/<ID>`), inheriting the previous task's branch via `chain-plan` without touching `master`. It also provides end-to-end OTLP telemetry (`agy-otlp-hook`) correlating `task.id` and `session_id` with actual costs in `small-router`.",
+      "es": "Ejecutar un agente para un bug puntual es fácil; el desafío real empieza al encadenar 15 tareas consecutivas en repositorios de producción sin alucinar firmas, romper `master` o agotar las cuotas. `swe-dispatcher` lo resuelve con dos motores en Clojure/Babashka: `sprint_runner.clj` (orquestación serial encadenada con `claude -p` o `agy -p`) y `swe_runner.clj` (ejecución headless vía `small-router` y entrega de PRs con `ark-swe[bot]`).\n\nCada tarea corre confinada en su propio Git worktree (`feat/<ID>`), heredando la rama de la tarea anterior vía `chain-plan` sin tocar `master`. Además aporta telemetría OTLP completa (`agy-otlp-hook`) correlacionando `task.id` y `session_id` con costos reales."
+    },
+    "architecture": {
+      "pt": "A operação apoia-se em três pilares determinísticos: **(1) Contexto CGE Turno 0:** ao criar cada worktree, o dispatcher roda automaticamente `repo-index scan`, `verify` e `pack --format envelope` para garantir que o agente receba assinaturas reais recém-criadas na tarefa anterior. **(2) Gates Fail-Closed (Red → Green):** no `sprint-runner`, o *Test-First Gate* exige que o primeiro commit altere apenas arquivos de teste (fase Red) e os seguintes tragam a implementação até os comandos de validação (`:gate-cmds`) passarem; no `swe-runner`, os testes existentes recebem `chmod 0444` (*Locked-Test* físico) para impedir que o agente altere asserções para fazer o teste passar. **(3) Bin-Packing de Cotas (`sprint_windows.clj` & `sprint_autoresume.clj`):** modela múltiplos buckets de cota com janelas independentes (janela de 5 h Anthropic, cota compartilhada Gemini, Argon, DeepInfra), roteando tarefas por risco técnico e retomando automaticamente entre janelas de renovação.",
+      "en": "Operations rely on three deterministic pillars: **(1) Turn-0 CGE Context:** upon creating each worktree, the dispatcher automatically runs `repo-index scan`, `verify`, and `pack --format envelope` so the agent receives fresh, exact signatures from the previous task. **(2) Fail-Closed Gates (Red → Green):** in `sprint-runner`, the *Test-First Gate* enforces a tests-only first commit (Red) before implementation commits pass `:gate-cmds`; in `swe-runner`, existing tests are locked physically with `chmod 0444` (*Locked-Test*) so agents cannot relax assertions to pass. **(3) Heterogeneous Quota Bin-Packing (`sprint_windows.clj` & `sprint_autoresume.clj`):** models independent quota buckets (5h Anthropic window, Gemini shared quota, Argon, DeepInfra), routing tasks by technical risk and auto-resuming seamlessly across renewal windows.",
+      "es": "La operación se apoya en tres pilares determinísticos: **(1) Contexto CGE Turno 0:** al crear cada worktree, el dispatcher ejecuta `repo-index scan`, `verify` y `pack --format envelope` para entregar firmas frescas de la tarea anterior. **(2) Gates Fail-Closed (Red → Green):** en `sprint-runner`, el *Test-First Gate* exige un primer commit solo con tests (Red) antes de implementar hasta pasar `:gate-cmds`; en `swe-runner`, los tests existentes se bloquean físicamente con `chmod 0444` (*Locked-Test*). **(3) Bin-Packing de Cuotas (`sprint_windows.clj` & `sprint_autoresume.clj`):** modela múltiples buckets independientes (ventana de 5 h Anthropic, cuota compartida Gemini, Argon, DeepInfra), enrutando tareas por riesgo técnico y retomando automáticamente entre ventanas."
+    }
+  },
+  {
     "id": "rohana",
     "title": {
       "pt": "Rohana",

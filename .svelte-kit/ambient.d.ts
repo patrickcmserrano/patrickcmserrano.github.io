@@ -74,7 +74,6 @@ declare module '$env/static/private' {
 	export const XDG_SESSION_CLASS: string;
 	export const npm_config_npm_version: string;
 	export const npm_lifecycle_script: string;
-	export const __MISE_SHIM: string;
 	export const DEBUGINFOD_URLS: string;
 	export const __MISE_ORIG_PATH: string;
 	export const INIT_CWD: string;
@@ -284,7 +283,6 @@ declare module '$env/dynamic/private' {
 		XDG_SESSION_CLASS: string;
 		npm_config_npm_version: string;
 		npm_lifecycle_script: string;
-		__MISE_SHIM: string;
 		DEBUGINFOD_URLS: string;
 		__MISE_ORIG_PATH: string;
 		INIT_CWD: string;

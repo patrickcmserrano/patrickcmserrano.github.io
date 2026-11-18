@@ -241,6 +241,54 @@
           "es": "Endpoint único frente a múltiples proveedores, con enrutamiento, fallback y circuit breaking."
         },
         "url": "https://patrickcmserrano.github.io/trabalho/small-router/"
+      },
+      {
+        "id": "context-graph-engine",
+        "title": {
+          "pt": "context-graph-engine (repo-index)",
+          "en": "context-graph-engine (repo-index)",
+          "es": "context-graph-engine (repo-index)"
+        },
+        "subtitle": {
+          "pt": "Indexador Sintático Determinístico e Pipeline de Contexto para Agentes",
+          "en": "Deterministic Syntactic Indexer & Context Pipeline for Agents",
+          "es": "Indexador Sintáctico Determinístico y Pipeline de Contexto para Agentes"
+        },
+        "excerpt": {
+          "pt": "Compilador determinístico de contexto em Go puro (stdlib-only, zero LLM e zero rede). Extrai fatos com proveniência exata e empacota envelopes com prefixo estável, reduzindo em 82% o custo, 97% as chamadas de ferramenta e elevando o prompt cache para 94–95%.",
+          "en": "Deterministic context compiler in pure Go (stdlib-only, zero LLM, zero network). Extracts facts with exact provenance and packs stable-prefix envelopes, cutting cost by 82%, tool calls by 97%, and lifting prompt cache hit rates to 94–95%.",
+          "es": "Compilador determinístico de contexto en Go puro (stdlib-only, cero LLM y cero red). Extrae hechos con proveniencia exacta y empaqueta envelopes con prefijo estable, reduciendo el costo en 82%, las llamadas de herramientas en 97% y llevando el prompt cache a 94–95%."
+        },
+        "excerptShort": {
+          "pt": "Indexador sintático determinístico em Go (sem LLM) com envelopes estáveis para agentes de código.",
+          "en": "Deterministic syntactic indexer in Go (zero LLM) with stable envelopes for coding agents.",
+          "es": "Indexador sintáctico determinístico en Go (sin LLM) con envelopes estables para agentes de código."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/context-graph-engine/"
+      },
+      {
+        "id": "swe-dispatcher",
+        "title": {
+          "pt": "swe-dispatcher",
+          "en": "swe-dispatcher",
+          "es": "swe-dispatcher"
+        },
+        "subtitle": {
+          "pt": "Orquestrador Autônomo de Sprints sobre Worktrees e Cotas Heterogêneas",
+          "en": "Autonomous Sprint Orchestrator over Worktrees and Heterogeneous Quotas",
+          "es": "Orquestador Autónomo de Sprints sobre Worktrees y Cuotas Heterogéneas"
+        },
+        "excerpt": {
+          "pt": "Orquestrador da AI Factory local em Clojure/Babashka para sprints autônomas encadeadas em Git worktrees isolados, com gates TDD fail-closed (Red → Green e Locked-Test físico), telemetria OTLP e bin-packing de cotas heterogêneas entre modelos.",
+          "en": "Local AI Factory orchestrator in Clojure/Babashka for chained autonomous sprints across isolated Git worktrees, featuring fail-closed TDD gates (Red → Green and physical Locked-Test), OTLP telemetry, and heterogeneous model quota bin-packing.",
+          "es": "Orquestador de la AI Factory local en Clojure/Babashka para sprints autónomas encadenadas en Git worktrees aislados, con gates TDD fail-closed (Red → Green y Locked-Test físico), telemetría OTLP y bin-packing de cuotas heterogéneas."
+        },
+        "excerptShort": {
+          "pt": "Orquestrador autônomo em Clojure/Babashka com worktrees encadeados, gates TDD e gestão de cotas.",
+          "en": "Autonomous orchestrator in Clojure/Babashka with chained worktrees, TDD gates, and quota management.",
+          "es": "Orquestador autónomo en Clojure/Babashka con worktrees encadenados, gates TDD y gestión de cuotas."
+        },
+        "url": "https://patrickcmserrano.github.io/trabalho/swe-dispatcher/"
       }
     ]
   },
