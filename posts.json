@@ -1,5 +1,41 @@
 [
   {
+    "id": "2026-11-18-engenharia-ai-factory-local-worktrees-prompt-cache-cotas",
+    "title": "Engenharia de uma AI Factory Local: Worktrees, Prompt Cache e Economia de Cotas entre Modelos",
+    "excerpt": "Quando você passa de um agente no terminal para sprints inteiras rodando de forma autônoma, o gargalo deixa de ser o prompt e vira engenharia de sistemas: topologia Git, contexto determinístico e bin-packing de cotas heterogêneas.",
+    "date": "2026-11-18",
+    "readTime": "10 min",
+    "tags": [
+      "AI Factory",
+      "Engenharia de Sistemas",
+      "Go",
+      "Clojure",
+      "LLM Routing",
+      "Prompt Cache",
+      "Worktrees",
+      "DevTools"
+    ]
+  },
+  {
+    "id": "2026-11-18-craft-agents-fisica-nativa-combate-balistico-shaders-relativisticos",
+    "title": "Do Teleporte ao Corpo Físico na JVM: Física Nativa em 15 Agentes, Combate Balístico, Shaders Relativísticos e um Leak de 5,3 GB no Netty",
+    "excerpt": "Como evoluímos o craft-agents em duas semanas intensas (mais de 400 commits e 615 testes): da auditoria arquitetural que eliminou teleportes sintéticos com um árbitro único de atuadores (npc.body) e física no ServerThread (STEP), passando por sniper balístico com mira preditiva, autodefesa de assento e um motor de shaders analíticos com Buraco Negro e efemérides orbitais — até a caça ao vivo de um vazamento de memória direta no Netty.",
+    "date": "2026-11-18",
+    "readTime": "12 min",
+    "tags": [
+      "Clojure",
+      "Java 21",
+      "JVM",
+      "Minecraft",
+      "Embodied AI",
+      "Física",
+      "GLSL",
+      "Netty",
+      "Arquitetura",
+      "Agentes Autônomos"
+    ]
+  },
+  {
     "id": "2026-11-18-eval-driven-development-edd-sistemas-ia-producao",
     "title": "Eval-Driven Development (EDD): Como Tirar Sistemas de IA do \"Vibe Check\" para a Engenharia de Produção",
     "excerpt": "Como substituir o \"vibe checking\" por engenharia rigorosa: da análise de erros e isolamento de Retrieval vs. Generation à pirâmide de evals (asserções determinísticas e LLM-as-a-judge calibrado) e esteiras de CI/CD com limites estatísticos de regressão.",
