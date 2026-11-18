@@ -1,5 +1,41 @@
 [
   {
+    "id": "2026-11-18-eval-driven-development-edd-sistemas-ia-producao",
+    "title": "Eval-Driven Development (EDD): Como Tirar Sistemas de IA do \"Vibe Check\" para a Engenharia de Produção",
+    "excerpt": "Como substituir o \"vibe checking\" por engenharia rigorosa: da análise de erros e isolamento de Retrieval vs. Generation à pirâmide de evals (asserções determinísticas e LLM-as-a-judge calibrado) e esteiras de CI/CD com limites estatísticos de regressão.",
+    "date": "2026-11-18",
+    "readTime": "6 min",
+    "tags": [
+      "Evals",
+      "LLM",
+      "Engenharia de Software",
+      "RAG",
+      "LLM-as-a-Judge",
+      "CI/CD",
+      "Qualidade",
+      "Arquitetura"
+    ]
+  },
+  {
+    "id": "2026-11-04-da-lisp-machine-a-agi-incorporada-craft-agents-voyager-jvm",
+    "title": "Da Lisp Machine à IA Incorporada: Reconstruindo o Voyager e o Mineflayer Dentro da JVM com Clojure e Java 21",
+    "excerpt": "Como evoluímos a injeção cirúrgica de bytecode e nREPL no Minecraft para o craft-agents: uma arquitetura cognitiva de processo duplo (System 1 a 20 Hz e System 2 Voyager) nativa na JVM. Substituímos 15 anos de dívida técnica em Node.js por física zero-copy (< 500 KB/bot), busca A* 3D em 64 bits (PackedPos), contratos formais Malli sem eval() e histórias reais de produção com Karlach e Picard.",
+    "date": "2026-11-04",
+    "readTime": "24 min",
+    "tags": [
+      "Java 21",
+      "JVM",
+      "Clojure",
+      "Minecraft",
+      "Embodied AI",
+      "Voyager",
+      "Mineflayer",
+      "Agentes Autônomos",
+      "Malli",
+      "Arquitetura"
+    ]
+  },
+  {
     "id": "2026-10-25-hackeando-runtime-jvm-minecraft-hotpatch-asm",
     "title": "Hackeando o Runtime do Minecraft ao Vivo: Hotpatching de JVM, ASM e Manipulação de Estado sem Reiniciar o Servidor",
     "excerpt": "Deep-dive de engenharia de sistemas em tempo real: como usamos a Java Attach API, bytecode ASM no HotSpot, transposição de ClassLoaders (Knot/Fabric vs AppClassLoader) e ServerThread scheduling para recuperar inventários e corrigir skins em produção com zero downtime. Inclui a extensão com Clojure/nREPL e um guia de estudos com 8 conceitos avançados de JVM.",

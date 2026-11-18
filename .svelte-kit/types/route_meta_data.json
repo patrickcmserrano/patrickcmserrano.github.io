@@ -25,5 +25,13 @@
 	"/trabalho/[slug]": [
 		"src/routes/trabalho/[slug]/+page.server.ts",
 		"src/routes/+layout.ts"
+	],
+	"/vagas": [
+		"src/routes/vagas/+page.server.ts",
+		"src/routes/+layout.ts"
+	],
+	"/vagas/estudar": [
+		"src/routes/vagas/estudar/+page.server.ts",
+		"src/routes/+layout.ts"
 	]
 }
